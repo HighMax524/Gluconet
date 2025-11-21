@@ -1,0 +1,319 @@
+/* ================================================= */
+/* 1. CONFIGURATION GLOBALE */
+/* ================================================= */
+
+:root {
+    --couleur-fond-page: #f0f0f5;
+    --couleur-fond-carte: #e0e0e5;
+    --couleur-primaire-violet: #9370db;
+    --couleur-succes-vert: #90ee90;
+    --couleur-echec-rouge: #f08080;
+    --couleur-texte-principal: #333;
+    --couleur-texte-secondaire: #555;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--couleur-fond-page);
+    margin: 20px;
+    color: var(--couleur-texte-principal);
+}
+
+/* ================================================= */
+/* 2. STRUCTURE DU TABLEAU DE BORD */
+/* ================================================= */
+
+.tableau-de-bord {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rangee-superieure {
+    display: flex;
+    gap: 20px;
+}
+
+.indicateurs-cles {
+    flex: 2;
+    padding: 30px 20px 20px 20px;
+}
+
+.colonne-droite-superieure {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ================================================= */
+/* 3. STYLES DES CARTES (BLOCS) */
+/* ================================================= */
+
+.carte {
+    background-color: var(--couleur-fond-carte);
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.label-composant, .label-composant-droit, .label-composant-graphique {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: var(--couleur-primaire-violet);
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+.label-composant-droit { left: 5px; }
+.label-composant-graphique { top: 10px; left: 15px; }
+
+/* ================================================= */
+/* 4. COMPOSANT: INDICATEURS CLÉS */
+/* ================================================= */
+
+.metrique-conteneur {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.metrique-principale {
+    text-align: center;
+}
+
+.cercle-externe {
+    width: 180px;
+    height: 180px;
+    border: 12px solid var(--couleur-primaire-violet);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+}
+
+.cercle-interne {
+    width: 130px;
+    height: 130px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.1;
+}
+
+.metrique-principale .valeur {
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--couleur-texte-principal);
+}
+
+.metrique-principale .unite {
+    font-size: 1.2em;
+    color: var(--couleur-texte-secondaire);
+}
+
+.metriques-secondaires {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pic-metrique p {
+    margin: 0 0 5px 0;
+    color: var(--couleur-texte-secondaire);
+}
+
+/* --- NOUVELLES CLASSES POUR LES PASTILLES (distinctes) --- */
+
+.valeur-base {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.valeur-positive {
+    background-color: var(--couleur-succes-vert);
+}
+
+.valeur-negative {
+    background-color: var(--couleur-echec-rouge);
+}
+
+/* ================================================= */
+/* 5. COMPOSANT: ALERTES (CURSEUR) */
+/* ================================================= */
+
+.parametres-alertes {
+    text-align: center;
+    padding-top: 30px;
+}
+
+/* NOUVEAU STYLE POUR LE BOUTON TOGGLE */
+.toggle-alerte {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 0 auto 15px auto;
+    font-weight: bold;
+    cursor: pointer;
+    border: none; /* Retirer la bordure par défaut du bouton */
+    transition: background-color 0.3s, color 0.3s; /* Ajouter une transition */
+}
+
+/* État ACTIF (Alerte ON) */
+.toggle-alerte.actif {
+    background-color: var(--couleur-primaire-violet);
+    color: white;
+}
+
+/* État INACTIF (Alerte OFF) */
+.toggle-alerte:not(.actif) {
+    background-color: #ccc; /* Couleur de fond grise pour l'état inactif */
+    color: var(--couleur-texte-secondaire);
+}
+
+.toggle-alerte:not(.actif) .alerte-texte::before {
+    /* Pour simuler le changement de texte via CSS si nécessaire,
+       mais on utilisera JavaScript pour un véritable toggle */
+    content: "Alerte OFF";
+}
+
+
+.curseur-conteneur {
+    position: relative;
+    padding: 10px 10px 0 10px;
+}
+
+input[type=range] {
+    width: 100%;
+    height: 5px;
+    background: #ccc;
+    border-radius: 5px;
+    margin: 5px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--couleur-primaire-violet);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.etiquettes {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin-top: 15px;
+}
+
+.unite-curseur {
+    display: block;
+    font-size: 0.8em;
+    color: var(--couleur-texte-secondaire);
+    margin-top: 5px;
+}
+
+/* ================================================= */
+/* 6. COMPOSANT: CALORIES */
+/* ================================================= */
+
+.sommaire-calorique {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: center;
+}
+
+.calorie-carte {
+    flex: 1;
+    background-color: var(--couleur-fond-carte);
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.calorie-carte p {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.cercle-calorie {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    line-height: 1.1;
+}
+
+.cercle-calorie .valeur {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.cercle-calorie .unite {
+    font-size: 0.8em;
+    color: var(--couleur-texte-secondaire);
+}
+
+/* ================================================= */
+/* 7. COMPOSANT: GRAPHIQUE */
+/* ================================================= */
+
+.section-graphique {
+    padding-top: 50px;
+}
+
+.onglets {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.bouton-onglet {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    color: var(--couleur-texte-secondaire);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.bouton-onglet.actif {
+    background-color: var(--couleur-succes-vert);
+    color: white;
+}
+
+.conteneur-graphique {
+    padding-left: 20px;
+}
+
+#graphiqueGlycemie {
+    max-height: 300px;
+}
