@@ -1,0 +1,64 @@
+/* css/connexion.css */
+.content_form {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#img_conn {
+    width: 40%;
+    max-width: 320px;
+    height: auto;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.titre_form {
+    text-align: center;
+}
+
+.form_inscr_conn_container {
+    flex: 1 1 0;
+}
+
+.form_inscr_conn_container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form_inscr_conn_container input[type="email"],
+.form_inscr_conn_container input[type="password"],
+.form_inscr_conn_container input[type="submit"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.boutton_form {
+    padding: 0.75rem 1rem;
+    background: #2b6cb0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Responsive: empile sur petits écrans */
+@media (max-width: 768px) {
+    .content_form {
+        flex-direction: column;
+        align-items: center;
+    }
+    #img_conn {
+        width: 60%;
+        max-width: 280px;
+        margin-bottom: 1rem;
+    }
+    .form_inscr_conn_container {
+        width: 100%;
+    }
+}
