@@ -2,13 +2,15 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="res/css_login.css">
     <title>Inscription</title>
 </head>
 <body>
 <div class="content_form">
     <img src="res/img_inscr.png" alt="image glucometre" id="img_inscr">
     <div class="form_inscr_conn_container">
-        <h2 class="titre_form">S'incrire</h2>
+        <h1 class="titre_form">S'inscrire</h1>
+        <br>
         <form id="form_inscr" action="" method="post">
             <input type="text" id="nom" name="nom" placeholder="Nom" required><br><br>
 
@@ -24,8 +26,11 @@
 
             <input type="submit" value="S'inscrire" class="boutton_form">
         </form>
-        <p>Vous avez déja un compte ?</p>
-        <a href="connexion.html">Connectez-vous</a>
+        <br>
+        <div class = "deja_un_compte">
+            <p>Vous avez déja un compte ?</p>
+            <a href="connexion.html">Connectez-vous</a>
+        </div>
     </div>
 
 </div>
