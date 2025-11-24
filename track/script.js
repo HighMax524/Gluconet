@@ -10,3 +10,9 @@ noUiSlider.create(document.getElementById('slider'), {
     'max': 2
   }
 });
+
+fetch('../nav_bar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav_bar').innerHTML = data;
+      });
