@@ -74,6 +74,14 @@
     text-align: center;
 }
 
+a{
+    color: blue;
+}
+
+a:hover{
+    color: red;
+}
+
 /* Responsive: empile sur petits écrans */
 @media (max-width: 768px) {
     .content_form {
