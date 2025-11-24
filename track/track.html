@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de Bord Santé</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Pour les icônes des graphes -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script> <!-- Pour les graphiques -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
 </head>
 <body>
 
@@ -21,7 +23,7 @@
                     <div class="metrique-principale">
                         <div class="cercle-externe">
                             <div class="cercle-interne">
-                                <span class="valeur">0.3</span>
+                                <span class="valeur">NA</span>
                                 <span class="unite">mmol/L</span>
                             </div>
                         </div>
@@ -29,11 +31,11 @@
                     <div class="metriques-secondaires">
                         <div class="pic-metrique">
                             <p>Pic de glycémie max</p>
-                            <span class="valeur vert">20 mg/L</span>
+                            <span class="valeur vert">NA mg/L</span>
                         </div>
                         <div class="pic-metrique">
                             <p>Pic de glycémie min</p>
-                            <span class="valeur rouge">11.2 mg/L</span>
+                            <span class="valeur rouge">NA mg/L</span>
                         </div>
                     </div>
                 </div>
@@ -48,12 +50,12 @@
                         <span class="alerte-texte">Alerte ON</span>
                         </button>
                     <div class="curseur-conteneur">
-                        <input type="range" min="0" max="2" value="0.4">
-                        <input type="range" min="0" max="2" value="0.6">
+
+                        <div id="slider"></div>
                         <div class="etiquettes">
                             <span>0</span>
-                            <span class="etiquette-centre">0.4</span>
-                            <span class="etiquette-centre">0.6</span>
+                            <span class="etiquette-centre">0.66</span>
+                            <span class="etiquette-centre">1.33</span>
                             <span>2</span>
                             </div>
                             <span class="unite-curseur">mmol/L</span>
@@ -63,14 +65,14 @@
                     <div class="carte calorie-carte">
                         <p>Absorbées</p>
                         <div class="cercle-calorie">
-                            <span class="valeur">12</span>
+                            <span class="valeur">NA</span>
                             <span class="unite">KCal</span>
                         </div>
                     </div>
                     <div class="carte calorie-carte">
                         <p>Dépensées</p>
                         <div class="cercle-calorie">
-                            <span class="valeur">11</span>
+                            <span class="valeur">NA</span>
                             <span class="unite">KCal</span>
                         </div>
                     </div>

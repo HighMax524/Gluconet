@@ -49,7 +49,7 @@ body {
 }
 
 /* ================================================= */
-/* 3. STYLES DES CARTES (BLOCS) */
+/* 3. STYLE DES BLOCS */
 /* ================================================= */
 
 .carte {
@@ -60,7 +60,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.label-composant, .label-composant-droit, .label-composant-graphique {
+.label-composant {
     position: absolute;
     top: 5px;
     left: 10px;
@@ -68,8 +68,21 @@ body {
     font-size: 0.8em;
     opacity: 0.7;
 }
-.label-composant-droit { left: 5px; }
-.label-composant-graphique { top: 10px; left: 15px; }
+.label-composant-droit { 
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: var(--couleur-primaire-violet);
+    font-size: 0.8em;
+    opacity: 0.7; 
+}
+.label-composant-graphique { 
+    top: 10px;
+    left: 15px;
+    color: var(--couleur-primaire-violet);
+    font-size: 0.8em;
+    opacity: 0.7;
+ }
 
 /* ================================================= */
 /* 4. COMPOSANT: INDICATEURS CLÉS */
@@ -130,8 +143,6 @@ body {
     color: var(--couleur-texte-secondaire);
 }
 
-/* --- NOUVELLES CLASSES POUR LES PASTILLES (distinctes) --- */
-
 .valeur-base {
     display: inline-block;
     padding: 5px 15px;
@@ -157,7 +168,6 @@ body {
     padding-top: 30px;
 }
 
-/* NOUVEAU STYLE POUR LE BOUTON TOGGLE */
 .toggle-alerte {
     display: flex;
     align-items: center;
@@ -169,51 +179,47 @@ body {
     margin: 0 auto 15px auto;
     font-weight: bold;
     cursor: pointer;
-    border: none; /* Retirer la bordure par défaut du bouton */
-    transition: background-color 0.3s, color 0.3s; /* Ajouter une transition */
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* État ACTIF (Alerte ON) */
 .toggle-alerte.actif {
     background-color: var(--couleur-primaire-violet);
     color: white;
 }
 
-/* État INACTIF (Alerte OFF) */
 .toggle-alerte:not(.actif) {
-    background-color: #ccc; /* Couleur de fond grise pour l'état inactif */
+    background-color: #ccc;
     color: var(--couleur-texte-secondaire);
-}
-
-.toggle-alerte:not(.actif) .alerte-texte::before {
-    /* Pour simuler le changement de texte via CSS si nécessaire,
-       mais on utilisera JavaScript pour un véritable toggle */
-    content: "Alerte OFF";
 }
 
 
 .curseur-conteneur {
     position: relative;
+    height: 40px; /* Ajout d'une hauteur pour contenir les curseurs et les étiquettes */
     padding: 10px 10px 0 10px;
 }
 
-input[type=range] {
-    width: 100%;
-    height: 5px;
-    background: #ccc;
-    border-radius: 5px;
-    margin: 5px 0;
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Styles pour noUiSlider */
+#slider {
+    height: 6px;
 }
 
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    background: var(--couleur-primaire-violet);
+.noUi-tooltip {
+  border: none !important;
+  background: none !important;
+  padding: 0px !important;
+}
+
+.noUi-handle {
+    width: 18px !important;
+    height: 18px !important;
+    right: -9px !important;
+    top: -6px !important;
     border-radius: 50%;
+    background: var(--couleur-primaire-violet) !important;
+    border: none !important;
+    box-shadow: none !important;
     cursor: pointer;
 }
 
