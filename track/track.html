@@ -6,99 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de Bord Santé</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Pour les icônes des graphes -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script> <!-- Pour les graphiques -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+
 </head>
-<div id="nav_bar"></div>
 <body>
-    <div id="nav_bar"></div>
-
-    <div class="tableau-de-bord">
-
-        <div class="rangee-superieure">
-
-            <div class="carte indicateurs-cles">
-                <p class="label-composant">Indicateurs de Glycémie</p>
-                <div class="metrique-conteneur">
-                    <div class="metrique-principale">
-                        <div class="cercle-externe">
-                            <div class="cercle-interne">
-                                <span class="valeur">NA</span>
-                                <span class="unite">mmol/L</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metriques-secondaires">
-                        <div class="pic-metrique">
-                            <p>Pic de glycémie max</p>
-                            <span class="valeur vert">NA mg/L</span>
-                        </div>
-                        <div class="pic-metrique">
-                            <p>Pic de glycémie min</p>
-                            <span class="valeur rouge">NA mg/L</span>
-                        </div>
+    <div id="top">
+        <div class="box" id="rate_glucose_box">
+            <div class="rate_glucose_box_side">
+                <div class="cercle" id="cercle_exterieur_glucose">
+                    <div class="cercle" id="cercle_interieur_glucose">
+                        <p id="taux_glucose">0.3<br>mmol/L</p>
                     </div>
                 </div>
             </div>
-
-            <div class="colonne-droite-superieure">
-                
-                <div class="carte parametres-alertes">
-                    <p class="label-composant-droit">Seuils d'Alerte</p>
-                        <button id="boutonAlerte" class="toggle-alerte actif">
-                        <i class="fas fa-bell"></i>
-                        <span class="alerte-texte">Alerte ON</span>
-                        </button>
-                    <div class="curseur-conteneur">
-
-                        <div id="slider"></div>
-                        <div class="etiquettes">
-                            <span>0</span>
-                            <span class="etiquette-centre">0.66</span>
-                            <span class="etiquette-centre">1.33</span>
-                            <span>2</span>
-                            </div>
-                            <span class="unite-curseur">mmol/L</span>
-                    </div>
-                </div>
-                <div class="sommaire-calorique">
-                    <div class="carte calorie-carte">
-                        <p>Absorbées</p>
-                        <div class="cercle-calorie">
-                            <span class="valeur">NA</span>
-                            <span class="unite">KCal</span>
-                        </div>
-                    </div>
-                    <div class="carte calorie-carte">
-                        <p>Dépensées</p>
-                        <div class="cercle-calorie">
-                            <span class="valeur">NA</span>
-                            <span class="unite">KCal</span>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="rate_glucose_box_side">
+                <h1 class="title_gucose_rate">Pic de glycémie max</h1>
+                <div class="rate_glucose" id="max_value_box"><p>20 mg/L</p></div>
+                <h1 class="title_gucose_rate">Pic de glycémie min</h1>
+                <div class="rate_glucose" id="min_value_box"><p>11.2 mg/L</p></div>
             </div>
         </div>
 
-        <div class="carte section-graphique">
-            <p class="label-composant-graphique">Graphique</p>
-            <div class="onglets">
-                <button class="bouton-onglet actif">Jour</button>
-                <button class="bouton-onglet">Semaine</button>
-                <button class="bouton-onglet">Mois</button>
+        <div id="second_colone">
+            <div class="box" id="alerte_box">
+                <div id="button_and_range_display">
+                    <button><span id="alert_bell">🔔</span> Alert ON</button>
+                    <p class="range_display">
+                        <span id="min_alert_value">0.4</span> - <span id="max_alert_value">0.6</span>
+                    </p>
+                </div>
+                <div id="slider_container">
+                    <input type="range" min="0" max="2" value="0.4" step="0.01" class="slider" id="glucose_range_min">
+                    <input type="range" min="0" max="2" value="0.6" step="0.01" class="slider" id="glucose_range_max">
+                </div>
+                <div id="slider_labels">
+                    <p>0</p>
+                    <p>0.4</p>
+                    <p>0.6</p>
+                    <p>2</p>
+                </div>
             </div>
-            
-            <div class="conteneur-graphique">
-                <canvas id="graphiqueGlycemie"></canvas>
+
+            <div class="box" id="calorie_box">
+                <div class="calorie_side">
+                    <h1 class="title_calorie">Absorbées</h1>
+                    <div class="cercle" id="cercle_exterieur_calorie_abs">
+                        <div class="cercle" id="cercle_interieur_calorie_abs">
+                            <p id="taux_calorie_abs">12<br>KCal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calorie_side">
+                    <h1 class="title_calorie">Dépensées</h1>
+                    <div class="cercle" id="cercle_exterieur_calorie_dep">
+                        <div class="cercle" id="cercle_interieur_calorie_dep">
+                            <p id="taux_calorie_dep">11<br>KCal</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-    
-    <script src="script.js"></script>
+
+    <div class="box" id="chart">
+        </div>
 
 </body>
 </html>
