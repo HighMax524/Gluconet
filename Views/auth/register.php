@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/css_login.css">
+    <title>Inscription</title>
+</head>
+<body>
+<div class="content_form">
+    <img src="<?= BASE_URL ?>/img/img_inscr.png" alt="image glucometre" id="img_inscr">
+    <div class="form_inscr_conn_container">
+        <h1 class="titre_form">S'inscrire</h1>
+        <br>
+        <form id="form_inscr" action="<?= BASE_URL ?>/auth/role" method="post">
+            <input type="text" id="nom" name="nom" placeholder="Nom" required><br><br>
+
+            <input type="text" id="prenom" name="prenom" placeholder="Prénom" required><br><br>
+
+            <input type="email" id="email" name="email" placeholder="Adresse de courriel" required><br><br>
+
+            <input type="tel" id="tel" name="tel" placeholder="Téléphone" required><br><br>
+
+            <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required><br><br>
+
+            <input type="password" id="conf_mdp" name="conf_mdp" placeholder="Confirmer mot de passe" required><br><br>
+
+            <input type="submit" value="S'inscrire" class="boutton_form">
+        </form>
+        <br>
+        <div class = "deja_un_compte">
+            <p>Vous avez déja un compte ?</p>
+            <a href="<?= BASE_URL ?>/auth/login">Connectez-vous</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

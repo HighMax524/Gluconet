@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/css/css_login.css">
+    <title>Connexion</title>
+</head>
+<body>
+<div class="content_form">
+    <img src="<?= BASE_URL ?>/img/img_conn.png" alt="image glucometre" id="img_conn">
+    <div class="form_inscr_conn_container">
+        <h1 class="titre_form">Connexion</h1>
+        <br>
+        <form id="form_inscr" action="" method="post">
+            <input type="email" id="email" name="email" placeholder="Adresse de courriel" required><br><br>
+
+            <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required><br><br>
+
+            <input type="submit" value="Se connecter" class="boutton_form">
+        </form>
+        <br>
+
+        <div class = "options_conn">
+        <a href="">Mot de passe oublié ?</a>
+
+            <div class="pas_de_compte">
+                <p>Pas de compte ?</p>
+                <a href="<?= BASE_URL ?>/auth/register">Inscrivez-vous</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
