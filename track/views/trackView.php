@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord Santé</title>
-    <link rel="stylesheet" href="styles.css">
-
+    <title>GlucoNet - Suivi de Glycémie</title>
+    <!-- Le chemin vers le CSS est mis à jour -->
+    <link rel="stylesheet" href="public/css/styles.css">
+    <!-- Ici, vous ajouteriez les bibliothèques JS comme Chart.js ou noUiSlider -->
 </head>
 <body>
     <div id="top">

@@ -23,7 +23,7 @@
 
 .form_inscr_conn_container {
     flex: 1 1 0;
-    background: linear-gradient(0.45turn, #9ebf9e, #c7c6c6);
+    background: linear-gradient(0.45turn, #b8d0c0, #c7c6c6);
     padding: 50px;
     border-radius: 10px;
 }
@@ -41,30 +41,45 @@
     width: 100%;
     height: 50px;
     box-sizing: border-box;
+    border: 2px solid black;
     border-radius: 20px;
     padding: 0.75rem 1rem;
 }
 
+
+.form_inscr_conn_container input[type="text"]:focus,
+.form_inscr_conn_container input[type="email"]:focus,
+.form_inscr_conn_container input[type="tel"]:focus,
+.form_inscr_conn_container input[type="password"]:focus{
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 0.75rem 1rem;
+    color: white;
+    background-color: #5a5959;
+}
+
 .form_inscr_conn_container input[type="submit"]{
+    display: block;
+    margin: 0 auto;
     width: 200px;
     height: 50px;
     box-sizing: border-box;
     border-radius: 20px;
     padding: 0.75rem 1rem;
-    align-items: center;
-    margin:0 auto
 }
 
 .boutton_form {
+    border: 2px solid black;
     padding: 0.75rem 1rem;
     background: #ffffff;
     color: #000000;
-    border: none;
     border-radius: 20px;
     cursor: pointer;
 }
 
-.boutton_form:hover{
+.boutton_form:hover,.boutton_form:focus{
     padding: 0.75rem 1rem;
     background: #000000;
     color: #ffffff;
@@ -87,7 +102,7 @@ a{
     color: blue;
 }
 
-a:hover{
+a:hover, a:focus{
     color: red;
 }
 

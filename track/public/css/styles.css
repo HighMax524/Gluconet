@@ -1,0 +1,276 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(240, 240, 240);
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#top {
+    display: flex;
+    gap: 2%;
+    width: 100%;
+    align-items: stretch;
+}
+
+.box {
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 20px;
+}
+
+#rate_glucose_box {
+    display: inline-flex;
+    flex: 1;
+    gap: 5%;
+}
+
+.rate_glucose_box_side {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#cercle_exterieur_glucose, #cercle_interieur_glucose,
+#cercle_exterieur_calorie_abs, #cercle_interieur_calorie_abs,
+#cercle_exterieur_calorie_dep, #cercle_interieur_calorie_dep {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+#cercle_exterieur_glucose {
+    background-color: rgb(180, 180, 250);
+}
+
+#cercle_interieur_glucose {
+    background-color: white;
+}
+
+#taux_glucose {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.1;
+    color: rgb(70, 70, 70);
+}
+
+.cercle {
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    padding: 5px;
+}
+
+
+.rate_glucose {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+#max_value_box {
+    background-color: rgb(155, 220, 155);
+}
+
+#min_value_box {
+    background-color: rgb(255, 150, 150);
+}
+
+.title_gucose_rate {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 5px 0;
+    color: rgb(70, 70, 70);
+}
+
+
+#second_colone {
+    display: flex;
+    flex: 0.7;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#alerte_box {
+    flex: 1.2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+#button_and_range_display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.range_display {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(70, 70, 70);
+    margin: 0;
+}
+
+#alerte_box button {
+    background-color: rgb(180, 180, 250);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+#alert_bell {
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+#slider_container {
+    position: relative;
+    width: 90%;
+    margin-top: 15px;
+}
+
+.slider {
+    width: 100%;
+    background: transparent;
+    margin: 0;
+    top: 50%;
+}
+
+
+#slider_labels {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+
+#calorie_box {
+    flex: 1;
+    display: inline-flex;
+    gap: 10%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.calorie_side {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.title_calorie {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    color: rgb(70, 70, 70);
+}
+
+#cercle_exterieur_calorie_dep, #cercle_interieur_calorie_dep, #cercle_exterieur_calorie_abs, #cercle_interieur_calorie_abs {
+    background-color: rgb(180, 180, 250);
+}
+
+#cercle_interieur_calorie_abs, #cercle_interieur_calorie_dep {
+    background-color: white;
+}
+
+
+
+#taux_calorie_abs, #taux_calorie_dep {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.1;
+    color: rgb(70, 70, 70);
+    text-align: center;
+}
+
+#chart {
+    height: 200px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+header {
+    background: linear-gradient(to bottom, #e0f7ea 0%, #ffffff 100%);
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    height: 80px;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #4a7c59;
+}
+
+.logo-icon {
+    width: 40%;
+    object-fit: contain;
+    margin: 0 5px;
+}
+
+
+nav {
+    display: flex;
+    gap: 30px;
+    margin-right: 5%;
+}
+
+.nav-btn {
+    background-color: #9ebf9e;
+    color: #000;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #8bad8b;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    color: #4a7c59;
+    cursor: pointer;
+}
