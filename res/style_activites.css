@@ -237,3 +237,33 @@ h1 {
     background-color: rgb(191, 211, 193);
     animation-delay: 2s;
 }
+
+.rappel {
+    padding: 20px 55px;
+    font-size: 25px;
+    border-radius: 15px;
+    border: none;
+    background: white;
+    cursor: pointer;
+}
+
+.rappel:hover {
+    background-color: rgb(191, 211, 193);
+    animation-delay: 2s;
+}
+
+.medics-img {
+    width: 400px;
+    height: 100px;
+    max-width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.caseJour {
+    color: #0d774d;
+    padding: 15px;
+    border-radius: 15px;
+    background: linear-gradient(to bottom right, #b6d0c1, #d8e6db);;
+    font-size: 18px;
+    font-weight: bold;
+}
