@@ -1,0 +1,77 @@
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+    background-color: #9f9f9f;
+}
+
+.role_form {
+    width: 55%;
+    margin: auto;
+    flex: 1 1 0;
+    justify-content: center;
+    background: linear-gradient(0.45turn, #b8d0c0, #c7c6c6);
+    padding: 5px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.role_form>h1{
+    text-align: center;
+}
+
+.role_form input[type="submit"]{
+    width: 200px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 0.75rem 1rem;
+    align-items: center;
+    margin:0 auto
+}
+
+.boutton_form {
+    margin: auto;
+    border: 2px solid black;
+    padding: 0.75rem 1rem;
+    background: #ffffff;
+    color: #000000;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.boutton_form:hover,.boutton_form:focus{
+    padding: 0.75rem 1rem;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.submit_role{
+    display: flex;
+    justify-content: center;
+}
+
+.form_role_container{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}

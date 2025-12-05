@@ -61,23 +61,13 @@
 }
 
 .form_inscr_conn_container input[type="submit"]{
+    display: block;
+    margin: 0 auto;
     width: 200px;
     height: 50px;
     box-sizing: border-box;
     border-radius: 20px;
     padding: 0.75rem 1rem;
-    align-items: center;
-    margin:0 auto
-}
-
-.form_inscr_conn_container input[type="submit"]{
-    width: 200px;
-    height: 50px;
-    box-sizing: border-box;
-    border-radius: 20px;
-    padding: 0.75rem 1rem;
-    align-items: center;
-    margin:0 auto
 }
 
 .boutton_form {
