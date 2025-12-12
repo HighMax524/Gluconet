@@ -80,3 +80,7 @@
     display: flex;
     justify-content: center;
 }
+
+.pas_de_compte, .deja_un_compte{
+    text-align: center;
+}
