@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="res/style.css">
     <title>Activités physiques</title>
-    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
+    <?php include 'nav_bar.php'; ?>
 
     <main>
         <section class="card">

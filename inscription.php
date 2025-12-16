@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="res/style.css">
     <title>Inscription</title>
-    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
+    <?php include 'nav_bar.php'; ?>
     <div class="content_form">
         <img src="res/img_inscr.png" alt="image glucometre" id="img_inscr">
         <div class="form_inscr_conn_container">
