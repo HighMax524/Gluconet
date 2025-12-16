@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="res/style.css">
     <title>Role</title>
-    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
+    <?php include 'nav_bar.php'; ?>
     <div class="role_form">
         <h1>Vous êtes ?</h1>
         <div class="form_role_container">

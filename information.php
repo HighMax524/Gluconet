@@ -11,10 +11,12 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="res/style.css">
-    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
+    <?php include 'nav_bar.php'; ?>
+
+
 
     <!-- Carte principale -->
     <main class="page-wrapper">

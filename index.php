@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="res/style.css">
     <title>Gluconet</title>
-    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
-
+    <?php include 'nav_bar.php'; ?>
     <div class="container">
 
         <h1>Faites place à autre chose!</h1>

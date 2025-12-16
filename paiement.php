@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paiement - Gluconet</title>
     <link rel="stylesheet" href="res/style.css">
-    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
+    <?php include 'nav_bar.php'; ?>
 
     <main>
         <div class="card">
