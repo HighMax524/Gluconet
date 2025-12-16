@@ -16,10 +16,10 @@
             <img src="/Gluconet/res/logo_nom_site.png" alt="Logo Gluconet" />
         </div>
 
-        <div class="nav-buttons">
-            <button href="index.php" class="nav-button">Accueil</button>
-            <button href="track.php" class="nav-button">Tableau de bord</button>
-            <button href="help.php" class="nav-button">Aide</button>
+        <a class="nav-buttons">
+            <button class="nav-button" onclick="window.location.href = 'index.php'">Accueil</button>
+            <button class="nav-button" onclick="window.location.href = 'track.php'">Tableau de bord</button>
+            <button class="nav-button" onclick="window.location.href = 'track.php'">Aide</button>
         </div>
 
         <div class="user-icon">
