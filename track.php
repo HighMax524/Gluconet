@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlucoNet - Suivi de Glycémie</title>
     <link rel="stylesheet" href="res/style.css">
+    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
@@ -76,5 +77,6 @@
     </div>
 
 </body>
+<?php include 'footer.php'; ?>
 
 </html>

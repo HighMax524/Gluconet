@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,10 @@
   <!-- Lien vers le fichier CSS -->
   <link rel="stylesheet" href="res/style.css">
 </head>
+
 <body>
 
-  <!-- Contenu principal -->
-  <h1>Bienvenue sur Gluconet</h1>
-  <p>Votre application de suivi de glycémie.</p>
-<footer>
+  <footer>
     <div class="footer-container">
       <div class="footer-logo">
         <h2>Gluconet</h2>
@@ -40,4 +39,3 @@
       <p>&copy; 2025 Gluconet. Tous droits réservés.</p>
     </div>
   </footer>
-  
