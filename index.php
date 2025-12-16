@@ -9,10 +9,16 @@
 </head>
 
 <body>
-    <?php include 'nav_bar.php'; ?>
+    <?php
+    session_start();
+    include 'nav_bar.php';
+    ?>
     <div class="container">
-
-        <h1>Faites place à autre chose!</h1>
+        <?php if (isset($_SESSION['user_prenom'])): ?>
+            <h1>Bonjour M.<?php echo htmlspecialchars($_SESSION['user_prenom']); ?>, faites place à autre chose!</h1>
+        <?php else: ?>
+            <h1>Faites place à autre chose!</h1>
+        <?php endif; ?>
 
         <div class="images-section">
 
