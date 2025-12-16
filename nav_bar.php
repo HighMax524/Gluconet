@@ -15,7 +15,7 @@
                 title="<?php echo htmlspecialchars($_SESSION['user_nom'] ?? 'Utilisateur'); ?>">
                 person
             </span>
-            <a href="deconnexion.php"
+            <a href="backend/deconnexion.php"
                 style="text-decoration: none; color: inherit; font-size: 0.8rem; border: 1px solid currentColor; padding: 2px 8px; border-radius: 4px;">Déconnexion</a>
         <?php else: ?>
             <a href="connexion.php" style="text-decoration: none; color: inherit;">

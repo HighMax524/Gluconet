@@ -35,25 +35,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 }
 
-                header("Location: index.php");
+                header("Location: ../index.php");
                 exit();
             } else {
                 $error = "Email ou mot de passe incorrect.";
-                header("Location: connexion.php?error=" . urlencode($error));
-                exit();
+                header("Location: ../connexion.php?error=" . urlencode($error));
             }
         } catch (PDOException $e) {
             $error = "Erreur technique : " . $e->getMessage();
-            header("Location: connexion.php?error=" . urlencode($error));
+            header("Location: ../connexion.php?error=" . urlencode($error));
             exit();
         }
     } else {
         $error = "Veuillez remplir tous les champs.";
-        header("Location: connexion.php?error=" . urlencode($error));
+        header("Location: ../connexion.php?error=" . urlencode($error));
         exit();
     }
 } else {
-    header("Location: connexion.php");
+    header("Location: ../connexion.php");
     exit();
 }
 ?>

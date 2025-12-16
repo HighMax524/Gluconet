@@ -4,7 +4,7 @@ require_once 'db_connect.php';
 
 // Vérification de la session utilisateur (on doit être connecté pour remplir ces infos)
 if (!isset($_SESSION['user_id'])) {
-    header("Location: connexion.php");
+    header("Location: ../connexion.php");
     exit();
 }
 
@@ -38,18 +38,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $conn->commit();
 
                 // Redirection vers la page d'accueil ou tableau de bord
-                header("Location: index.php");
+                header("Location: ../index.php");
                 exit();
 
             } catch (PDOException $e) {
                 $conn->rollBack();
                 $error = "Erreur lors de l'enregistrement : " . $e->getMessage();
                 // Redirection avec erreur (on pourrait améliorer l'affichage des erreurs sur information.php)
-                header("Location: information.php?error=" . urlencode($error));
+                header("Location: ../information.php?error=" . urlencode($error));
                 exit();
             }
         } else {
-            header("Location: information.php?error=" . urlencode("Veuillez remplir tous les champs obligatoires"));
+            header("Location: ../information.php?error=" . urlencode("Veuillez remplir tous les champs obligatoires"));
             exit();
         }
 
@@ -68,26 +68,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmtMedecin->execute([$rpps, $etablissement, $adresse_pro, $telephone_pro, $user_id]);
 
                 // Redirection
-                header("Location: index.php");
+                header("Location: ../index.php");
                 exit();
 
             } catch (PDOException $e) {
                 $error = "Erreur lors de l'enregistrement : " . $e->getMessage();
-                header("Location: information.php?error=" . urlencode($error));
+                header("Location: ../information.php?error=" . urlencode($error));
                 exit();
             }
         } else {
-            header("Location: information.php?error=" . urlencode("Veuillez remplir tous les champs obligatoires"));
+            header("Location: ../information.php?error=" . urlencode("Veuillez remplir tous les champs obligatoires"));
             exit();
         }
 
     } else {
-        header("Location: information.php?error=" . urlencode("Formulaire invalide"));
+        header("Location: ../information.php?error=" . urlencode("Formulaire invalide"));
         exit();
     }
 
 } else {
-    header("Location: information.php");
+    header("Location: ../information.php");
     exit();
 }
 ?>

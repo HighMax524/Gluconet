@@ -12,7 +12,7 @@
     <div class="role_form">
         <h1>Vous êtes ?</h1>
         <div class="form_role_container">
-            <form id="form_inscr" action="traitement_role.php" method="post">
+            <form id="form_inscr" action="backend/traitement_role.php" method="post">
                 <label for="role_patient" class="role-option"
                     style="display:inline-flex;flex-direction:column;align-items:center;margin:0 12px;">
                     <input id="role_patient" type="radio" name="role" value="patient" required>

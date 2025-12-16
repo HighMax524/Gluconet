@@ -41,32 +41,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['user_prenom'] = $prenom;
 
                     // Redirection vers la selection du rôle
-                    header("Location: role.php");
+                    header("Location: ../role.php");
                     exit();
 
                 } catch (PDOException $e) {
                     $error = "Erreur technique lors de l'inscription : " . $e->getMessage();
-                    header("Location: inscription.php?error=" . urlencode($error));
+                    header("Location: ../inscription.php?error=" . urlencode($error));
                     exit();
                 }
             } else {
                 $error = "Un compte existe déjà avec cet email.";
-                header("Location: inscription.php?error=" . urlencode($error));
+                header("Location: ../inscription.php?error=" . urlencode($error));
                 exit();
             }
         } else {
             $error = "Les mots de passe ne correspondent pas.";
-            header("Location: inscription.php?error=" . urlencode($error));
+            header("Location: ../inscription.php?error=" . urlencode($error));
             exit();
         }
     } else {
         $error = "Veuillez remplir tous les champs.";
-        header("Location: inscription.php?error=" . urlencode($error));
+        header("Location: ../inscription.php?error=" . urlencode($error));
         exit();
     }
 } else {
     // Si on tente d'accéder au script sans passer par le formulaire
-    header("Location: inscription.php");
+    header("Location: ../inscription.php");
     exit();
 }
 ?>

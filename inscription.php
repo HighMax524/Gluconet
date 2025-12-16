@@ -18,7 +18,7 @@
                 </div>
             <?php endif; ?>
             <h1 class="titre_form">S'inscrire</h1>
-            <form id="form_inscr" action="traitement_inscription.php" method="post">
+            <form id="form_inscr" action="backend/traitement_inscription.php" method="post">
                 <input type="text" id="nom" name="nom" placeholder="Nom" required>
 
                 <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>

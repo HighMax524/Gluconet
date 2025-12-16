@@ -18,7 +18,7 @@
                 </div>
             <?php endif; ?>
             <h1 class="titre_form">Connexion</h1>
-            <form id="form_inscr" action="traitement_connexion.php" method="post">
+            <form id="form_inscr" action="backend/traitement_connexion.php" method="post">
                 <input type="email" id="email" name="email" placeholder="Adresse de courriel" required>
 
                 <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>

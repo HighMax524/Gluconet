@@ -42,7 +42,7 @@
 
                     <!-- Formulaire Patient -->
                     <div class="form-section">
-                        <form action="traitement_information.php" method="POST">
+                        <form action="backend/traitement_information.php" method="POST">
                             <input type="hidden" name="role_form" value="patient">
 
                             <!-- Sexe -->
@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="form-section">
-                        <form action="traitement_information.php" method="POST">
+                        <form action="backend/traitement_information.php" method="POST">
                             <input type="hidden" name="role_form" value="medecin">
 
                             <!-- RPPS -->
