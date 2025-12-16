@@ -13,7 +13,7 @@
         <img src="res/img_inscr.png" alt="image glucometre" id="img_inscr">
         <div class="form_inscr_conn_container">
             <h1 class="titre_form">S'inscrire</h1>
-            <form id="form_inscr" action="role.html" method="post">
+            <form id="form_inscr" action="role.php" method="post">
                 <input type="text" id="nom" name="nom" placeholder="Nom" required>
 
                 <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
@@ -30,7 +30,7 @@
             </form>
             <div class="deja_un_compte">
                 <p>Vous avez déja un compte ?</p>
-                <a href="connexion.html">Connectez-vous</a>
+                <a href="connexion.php">Connectez-vous</a>
             </div>
             <br>
 

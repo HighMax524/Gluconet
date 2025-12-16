@@ -27,7 +27,7 @@
 
                 <div class="pas_de_compte">
                     <p>Pas de compte ?</p>
-                    <a href="inscription.html">Inscrivez-vous</a>
+                    <a href="inscription.php">Inscrivez-vous</a>
                 </div>
             </div>
         </div>
