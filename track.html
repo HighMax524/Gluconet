@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlucoNet - Suivi de Glycémie</title>
-    <!-- Le chemin vers le CSS est mis à jour -->
-    <link rel="stylesheet" href="public/css/styles.css">
-    <!-- Ici, vous ajouteriez les bibliothèques JS comme Chart.js ou noUiSlider -->
+    <link rel="stylesheet" href="track.css">
 </head>
+
 <body>
     <div id="top">
         <div class="box" id="rate_glucose_box">
@@ -20,9 +20,13 @@
             </div>
             <div class="rate_glucose_box_side">
                 <h1 class="title_gucose_rate">Pic de glycémie max</h1>
-                <div class="rate_glucose" id="max_value_box"><p>20 mg/L</p></div>
+                <div class="rate_glucose" id="max_value_box">
+                    <p>20 mg/L</p>
+                </div>
                 <h1 class="title_gucose_rate">Pic de glycémie min</h1>
-                <div class="rate_glucose" id="min_value_box"><p>11.2 mg/L</p></div>
+                <div class="rate_glucose" id="min_value_box">
+                    <p>11.2 mg/L</p>
+                </div>
             </div>
         </div>
 
@@ -69,7 +73,8 @@
     </div>
 
     <div class="box" id="chart">
-        </div>
+    </div>
 
 </body>
+
 </html>
