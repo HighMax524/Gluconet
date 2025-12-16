@@ -660,34 +660,6 @@ h1 {
     font-size: 16px;
 }
 
-.calculate {
-    margin-top: 25px;
-    padding: 15px 25px;
-    font-size: 18px;
-    border-radius: 15px;
-    border: none;
-    background: white;
-    cursor: pointer;
-}
-.calculate:hover {
-    background-color: rgb(191, 211, 193);
-    animation-delay: 2s;
-}
-
-.rappel {
-    padding: 20px 55px;
-    font-size: 25px;
-    border-radius: 15px;
-    border: none;
-    background: white;
-    cursor: pointer;
-}
-
-.rappel:hover {
-    background-color: rgb(191, 211, 193);
-    animation-delay: 2s;
-}
-
 .medics-img {
     width: 400px;
     height: 100px;
