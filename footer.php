@@ -20,18 +20,18 @@
       <div class="footer-links">
         <h3>Liens utiles</h3>
         <ul>
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">À propos</a></li>
-          <li><a href="#">Fonctionnalités</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="about.php">À propos</a></li>
+          <li><a href="features.php">Fonctionnalités</a></li>
+          <li><a href="contact.php">Contact</a></li>
         </ul>
       </div>
       <div class="footer-social">
         <h3>Suivez-nous</h3>
         <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Twitter</a></li>
+          <li><a href="https://www.facebook.com/">Facebook</a></li>
+          <li><a href="https://www.instagram.com/">Instagram</a></li>
+          <li><a href="https://twitter.com/">Twitter</a></li>
         </ul>
       </div>
     </div>
