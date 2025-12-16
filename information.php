@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +11,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="res/style.css">
+    <?php include 'nav_bar.php'; ?>
 </head>
+
 <body>
 
     <!-- Carte principale -->
@@ -25,12 +28,12 @@
 
                 <!-- Silhouette gauche (Homme) -->
                 <div class="silhouette">
-                    <img src="res/icone_homme.png" class="silhouette-img" alt="image silhouette homme" >
+                    <img src="res/icone_homme.png" class="silhouette-img" alt="image silhouette homme">
                 </div>
 
                 <!-- Formulaire central -->
                 <div class="form-section">
-                    
+
                     <!-- Sexe -->
                     <div>
                         <p class="section-title">Sexe</p>
@@ -65,7 +68,7 @@
 
                 <!-- Silhouette droite (Femme) -->
                 <div class="silhouette">
-                    <img src="res/icone_femme.png" class="silhouette-img" alt="image silhouette femme" >
+                    <img src="res/icone_femme.png" class="silhouette-img" alt="image silhouette femme">
                 </div>
 
             </div>
@@ -74,5 +77,7 @@
 
     <!-- JS -->
     <script src="res/informations.js"></script>
+    <?php include 'footer.php'; ?>
 </body>
+
 </html>

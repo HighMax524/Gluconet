@@ -10,6 +10,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <!-- New Premium Styles -->
     <link rel="stylesheet" href="res/style.css">
+    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
@@ -48,7 +49,7 @@
                 corps.</p>
         </div>
     </section>
-
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>
