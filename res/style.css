@@ -1019,6 +1019,12 @@ footer {
 
 /* ----------------------------------------------- Page track ------------------------------------------- */
 
+#top {
+    display: flex;
+    gap: 2%;
+    width: 100%;
+    align-items: stretch;
+}
 
 .box {
     background-color: rgb(230, 230, 230);
