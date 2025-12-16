@@ -1306,15 +1306,6 @@ nav {
 
 
 
-body {
-    font-family: Arial, sans-serif;
-    background: #ffffff;
-    margin: 0;
-    padding: 40px 0;
-    display: flex;
-    justify-content: center;
-}
-
 .container {
     text-align: center;
 }
