@@ -232,6 +232,7 @@ footer {
 
 #img_conn,
 #img_inscr {
+    box-shadow: -5px 1px 10px #91AB9A;
     width: 100%;
     max-width: 450px;
     height: auto;
