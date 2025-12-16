@@ -46,26 +46,6 @@ Voici un aperçu des fichiers principaux :
 *   `paiement.php` : Page de gestion des abonnements.
 *   `res/` : Contient les ressources (images, logos, fichiers CSS).
 
-## 🛠️ Installation et Démarrage
-
-Pour faire tourner Gluconet localement :
-
-1.  **Prérequis** : Assurez-vous d'avoir un environnement serveur comme **XAMPP**, **MAMP** ou **LAMP** installé.
-2.  **Installation** :
-    *   Clonez ce dépôt ou copiez les fichiers dans le dossier racine de votre serveur (ex: `/opt/lampp/htdocs/gluconet` ou `C:\xampp\htdocs\gluconet`).
-3.  **Lancement** :
-    *   Démarrez les services **Apache** et **MySQL**.
-    *   Ouvrez votre navigateur et accédez à : `http://localhost/gluconet/`
-
-## 🤝 Contribuer
-
-Les contributions sont les bienvenues ! Si vous souhaitez améliorer Gluconet, n'hésitez pas à :
-1.  Forker le projet.
-2.  Créer une branche pour votre fonctionnalité (`git checkout -b feature/NouvelleFeature`).
-3.  Commit vos changements (`git commit -m 'Ajout de NouvelleFeature'`).
-4.  Push vers la branche (`git push origin feature/NouvelleFeature`).
-5.  Ouvrir une Pull Request.
-
 ---
 <div align="center">
   <small>Développé avec ❤️ pour la santé de tous.</small>
