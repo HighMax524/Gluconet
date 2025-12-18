@@ -1,6 +1,6 @@
 <div class="navbar">
     <div class="logo">
-        <img src="/Gluconet/res/logo_nom_site.png" alt="Logo Gluconet" />
+        <img src="res/logo_nom_site.png" alt="Logo Gluconet" />
     </div>
 
     <div class="nav-buttons">
