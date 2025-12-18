@@ -1,14 +1,24 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: connexion.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlucoNet - Suivi de Glycémie</title>
-    <!-- Le chemin vers le CSS est mis à jour -->
-    <link rel="stylesheet" href="public/css/styles.css">
-    <!-- Ici, vous ajouteriez les bibliothèques JS comme Chart.js ou noUiSlider -->
+    <link rel="stylesheet" href="res/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=person" />
 </head>
+
 <body>
+    <?php include 'nav_bar.php'; ?>
     <div id="top">
         <div class="box" id="rate_glucose_box">
             <div class="rate_glucose_box_side">
@@ -20,9 +30,13 @@
             </div>
             <div class="rate_glucose_box_side">
                 <h1 class="title_gucose_rate">Pic de glycémie max</h1>
-                <div class="rate_glucose" id="max_value_box"><p>20 mg/L</p></div>
+                <div class="rate_glucose" id="max_value_box">
+                    <p>20 mg/L</p>
+                </div>
                 <h1 class="title_gucose_rate">Pic de glycémie min</h1>
-                <div class="rate_glucose" id="min_value_box"><p>11.2 mg/L</p></div>
+                <div class="rate_glucose" id="min_value_box">
+                    <p>11.2 mg/L</p>
+                </div>
             </div>
         </div>
 
@@ -69,7 +83,9 @@
     </div>
 
     <div class="box" id="chart">
-        </div>
+    </div>
 
+    <?php include 'footer.php'; ?>
 </body>
+
 </html>
