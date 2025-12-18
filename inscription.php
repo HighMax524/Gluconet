@@ -6,7 +6,6 @@ $password = "";
 $conn = mysqli_connect($host, $username, $password) or die("erreur de connexion");
 
 $namedb = "gluconet_db";
-$db = mysqli_select_db($conn, $namedb) or die("erreur de connexion base");
 
 mysqli_select_db($conn, $namedb) or die("erreur de connexion base");
 
@@ -39,11 +38,10 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['tel'], $_POS
         header('Location: role.php');
         exit();
     } else {
-        header('Location: index.php');
+        header('Location: inscription.php?error=Erreur lors de l\'inscription. Veuillez réessayer.');
         exit();
     }
 }
-
 ?>
 
 <!DOCTYPE html>
