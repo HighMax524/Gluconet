@@ -653,7 +653,8 @@ h1 {
 
 .duration input {
     width: 200px;
-    padding: 12px;
+    height: 100px;
+    padding: 10px;
     border: none;
     border-radius: 15px;
     margin-top: 20px;
@@ -675,6 +676,23 @@ h1 {
     font-size: 18px;
     font-weight: bold;
 }
+
+.activity {
+    transition: all 0.2s ease;
+}
+
+.activity.active {
+    background-color: #4bd397;
+    color: white;
+    transform: scale(1.03);
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 
 /* Page paiement */
 
