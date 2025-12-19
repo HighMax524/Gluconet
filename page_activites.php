@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="res/style.css">
+    <script src="res/activites.js" defer></script>
     <title>Activités physiques</title>
 </head>
 
@@ -31,9 +32,6 @@
             <button class="btn" id="calculate">Calculer mes calories brûlées</button>
 
             <p id="result"></p>
-
-            <script src="activite.js"></script>
-
 
         </section>
     </main>
