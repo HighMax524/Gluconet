@@ -32,6 +32,7 @@
                 <input type="password" id="conf_mdp" name="conf_mdp" placeholder="Confirmer mot de passe" required>
 
                 <input type="submit" value="S'inscrire" class="boutton_form">
+
             </form>
             <div class="deja_un_compte">
                 <p>Vous avez déja un compte ?</p>

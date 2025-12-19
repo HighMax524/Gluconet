@@ -12,10 +12,12 @@
 
     <div class="user-icon" style="display: flex; align-items: center; gap: 10px;">
         <?php if (isset($_SESSION['user_id'])): ?>
-            <span class="material-symbols-outlined"
-                title="<?php echo htmlspecialchars($_SESSION['user_nom'] ?? 'Utilisateur'); ?>">
-                person
-            </span>
+            <a href="profil.php"
+                style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 5px;"
+                title="Accéder à mon profil">
+                <span class="material-symbols-outlined">person</span>
+                <span><?php echo htmlspecialchars($_SESSION['user_prenom'] ?? ''); ?></span>
+            </a>
             <a href="backend/deconnexion.php"
                 style="text-decoration: none; color: inherit; font-size: 0.8rem; border: 1px solid currentColor; padding: 2px 8px; border-radius: 4px;">Déconnexion</a>
         <?php else: ?>
