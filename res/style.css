@@ -682,7 +682,8 @@ h1 {
     color: #0d774d;
     padding: 15px;
     border-radius: 15px;
-    background: linear-gradient(to bottom right, #b6d0c1, #d8e6db);;
+    background: linear-gradient(to bottom right, #b6d0c1, #d8e6db);
+    ;
     font-size: 18px;
     font-weight: bold;
 }
@@ -1037,316 +1038,353 @@ footer {
 
 /* ----------------------------------------------- Page track ------------------------------------------- */
 
+/* ----------------------------------------------- Page track (Dashboard) ------------------------------------------- */
+
 #top {
-    display: flex;
-    gap: 2%;
-    width: 100%;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
 }
 
 .box {
-    background-color: rgb(230, 230, 230);
-    border-radius: 10px;
-    box-shadow: none;
-    padding: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 25px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.box:hover {
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15);
+}
+
+/* Glucose Rates Box */
 #rate_glucose_box {
-    display: inline-flex;
-    flex: 1;
-    gap: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
 }
 
 .rate_glucose_box_side {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    gap: 15px;
+    flex: 1;
 }
 
+/* Circular Indicators */
 #cercle_exterieur_glucose,
-#cercle_interieur_glucose,
 #cercle_exterieur_calorie_abs,
-#cercle_interieur_calorie_abs,
-#cercle_exterieur_calorie_dep,
-#cercle_interieur_calorie_dep {
+#cercle_exterieur_calorie_dep {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary-color) 0%, var(--primary-light) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px;
+    box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+    position: relative;
 }
 
-#cercle_exterieur_glucose {
-    background-color: rgb(180, 180, 250);
-}
-
-#cercle_interieur_glucose {
-    background-color: white;
-}
-
-#taux_glucose {
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 1.1;
-    color: rgb(70, 70, 70);
-}
-
-.cercle {
+#cercle_interieur_glucose,
+#cercle_interieur_calorie_abs,
+#cercle_interieur_calorie_dep {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    padding: 5px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 
+#taux_glucose,
+#taux_calorie_abs,
+#taux_calorie_dep {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    text-align: center;
+    line-height: 1.2;
+}
+
+#taux_glucose small,
+#taux_calorie_abs small,
+#taux_calorie_dep small {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Min/Max Chips */
+.title_gucose_rate {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666;
+    margin-bottom: 5px;
+}
 
 .rate_glucose {
-    display: flex;
-    width: 100px;
-    height: 30px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
     color: white;
-    font-weight: bold;
+    min-width: 120px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #max_value_box {
-    background-color: rgb(155, 220, 155);
+    background: linear-gradient(135deg, #FF9800, #F57C00);
 }
 
 #min_value_box {
-    background-color: rgb(255, 150, 150);
-}
-
-.title_gucose_rate {
-    font-size: 14px;
-    font-weight: normal;
-    margin: 5px 0;
-    color: rgb(70, 70, 70);
+    background: linear-gradient(135deg, #f44336, #d32f2f);
 }
 
 
+/* Second Column Layout */
 #second_colone {
     display: flex;
-    flex: 0.7;
     flex-direction: column;
-    gap: 10px;
+    gap: 25px;
 }
 
+/* Alert Box */
 #alerte_box {
-    flex: 1.2;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    padding: 10px;
+    gap: 20px;
 }
 
 #button_and_range_display {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 15px;
+    justify-content: space-between;
     width: 100%;
 }
 
 .range_display {
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(70, 70, 70);
-    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-dark);
 }
 
 #alerte_box button {
-    background-color: rgb(180, 180, 250);
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
     border: none;
-    border-radius: 15px;
+    border-radius: 50px;
     color: white;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 25px;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
+    gap: 8px;
 }
 
-#alert_bell {
-    font-size: 1.2em;
-    margin-right: 5px;
+#alerte_box button:hover {
+    transform: translateY(-2px);
 }
 
 #slider_container {
-    position: relative;
-    width: 90%;
-    margin-top: 15px;
-}
-
-.slider {
     width: 100%;
-    background: transparent;
-    margin: 0;
-    top: 50%;
+    margin-top: 10px;
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Custom Range Slider Styling */
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    outline: none;
+    position: absolute;
+    pointer-events: none;
+    /* Allows click through for multi-thumb effect */
+}
+
+/* We need to ensure the track background is only shown for one slider or managed differently for dual sliders,
+   but assuming basic styling for now */
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border: 3px solid white;
+    z-index: 10;
+    position: relative;
+}
+
+.slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border: 3px solid white;
+}
 
 #slider_labels {
     display: flex;
-    width: 90%;
+    width: 100%;
     justify-content: space-between;
-    font-size: 10px;
-    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: -10px;
 }
 
-
+/* Calorie Box */
 #calorie_box {
-    flex: 1;
-    display: inline-flex;
-    gap: 10%;
-    justify-content: center;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
-    width: 100%;
 }
 
 .calorie_side {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    gap: 10px;
 }
 
 .title_calorie {
-    font-size: 14px;
-    font-weight: normal;
-    margin: 0 0 10px 0;
-    color: rgb(70, 70, 70);
-}
-
-#cercle_exterieur_calorie_dep,
-#cercle_interieur_calorie_dep,
-#cercle_exterieur_calorie_abs,
-#cercle_interieur_calorie_abs {
-    background-color: rgb(180, 180, 250);
-}
-
-#cercle_interieur_calorie_abs,
-#cercle_interieur_calorie_dep {
-    background-color: white;
-}
-
-
-
-#taux_calorie_abs,
-#taux_calorie_dep {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 1.1;
-    color: rgb(70, 70, 70);
-    text-align: center;
-}
-
-#chart {
-    height: 200px;
-    width: 100%;
-    margin-top: 20px;
-}
-
-header {
-    background: linear-gradient(to bottom, #e0f7ea 0%, #ffffff 100%);
-    padding: 15px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    height: 80px;
-    width: 100%;
-    margin-bottom: 2%;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    font-size: 32px;
-    font-weight: bold;
-    color: #4a7c59;
-}
-
-.logo-icon {
-    width: 40%;
-    object-fit: contain;
-    margin: 0 5px;
-}
-
-
-nav {
-    display: flex;
-    gap: 30px;
-    margin-right: 5%;
-}
-
-.nav-btn {
-    background-color: #9ebf9e;
-    color: #000;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 25px;
+    font-size: 1rem;
     font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+}
+
+/* Quick Actions */
+.quick-actions-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 245, 240, 0.9));
+}
+
+.action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
+    padding: 15px;
+    border-radius: 15px;
+    transition: background 0.3s, transform 0.3s;
 }
 
-.nav-btn:hover {
-    background-color: #8bad8b;
+.action-item:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateY(-5px);
 }
 
-.user-icon {
-    width: 40px;
-    height: 40px;
-    color: #4a7c59;
-    cursor: pointer;
+.action-icon-circle {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    color: var(--primary-color);
 }
 
+.action-icon-circle span {
+    font-size: 30px;
+}
 
+.action-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin: 0;
+}
+
+/* Footer alignment */
+/* Footer alignment with extra spacing */
+footer {
+    margin-top: 80px;
+}
 
 /* ----------------------------------------------- Page home ------------------------------------------- */
-
-
-
-
 .container {
     text-align: center;
+    padding: 40px 20px;
 }
 
-h1 {
-    font-size: 40px;
-    font-weight: 600;
-    margin-bottom: 60px;
+.container h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    background: -webkit-linear-gradient(45deg, var(--primary-dark), #009688);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .images-section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
-    margin-bottom: 80px;
+    gap: 40px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
 }
 
 .image-block {
     position: relative;
-    border: 2px solid #8ed09f;
-    border-radius: 200px;
-    padding: 30px;
+    border: 3px solid #8ed09f;
+    border-radius: 50%;
+    /* Circle shape as intended */
+    padding: 15px;
+    transition: transform 0.3s;
+}
+
+.image-block:hover {
+    transform: scale(1.05);
 }
 
 .image-block img {
-    width: 320px;
-    border-radius: 25px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .overlay {
@@ -1355,13 +1393,13 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(46, 204, 113, 0.35);
-    border-radius: inherit;
+    background: rgba(46, 204, 113, 0.4);
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     opacity: 0;
     transition: 0.3s ease;
@@ -1372,24 +1410,26 @@ h1 {
 }
 
 .arrow {
-    font-size: 55px;
+    font-size: 50px;
     font-weight: bold;
     color: #6ebc7d;
 }
 
 .welcome-btn {
-    font-size: 32px;
-    padding: 18px 40px;
+    font-size: 1.5rem;
+    padding: 18px 50px;
     background: #a6d8b5;
-    border-radius: 30px;
+    border-radius: 35px;
     text-decoration: none;
-    color: black;
+    color: var(--primary-dark);
     font-weight: bold;
     transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .welcome-btn:hover {
     background: #8ccfa0;
+    transform: translateY(-5px);
 }
 
 /* ------------------------------------------- Page Profil ---------------------------------------------- */
@@ -1526,6 +1566,7 @@ h1 {
         grid-template-columns: 1fr;
     }
 }
+
 /* ------------------------------------------- Page Dossier Patient --------------------------------------------- */
 .dossier-container {
     max-width: 1200px;
@@ -2272,35 +2313,35 @@ h1 {
 
 /* ------------------------------------------- Page Track (Dashboard Patient) --------------------------------------------- */
 .quick-actions-box {
-    display: flex; 
-    justify-content: center; 
-    gap: 40px; 
-    margin-top: 20px; 
-    align-items: center; 
-    padding: 40px; 
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+    align-items: center;
+    padding: 40px;
     flex-wrap: wrap;
 }
 
 .action-item {
-    cursor: pointer; 
-    text-align: center; 
-    transition: all 0.3s ease; 
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
     width: 150px;
 }
 
 .action-icon-circle {
-    background: #e0f2f1; 
-    padding: 20px; 
-    border-radius: 50%; 
-    width: 100px; 
-    height: 100px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    margin: 0 auto 15px; 
-    border: 2px solid #2e7d32; 
-    transition: all 0.3s ease; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: #e0f2f1;
+    padding: 20px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    border: 2px solid #2e7d32;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .action-item:hover .action-icon-circle {
@@ -2309,13 +2350,13 @@ h1 {
 }
 
 .action-icon-circle span {
-    font-size: 48px; 
+    font-size: 48px;
     color: #2e7d32;
 }
 
 .action-title {
-    color: #2e7d32; 
-    font-size: 1.2rem; 
-    margin: 0; 
+    color: #2e7d32;
+    font-size: 1.2rem;
+    margin: 0;
     font-weight: 600;
 }
