@@ -7,7 +7,7 @@
     <div class="nav-buttons">
         <button class="nav-button" onclick="window.location.href = 'index.php'">Accueil</button>
         <button class="nav-button" onclick="window.location.href = 'track.php'">Tableau de bord</button>
-        <button class="nav-button" onclick="window.location.href = 'track.php'">Aide</button>
+        <button class="nav-button" onclick="window.location.href = 'faq.html'">Aide</button>
     </div>
 
     <div class="user-icon" style="display: flex; align-items: center; gap: 10px;">
