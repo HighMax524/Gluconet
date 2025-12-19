@@ -26,3 +26,4 @@
     <p>&copy; 2025 Gluconet. Tous droits réservés.</p>
   </div>
 </footer>
+<br>

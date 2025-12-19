@@ -1,3 +1,4 @@
+<br>
 <div class="navbar">
     <div class="logo">
         <img src="res/logo_nom_site.png" alt="Logo Gluconet" />
