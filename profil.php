@@ -15,6 +15,7 @@ $user_info = $profilData['user_info'];
 $labels_poids = $profilData['labels_poids'];
 $data_poids = $profilData['data_poids'];
 $current_weight = $profilData['current_weight'];
+$medecins = $profilData['medecins'] ?? [];
 
 $message_success = isset($_GET['success']) ? "Poids enregistré avec succès !" : "";
 $message_error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
@@ -83,6 +84,41 @@ $message_error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
                     <span>Diag : <?php echo htmlspecialchars($user_info['date_diagnostic'] ?? '--'); ?></span>
                 </li>
             </ul>
+
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+            <div class="medecins-list">
+                <h3
+                    style="font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined">stethoscope</span> Mes Médecins
+                </h3>
+
+                <?php if (!empty($medecins)): ?>
+                    <ul class="info-list" style="margin: 0; padding: 0;">
+                        <?php foreach ($medecins as $medecin): ?>
+                            <li style="margin-bottom: 10px; padding: 10px; background: #f9f9f9; border-radius: 8px;">
+                                <div style="font-weight: 600;">Dr.
+                                    <?php echo htmlspecialchars($medecin['prenom'] . ' ' . $medecin['nom']); ?></div>
+                                <div style="font-size: 0.85rem; color: #666; margin-top: 2px;">
+                                    <?php echo htmlspecialchars($medecin['etablissement']); ?>
+                                </div>
+                                <?php if (!empty($medecin['telephone_pro'])): ?>
+                                    <div
+                                        style="font-size: 0.85rem; color: #666; display: flex; align-items: center; gap: 5px; margin-top: 2px;">
+                                        <span class="material-symbols-outlined" style="font-size: 14px;">call</span>
+                                        <?php echo htmlspecialchars($medecin['telephone_pro']); ?>
+                                    </div>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p style="color: #888; font-style: italic; font-size: 0.9rem;">Aucun médecin associé.</p>
+                    <a href="recherche_medecin.php"
+                        style="display: inline-block; margin-top: 10px; font-size: 0.9rem; color: var(--primary-color); text-decoration: none; font-weight: 600;">Ajouter
+                        un médecin</a>
+                <?php endif; ?>
+            </div>
         </div>
 
         <!-- Colonne Droite: Suivi du Poids -->

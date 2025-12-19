@@ -55,10 +55,22 @@ function getProfilData($conn)
         $data['data_poids'] = $data_poids;
         $data['current_weight'] = $current_weight;
 
+        // Récupération des médecins associés
+        $stmtMedecins = $conn->prepare("
+            SELECT u.nom, u.prenom, m.etablissement, m.telephone_pro, m.RPPS
+            FROM relation_patient_medecin r
+            JOIN medecin m ON r.id_medecin = m.RPPS
+            JOIN utilisateur u ON m.Utilisateur_id = u.id
+            WHERE r.id_patient = ? AND r.statut = 'Approuve'
+        ");
+        $stmtMedecins->execute([$user_id]);
+        $data['medecins'] = $stmtMedecins->fetchAll(PDO::FETCH_ASSOC);
+
     } catch (PDOException $e) {
         die("Erreur de connexion : " . $e->getMessage());
     }
 
     return $data;
 }
+
 ?>

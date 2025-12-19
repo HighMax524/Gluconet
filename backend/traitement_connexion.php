@@ -48,8 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         exit();
                     }
                 }
+            } else {
                 $error = "Email ou mot de passe incorrect.";
                 header("Location: ../connexion.php?error=" . urlencode($error));
+                exit();
             }
         } catch (PDOException $e) {
             $error = "Erreur technique : " . $e->getMessage();
