@@ -1,7 +1,9 @@
 <br>
 <div class="navbar">
     <div class="logo">
+        <a href="index.php">
         <img src="res/logo_nom_site.png" alt="Logo Gluconet" />
+        </a>
     </div>
 
     <div class="nav-buttons">
