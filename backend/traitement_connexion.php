@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 }
 
-                header("Location: ../index.php");
+                header("Location: ../track.php");
                 exit();
             } else {
                 $error = "Email ou mot de passe incorrect.";
