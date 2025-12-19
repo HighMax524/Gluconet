@@ -41,6 +41,7 @@
         <a href="#" class="welcome-btn">Bienvenue →</a>
 
     </div>
+    <?php include 'footer.php'; ?>
 
 </body>
 
