@@ -90,6 +90,11 @@ try {
                 <p style="color: #666; font-style: italic;">
                     <?php echo htmlspecialchars($user_info['type_diabete'] ?? 'Profil Utilisateur'); ?>
                 </p>
+                <!-- Bouton Modifier -->
+                <button onclick="openEditModal()" class="btn-edit-profile"
+                    style="margin-top: 15px; background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px;">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">edit</span> Modifier
+                </button>
             </div>
 
             <ul class="info-list">
@@ -123,6 +128,14 @@ try {
         <!-- Colonne Droite: Suivi du Poids -->
         <div class="profile-card weight-tracking">
             <h2>Suivi du Poids</h2>
+
+            <?php if (isset($_GET['success_update'])): ?>
+                <div class="alert-success">
+                    <span class="material-symbols-outlined"
+                        style="vertical-align: middle; margin-right: 5px;">check_circle</span>
+                    Profil mis à jour avec succès !
+                </div>
+            <?php endif; ?>
 
             <?php if ($message_success): ?>
                 <div class="alert-success">
@@ -162,9 +175,119 @@ try {
         </div>
     </div>
 
+    <!-- Modal d'édition du profil -->
+    <div id="editModal" class="modal"
+        style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+        <div class="modal-content"
+            style="background-color: #fefefe; padding: 30px; border-radius: 15px; width: 90%; max-width: 500px; position: relative; max-height: 90vh; overflow-y: auto;">
+            <span class="close" onclick="closeEditModal()"
+                style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+            <h2 style="color: var(--primary-dark); margin-bottom: 20px; text-align: center;">Modifier mon profil</h2>
+
+            <form action="backend/traitement_modification_profil.php" method="POST"
+                style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label for="prenom"
+                            style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Prénom</label>
+                        <input type="text" name="prenom" id="prenom"
+                            value="<?php echo htmlspecialchars($user_info['prenom']); ?>" required
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="nom" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Nom</label>
+                        <input type="text" name="nom" id="nom"
+                            value="<?php echo htmlspecialchars($user_info['nom']); ?>" required
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Email</label>
+                    <input type="email" name="email" id="email"
+                        value="<?php echo htmlspecialchars($user_info['email']); ?>" required
+                        style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label for="age" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Age</label>
+                        <input type="number" name="age" id="age"
+                            value="<?php echo htmlspecialchars($user_info['age'] ?? ''); ?>"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="sexe" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Sexe</label>
+                        <select name="sexe" id="sexe"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                            <option value="">Sélectionner</option>
+                            <option value="Homme" <?php echo ($user_info['sexe'] ?? '') == 'Homme' ? 'selected' : ''; ?>>
+                                Homme</option>
+                            <option value="Femme" <?php echo ($user_info['sexe'] ?? '') == 'Femme' ? 'selected' : ''; ?>>
+                                Femme</option>
+                            <option value="Autre" <?php echo ($user_info['sexe'] ?? '') == 'Autre' ? 'selected' : ''; ?>>
+                                Autre</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label for="taille" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Taille
+                            (cm)</label>
+                        <input type="number" step="0.1" name="taille" id="taille"
+                            value="<?php echo htmlspecialchars($user_info['taille'] ?? ''); ?>"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="type_diabete" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Type de
+                            diabète</label>
+                        <select name="type_diabete" id="type_diabete"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                            <option value="Type 1" <?php echo ($user_info['type_diabete'] ?? '') == 'Type 1' ? 'selected' : ''; ?>>Type 1</option>
+                            <option value="Type 2" <?php echo ($user_info['type_diabete'] ?? '') == 'Type 2' ? 'selected' : ''; ?>>Type 2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="date_diagnostic" style="display: block; margin-bottom: 5px; font-size: 0.9rem;">Date de
+                        diagnostic</label>
+                    <input type="date" name="date_diagnostic" id="date_diagnostic"
+                        value="<?php echo htmlspecialchars($user_info['date_diagnostic'] ?? ''); ?>"
+                        style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button type="submit" class="btn-primary"
+                        style="padding: 12px 30px; border: none; border-radius: 25px; cursor: pointer; font-size: 1rem;">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <?php include 'footer.php'; ?>
 
     <script>
+        // Gestion de la modale
+        function openEditModal() {
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        // Fermer si clic en dehors
+        window.onclick = function (event) {
+            var modal = document.getElementById('editModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
         // Configuration du graphique Chart.js
         const ctx = document.getElementById('weightChart').getContext('2d');
 
