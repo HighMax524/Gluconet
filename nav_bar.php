@@ -2,19 +2,32 @@
 <div class="navbar">
     <div class="logo">
         <a href="index.php">
-        <img src="res/logo_nom_site.png" alt="Logo Gluconet" />
+            <img src="res/logo_nom_site.png" alt="Logo Gluconet" />
         </a>
     </div>
 
     <div class="nav-buttons">
         <button class="nav-button" onclick="window.location.href = 'index.php'">Accueil</button>
-        <button class="nav-button" onclick="window.location.href = 'track.php'">Tableau de bord</button>
+        <?php
+        $dashboardLink = 'track.php';
+        if (isset($_SESSION['role']) && $_SESSION['role'] === 'medecin') {
+            $dashboardLink = 'medecin_dashboard.php';
+        }
+        ?>
+        <button class="nav-button" onclick="window.location.href = '<?php echo $dashboardLink; ?>'">Tableau de
+            bord</button>
         <button class="nav-button" onclick="window.location.href = 'faq.html'">Aide</button>
     </div>
 
     <div class="user-icon" style="display: flex; align-items: center; gap: 10px;">
         <?php if (isset($_SESSION['user_id'])): ?>
-            <a href="profil.php"
+            <?php
+            $profileLink = 'profil.php';
+            if (isset($_SESSION['role']) && $_SESSION['role'] === 'medecin') {
+                $profileLink = 'profil_medecin.php';
+            }
+            ?>
+            <a href="<?php echo $profileLink; ?>"
                 style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 5px;"
                 title="Accéder à mon profil">
                 <span class="material-symbols-outlined">person</span>
