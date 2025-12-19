@@ -38,7 +38,7 @@
 
         </div>
 
-        <a href="connexion.php" class="welcome-btn">Bienvenue →</a>
+        <a href="track.php" class="welcome-btn">Bienvenue →</a>
 
     </div>
     <?php include 'footer.php'; ?>
