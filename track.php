@@ -7,7 +7,7 @@
     <title>GlucoNet - Suivi de Glycémie</title>
     <link rel="stylesheet" href="res/style.css">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=person" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 
 <body>
@@ -72,6 +72,45 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Section Actions Rapides -->
+    <!-- Section Actions Rapides -->
+    <div class="box" id="actions_dashboard"
+        style="display: flex; justify-content: center; gap: 40px; margin-top: 20px; align-items: center; padding: 40px; flex-wrap: wrap;">
+
+        <div onclick="window.location.href='page_activites.php'"
+            style="cursor: pointer; text-align: center; transition: all 0.3s ease; width: 150px;"
+            onmouseover="this.querySelector('.icon-circle').style.transform='scale(1.1)'; this.querySelector('.icon-circle').style.backgroundColor='#c8e6c9';"
+            onmouseout="this.querySelector('.icon-circle').style.transform='scale(1)'; this.querySelector('.icon-circle').style.backgroundColor='#e0f2f1';">
+            <div class="icon-circle"
+                style="background: #e0f2f1; padding: 20px; border-radius: 50%; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 2px solid #2e7d32; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <span class="material-symbols-outlined" style="font-size: 48px; color: #2e7d32;">directions_run</span>
+            </div>
+            <h3 style="color: #2e7d32; font-size: 1.2rem; margin: 0; font-weight: 600;">Activités</h3>
+        </div>
+
+        <div onclick="window.location.href='page_medicaments.php'"
+            style="cursor: pointer; text-align: center; transition: all 0.3s ease; width: 150px;"
+            onmouseover="this.querySelector('.icon-circle').style.transform='scale(1.1)'; this.querySelector('.icon-circle').style.backgroundColor='#c8e6c9';"
+            onmouseout="this.querySelector('.icon-circle').style.transform='scale(1)'; this.querySelector('.icon-circle').style.backgroundColor='#e0f2f1';">
+            <div class="icon-circle"
+                style="background: #e0f2f1; padding: 20px; border-radius: 50%; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 2px solid #2e7d32; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <span class="material-symbols-outlined" style="font-size: 48px; color: #2e7d32;">medication</span>
+            </div>
+            <h3 style="color: #2e7d32; font-size: 1.2rem; margin: 0; font-weight: 600;">Médicaments</h3>
+        </div>
+
+        <div onclick="window.location.href='paiement.php'"
+            style="cursor: pointer; text-align: center; transition: all 0.3s ease; width: 150px;"
+            onmouseover="this.querySelector('.icon-circle').style.transform='scale(1.1)'; this.querySelector('.icon-circle').style.backgroundColor='#c8e6c9';"
+            onmouseout="this.querySelector('.icon-circle').style.transform='scale(1)'; this.querySelector('.icon-circle').style.backgroundColor='#e0f2f1';">
+            <div class="icon-circle"
+                style="background: #e0f2f1; padding: 20px; border-radius: 50%; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 2px solid #2e7d32; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <span class="material-symbols-outlined" style="font-size: 48px; color: #2e7d32;">credit_card</span>
+            </div>
+            <h3 style="color: #2e7d32; font-size: 1.2rem; margin: 0; font-weight: 600;">Abonnement</h3>
         </div>
     </div>
 

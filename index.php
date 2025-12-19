@@ -38,7 +38,7 @@
 
         </div>
 
-        <a href="#" class="welcome-btn">Bienvenue →</a>
+        <a href="connexion.php" class="welcome-btn">Bienvenue →</a>
 
     </div>
 
