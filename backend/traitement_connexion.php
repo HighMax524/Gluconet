@@ -27,17 +27,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmtPatient->execute([$user['id']]);
                 if ($stmtPatient->rowCount() > 0) {
                     $_SESSION['role'] = 'patient';
+                    header("Location: ../track.php");
+                    exit();
                 } else {
-                    $stmtMedecin = $conn->prepare("SELECT Utilisateur_id FROM medecin WHERE Utilisateur_id = ?");
+                    // Vérifier si c'est un médecin
+                    $stmtMedecin = $conn->prepare("SELECT RPPS FROM medecin WHERE Utilisateur_id = ?");
                     $stmtMedecin->execute([$user['id']]);
+
                     if ($stmtMedecin->rowCount() > 0) {
+                        $medecinData = $stmtMedecin->fetch(PDO::FETCH_ASSOC);
                         $_SESSION['role'] = 'medecin';
+                        $_SESSION['medecin_rpps'] = $medecinData['RPPS'];
+
+                        header("Location: ../medecin_dashboard.php");
+                        exit();
+                    } else {
+                        // Si ni patient ni médecin (inscription incomplète ?)
+                        // On redirige vers le choix du rôle ou information
+                        header("Location: ../role.php");
+                        exit();
                     }
                 }
-
-                header("Location: ../track.php");
-                exit();
-            } else {
                 $error = "Email ou mot de passe incorrect.";
                 header("Location: ../connexion.php?error=" . urlencode($error));
             }
