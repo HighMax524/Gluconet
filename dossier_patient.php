@@ -1,72 +1,29 @@
 <?php
 session_start();
-require_once 'backend/db_connect.php';
-
-// 1. Vérification Médecin
+// 1. Vérification Médecin (reste ici pour la redirection immédiate si accès direct)
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'medecin') {
     header("Location: connexion.php");
     exit();
 }
 
+require_once 'backend/recuperation_dossier_patient.php';
+
 $medecin_rpps = $_SESSION['medecin_rpps'];
 $patient_user_id = $_GET['id'] ?? null;
 
-if (!$patient_user_id) {
-    header("Location: medecin_dashboard.php?error=Patient non spécifié");
+$dossierData = getDossierPatientData($conn, $medecin_rpps, $patient_user_id);
+
+if (isset($dossierData['error'])) {
+    header("Location: " . $dossierData['redirect'] . "?error=" . urlencode($dossierData['error']));
     exit();
 }
 
-try {
-    // 2. Vérification Relation (Sécurité)
-    // On vérifie que ce médecin (RPPS) suit bien ce patient (id_patient = patient_user_id)
-    $stmtCheck = $conn->prepare("
-        SELECT id FROM relation_patient_medecin 
-        WHERE id_medecin = ? AND id_patient = ? AND statut = 'Approuve'
-    ");
-    $stmtCheck->execute([$medecin_rpps, $patient_user_id]);
-
-    if ($stmtCheck->rowCount() === 0) {
-        header("Location: medecin_dashboard.php?error=Accès non autorisé à ce patient");
-        exit();
-    }
-
-    // 3. Récupération Infos Patient
-    $stmtInfo = $conn->prepare("
-        SELECT u.nom, u.prenom, u.email, 
-               p.type_diabete, p.age, p.sexe, p.taille, p.date_diagnostic
-        FROM utilisateur u
-        JOIN patient p ON u.id = p.id_utilisateur
-        WHERE u.id = ?
-    ");
-    $stmtInfo->execute([$patient_user_id]);
-    $patientData = $stmtInfo->fetch(PDO::FETCH_ASSOC);
-
-    if (!$patientData) {
-        die("Patient introuvable.");
-    }
-
-    // 4. Récupération Historique Poids
-    $stmtPoids = $conn->prepare("SELECT poids, date_heure FROM poids WHERE id_utilisateur = ? ORDER BY date_heure ASC");
-    $stmtPoids->execute([$patient_user_id]);
-    $historique_poids = $stmtPoids->fetchAll(PDO::FETCH_ASSOC);
-
-    // Préparation données graphique Poids
-    $labels_poids = [];
-    $data_poids = [];
-    $current_weight = "N/A";
-
-    if ($historique_poids) {
-        foreach ($historique_poids as $entry) {
-            $date = new DateTime($entry['date_heure']);
-            $labels_poids[] = $date->format('d/m/Y');
-            $data_poids[] = $entry['poids'];
-        }
-        $current_weight = end($data_poids);
-    }
-
-} catch (PDOException $e) {
-    die("Erreur : " . $e->getMessage());
-}
+// Extraction des variables pour l'affichage
+$patientData = $dossierData['patientData'];
+$historique_poids = $dossierData['historique_poids'];
+$labels_poids = $dossierData['labels_poids'];
+$data_poids = $dossierData['data_poids'];
+$current_weight = $dossierData['current_weight'];
 ?>
 
 <!DOCTYPE html>
@@ -81,121 +38,7 @@ try {
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .dossier-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: #666;
-            text-decoration: none;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .back-link:hover {
-            color: var(--primary-color);
-        }
-
-        .patient-header-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .ph-avatar {
-            width: 100px;
-            height: 100px;
-            background: #e0f2f1;
-            color: var(--primary-dark);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .ph-info h1 {
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-
-        .tags {
-            display: flex;
-            gap: 10px;
-        }
-
-        .tag {
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .tag-diabetes {
-            background: #e3f2fd;
-            color: #1976d2;
-        }
-
-        .tag-age {
-            background: #f3e5f5;
-            color: #7b1fa2;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .metric-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .metric-title {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .chart-box {
-            height: 300px;
-            position: relative;
-        }
-
-        .data-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            max-height: 250px;
-            overflow-y: auto;
-        }
-
-        .data-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            font-size: 0.95rem;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>

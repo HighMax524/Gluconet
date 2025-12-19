@@ -8,40 +8,17 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role
     exit();
 }
 
-$rpps = $_SESSION['medecin_rpps'];
+require_once 'backend/recuperation_dashboard_medecin.php';
 
-// Récupération de la liste des patients
-try {
-    // On veut les patients liés à RELATIONS acceptées
-    // Il faudrait aussi gérer les demandes "En attente" pour les accepter
+$dashboardData = getMedecinDashboardData($conn);
 
-    // 1. Liste des patients suivis
-    $sqlPatients = "
-        SELECT u.nom, u.prenom, u.email, p.type_diabete, p.age, p.sexe, r.date_reponse, p.id_utilisateur
-        FROM relation_patient_medecin r
-        JOIN patient p ON r.id_patient = p.id_utilisateur
-        JOIN utilisateur u ON p.id_utilisateur = u.id
-        WHERE r.id_medecin = ? AND r.statut = 'Approuve'
-    ";
-    $stmtPatients = $conn->prepare($sqlPatients);
-    $stmtPatients->execute([$rpps]);
-    $patients = $stmtPatients->fetchAll(PDO::FETCH_ASSOC);
-
-    // 2. Demandes en attente
-    $sqlDemandes = "
-        SELECT u.nom, u.prenom, u.email, r.date_demande, r.id as id_relation
-        FROM relation_patient_medecin r
-        JOIN patient p ON r.id_patient = p.id_utilisateur
-        JOIN utilisateur u ON p.id_utilisateur = u.id
-        WHERE r.id_medecin = ? AND r.statut = 'En attente'
-    ";
-    $stmtDemandes = $conn->prepare($sqlDemandes);
-    $stmtDemandes->execute([$rpps]);
-    $demandes = $stmtDemandes->fetchAll(PDO::FETCH_ASSOC);
-
-} catch (PDOException $e) {
-    die("Erreur : " . $e->getMessage());
+if (isset($dashboardData['redirect'])) {
+    header("Location: " . $dashboardData['redirect']);
+    exit();
 }
+
+$patients = $dashboardData['patients'];
+$demandes = $dashboardData['demandes'];
 ?>
 
 <!DOCTYPE html>
@@ -55,148 +32,6 @@ try {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <style>
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .patient-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .patient-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .patient-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .patient-avatar {
-            width: 50px;
-            height: 50px;
-            background: #e0f2f1;
-            color: var(--primary-dark);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .patient-info h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            color: #333;
-        }
-
-        .patient-info p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .patient-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .detail-item {
-            color: #555;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .btn-view {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            text-align: center;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        .btn-view:hover {
-            background: var(--primary-dark);
-        }
-
-        .request-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .btn-accept,
-        .btn-refuse {
-            flex: 1;
-            padding: 8px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-accept {
-            background: #81c784;
-            color: white;
-        }
-
-        .btn-refuse {
-            background: #e57373;
-            color: white;
-        }
-
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            background: white;
-            border-radius: 15px;
-            color: #888;
-        }
-    </style>
 </head>
 
 <body>

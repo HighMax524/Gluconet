@@ -2,62 +2,22 @@
 session_start();
 require_once 'backend/db_connect.php';
 
-// Vérification de la session
-if (!isset($_SESSION['user_id'])) {
-    header("Location: connexion.php");
+require_once 'backend/recuperation_profil.php';
+
+$profilData = getProfilData($conn);
+
+if (isset($profilData['redirect'])) {
+    header("Location: " . $profilData['redirect']);
     exit();
 }
 
-$user_id = $_SESSION['user_id'];
+$user_info = $profilData['user_info'];
+$labels_poids = $profilData['labels_poids'];
+$data_poids = $profilData['data_poids'];
+$current_weight = $profilData['current_weight'];
+
 $message_success = isset($_GET['success']) ? "Poids enregistré avec succès !" : "";
 $message_error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
-
-// Récupération des infos utilisateur et patient
-try {
-    // On récupère les infos de la table utilisateur et, si dispo, de la table patient
-    $stmt = $conn->prepare("
-        SELECT u.nom, u.prenom, u.email, 
-               p.type_diabete, p.age, p.taille, p.sexe, p.date_diagnostic 
-        FROM utilisateur u 
-        LEFT JOIN patient p ON u.id = p.id_utilisateur 
-        WHERE u.id = ?
-    ");
-    $stmt->execute([$user_id]);
-    $user_info = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$user_info) {
-        // Cas rare : l'utilisateur existe en session mais pas en BDD
-        session_destroy();
-        header("Location: connexion.php");
-        exit();
-    }
-
-    // Récupération de l'historique de poids
-    $stmtPoids = $conn->prepare("SELECT poids, date_heure FROM poids WHERE id_utilisateur = ? ORDER BY date_heure ASC");
-    $stmtPoids->execute([$user_id]);
-    $historique_poids = $stmtPoids->fetchAll(PDO::FETCH_ASSOC);
-
-    // Préparation des données pour le graphique
-    $labels_poids = [];
-    $data_poids = [];
-    $current_weight = "N/A";
-
-    if ($historique_poids) {
-        foreach ($historique_poids as $entry) {
-            $date = new DateTime($entry['date_heure']);
-            $labels_poids[] = $date->format('d/m/Y'); // Format pour le graphique
-            $data_poids[] = $entry['poids'];
-        }
-        // Le dernier poids du tableau est le plus récent (car ORDER BY ASC)
-        $current_weight = end($data_poids);
-    } else {
-        // Si aucun historique, on essaie de prendre le poids initial dans la table patient s'il y avait un champ poids (mais ici c'est taille)
-        // Donc on laisse N/A
-    }
-
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
 ?>
 
 <!DOCTYPE html>

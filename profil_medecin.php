@@ -8,31 +8,18 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role
     exit();
 }
 
-$user_id = $_SESSION['user_id'];
+require_once 'backend/recuperation_profil_medecin.php';
+
+$profilData = getProfilMedecinData($conn);
+
+if (isset($profilData['redirect'])) {
+    header("Location: " . $profilData['redirect']);
+    exit();
+}
+
+$medecin_info = $profilData['medecin_info'];
 $message_success = isset($_GET['success_update']) ? "Profil mis à jour avec succès !" : "";
 $message_error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
-
-try {
-    // Récupération des infos médecin
-    $stmt = $conn->prepare("
-        SELECT u.nom, u.prenom, u.email, m.RPPS, m.etablissement, m.adresse_pro, m.telephone_pro
-        FROM utilisateur u 
-        JOIN medecin m ON u.id = m.Utilisateur_id 
-        WHERE u.id = ?
-    ");
-    $stmt->execute([$user_id]);
-    $medecin_info = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$medecin_info) {
-        // Erreur critique : médecin connecté mais pas dans la table médecin
-        session_destroy();
-        header("Location: connexion.php");
-        exit();
-    }
-
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
 ?>
 
 <!DOCTYPE html>
@@ -46,91 +33,6 @@ try {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <style>
-        .profile-container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .profile-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .user-header {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-
-        .user-avatar {
-            width: 100px;
-            height: 100px;
-            background: #e3f2fd;
-            color: #1565c0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .user-avatar span {
-            font-size: 50px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            text-align: left;
-        }
-
-        .info-item {
-            padding: 15px;
-            background: #fafafa;
-            border-radius: 10px;
-        }
-
-        .info-label {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .info-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-edit {
-            margin-top: 30px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s;
-        }
-
-        .btn-edit:hover {
-            background: var(--primary-dark);
-        }
-    </style>
 </head>
 
 <body>
