@@ -120,6 +120,17 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <h3 style="color: #2e7d32; font-size: 1.2rem; margin: 0; font-weight: 600;">Abonnement</h3>
         </div>
+
+        <div onclick="window.location.href='recherche_medecin.php'"
+            style="cursor: pointer; text-align: center; transition: all 0.3s ease; width: 150px;"
+            onmouseover="this.querySelector('.icon-circle').style.transform='scale(1.1)'; this.querySelector('.icon-circle').style.backgroundColor='#c8e6c9';"
+            onmouseout="this.querySelector('.icon-circle').style.transform='scale(1)'; this.querySelector('.icon-circle').style.backgroundColor='#e0f2f1';">
+            <div class="icon-circle"
+                style="background: #e0f2f1; padding: 20px; border-radius: 50%; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 2px solid #2e7d32; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <span class="material-symbols-outlined" style="font-size: 48px; color: #2e7d32;">person_search</span>
+            </div>
+            <h3 style="color: #2e7d32; font-size: 1.2rem; margin: 0; font-weight: 600;">Mon Médecin</h3>
+        </div>
     </div>
 
     <div class="box" id="chart">
