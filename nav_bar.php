@@ -19,7 +19,7 @@
         <button class="nav-button" onclick="window.location.href = 'aide.php'">Aide</button>
     </div>
 
-    <div class="user-icon" style="display: flex; align-items: center; gap: 10px;">
+    <div class="user-icon">
         <?php if (isset($_SESSION['user_id'])): ?>
             <?php
             $profileLink = 'profil.php';
@@ -27,16 +27,13 @@
                 $profileLink = 'profil_medecin.php';
             }
             ?>
-            <a href="<?php echo $profileLink; ?>"
-                style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 5px;"
-                title="Accéder à mon profil">
+            <a href="<?php echo $profileLink; ?>" class="user-profile-link" title="Accéder à mon profil">
                 <span class="material-symbols-outlined">person</span>
                 <span><?php echo htmlspecialchars($_SESSION['user_prenom'] ?? ''); ?></span>
             </a>
-            <a href="backend/deconnexion.php"
-                style="text-decoration: none; color: inherit; font-size: 0.8rem; border: 1px solid currentColor; padding: 2px 8px; border-radius: 4px;">Déconnexion</a>
+            <a href="backend/deconnexion.php" class="logout-btn">Déconnexion</a>
         <?php else: ?>
-            <a href="connexion.php" style="text-decoration: none; color: inherit;">
+            <a href="connexion.php" class="login-link">
                 <span class="material-symbols-outlined">
                     login
                 </span>
