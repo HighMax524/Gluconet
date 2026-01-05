@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: connexion.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,10 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlucoNet - Suivi de Glycémie</title>
     <link rel="stylesheet" href="res/style.css">
-    <?php include 'nav_bar.php'; ?>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=person" />
 </head>
 
 <body>
+    <?php include 'nav_bar.php'; ?>
     <div id="top">
         <div class="box" id="rate_glucose_box">
             <div class="rate_glucose_box_side">
@@ -76,7 +85,7 @@
     <div class="box" id="chart">
     </div>
 
+    <?php include 'footer.php'; ?>
 </body>
-<?php include 'footer.php'; ?>
 
 </html>

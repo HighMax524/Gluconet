@@ -1,33 +1,29 @@
-<!DOCTYPE html>
-<html lang="fr">
+<br>
+<div class="navbar">
+    <div class="logo">
+        <img src="res/logo_nom_site.png" alt="Logo Gluconet" />
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gluconet</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=person" />
-    <link rel="stylesheet" href="/res/style.css">
-</head>
+    <div class="nav-buttons">
+        <button class="nav-button" onclick="window.location.href = 'index.php'">Accueil</button>
+        <button class="nav-button" onclick="window.location.href = 'track.php'">Tableau de bord</button>
+        <button class="nav-button" onclick="window.location.href = 'track.php'">Aide</button>
+    </div>
 
-<body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="/Gluconet/res/logo_nom_site.png" alt="Logo Gluconet" />
-        </div>
-
-        <div class="nav-buttons">
-            <button href="index.php" class="nav-button">Accueil</button>
-            <button href="track.php" class="nav-button">Tableau de bord</button>
-            <button href="help.php" class="nav-button">Aide</button>
-        </div>
-
-        <div class="user-icon">
-            <span class="material-symbols-outlined">
+    <div class="user-icon" style="display: flex; align-items: center; gap: 10px;">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <span class="material-symbols-outlined"
+                title="<?php echo htmlspecialchars($_SESSION['user_nom'] ?? 'Utilisateur'); ?>">
                 person
             </span>
-        </div>
+            <a href="backend/deconnexion.php"
+                style="text-decoration: none; color: inherit; font-size: 0.8rem; border: 1px solid currentColor; padding: 2px 8px; border-radius: 4px;">Déconnexion</a>
+        <?php else: ?>
+            <a href="connexion.php" style="text-decoration: none; color: inherit;">
+                <span class="material-symbols-outlined">
+                    login
+                </span>
+            </a>
+        <?php endif; ?>
     </div>
-</body>
-
-</html>
+</div>

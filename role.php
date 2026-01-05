@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="res/style.css">
     <title>Role</title>
-    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
+    <?php include 'nav_bar.php'; ?>
     <div class="role_form">
         <h1>Vous êtes ?</h1>
         <div class="form_role_container">
-            <form id="form_inscr" action="inscription.html" method="post">
+            <form id="form_inscr" action="backend/traitement_role.php" method="post">
                 <label for="role_patient" class="role-option"
                     style="display:inline-flex;flex-direction:column;align-items:center;margin:0 12px;">
                     <input id="role_patient" type="radio" name="role" value="patient" required>

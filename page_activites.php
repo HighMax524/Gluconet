@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="res/style.css">
     <title>Activités physiques</title>
-    <?php include 'nav_bar.php'; ?>
 </head>
 
 <body>
+    <?php include 'nav_bar.php'; ?>
 
     <main>
         <section class="card">
@@ -16,19 +16,24 @@
             <h1>Activités physiques</h1>
 
             <div class="grid">
-                <button class="btn">Marche rapide</button>
-                <button class="btn">Course à pied</button>
-                <button class="btn">Natation</button>
-                <button class="btn">Vélo</button>
-                <button class="btn">Musculation</button>
-                <button class="btn">Autres</button>
+                <button class="btn activity" data-activity="marche">Marche rapide</button>
+                <button class="btn activity" data-activity="course">Course à pied</button>
+                <button class="btn activity" data-activity="natation">Natation</button>
+                <button class="btn activity" data-activity="velo">Vélo</button>
+                <button class="btn activity" data-activity="musculation">Musculation</button>
+                <button class="btn activity" data-activity="autres">Autres</button>
             </div>
 
             <div class="duration">
-                <input type="text" placeholder="Durée">
+                <input type="number" id="duration" placeholder="Durée (en minutes)">
             </div>
 
-            <button class="btn">Calculer mes calories brûlées</button>
+            <button class="btn" id="calculate">Calculer mes calories brûlées</button>
+
+            <p id="result"></p>
+
+            <script src="activite.js"></script>
+
 
         </section>
     </main>

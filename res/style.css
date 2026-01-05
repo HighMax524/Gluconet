@@ -1,4 +1,4 @@
-/*-------------------------------------------Page d'acceuil ---------------------------------------------*/
+/* Page d'acceuil */
 /* Global Styles */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
@@ -28,8 +28,6 @@ body {
     line-height: 1.6;
     background: linear-gradient(135deg, #f0fdf4 0%, #e0f2f1 100%);
     min-height: 100vh;
-    margin-right: 2%;
-    margin-left: 2%;
 }
 
 /* Hero Section */
@@ -222,7 +220,7 @@ footer {
     }
 }
 
-/* ------------------------------------- Page connexion/inscription ---------------------------------------*/
+/* Page connexion/inscription */
 .content_form {
     display: flex;
     align-items: center;
@@ -232,16 +230,14 @@ footer {
     box-sizing: border-box;
 }
 
-#img_conn,
-#img_inscr {
-    box-shadow: -5px 1px 10px #91AB9A;
+#img_conn, #img_inscr {
     width: 100%;
     max-width: 450px;
     height: auto;
     object-fit: contain;
     flex: 0 0 auto;
-    border-top-left-radius: 40px;
-    border-bottom-left-radius: 40px;
+    border-top-left-radius:40px;
+    border-bottom-left-radius:40px;
 }
 
 .titre_form {
@@ -249,7 +245,6 @@ footer {
 }
 
 .form_inscr_conn_container {
-    box-shadow: 5px 5px 5px #91AB9A;
     flex: 1 1 0;
     background: linear-gradient(0.45turn, #b8d0c0, #c7c6c6);
     padding: 50px;
@@ -265,7 +260,7 @@ footer {
 .form_inscr_conn_container input[type="text"],
 .form_inscr_conn_container input[type="email"],
 .form_inscr_conn_container input[type="tel"],
-.form_inscr_conn_container input[type="password"] {
+.form_inscr_conn_container input[type="password"]{
     width: 100%;
     height: 50px;
     box-sizing: border-box;
@@ -278,7 +273,7 @@ footer {
 .form_inscr_conn_container input[type="text"]:focus,
 .form_inscr_conn_container input[type="email"]:focus,
 .form_inscr_conn_container input[type="tel"]:focus,
-.form_inscr_conn_container input[type="password"]:focus {
+.form_inscr_conn_container input[type="password"]:focus{
     width: 100%;
     height: 50px;
     box-sizing: border-box;
@@ -288,7 +283,7 @@ footer {
     background-color: #5a5959;
 }
 
-.form_inscr_conn_container input[type="submit"] {
+.form_inscr_conn_container input[type="submit"]{
     display: block;
     margin: 0 auto;
     width: 200px;
@@ -307,8 +302,7 @@ footer {
     cursor: pointer;
 }
 
-.boutton_form:hover,
-.boutton_form:focus {
+.boutton_form:hover,.boutton_form:focus{
     padding: 0.75rem 1rem;
     background: #000000;
     color: #ffffff;
@@ -317,23 +311,21 @@ footer {
     cursor: pointer;
 }
 
-.options_conn {
+.options_conn{
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.pas_de_compte,
-.deja_un_compte {
+.pas_de_compte, .deja_un_compte{
     text-align: center;
 }
 
-a {
+a{
     color: blue;
 }
 
-a:hover,
-a:focus {
+a:hover, a:focus{
     color: red;
 }
 
@@ -343,19 +335,17 @@ a:focus {
         flex-direction: column;
         align-items: center;
     }
-
     #img_conn {
         width: 60%;
         max-width: 280px;
         margin-bottom: 1rem;
     }
-
     .form_inscr_conn_container {
         width: 100%;
     }
 }
 
-/* ----------------------------------------- Page information ------------------------------------------------*/
+/* Page information */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -370,7 +360,7 @@ a:focus {
     justify-content: space-between;
     padding: 12px 32px;
     background: #ffffff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .logo {
@@ -432,7 +422,7 @@ a:focus {
     background: linear-gradient(135deg, #a5d6a7, #c8e6c9);
     padding: 36px;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
 .card-title {
@@ -461,12 +451,12 @@ a:focus {
     max-height: 260px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
 }
 
 /* Formulaire central */
 .form-section {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255,255,255,0.35);
     padding: 22px;
     border-radius: 20px;
     backdrop-filter: blur(4px);
@@ -493,7 +483,7 @@ a:focus {
     background: white;
     font-size: 36px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .gender-btn.selected {
@@ -517,7 +507,7 @@ a:focus {
     border-radius: 20px;
     border: none;
     background: white;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
 }
 
 .text-input::placeholder {
@@ -549,7 +539,7 @@ a:focus {
     background: white;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .diabetes-btn.selected {
@@ -572,7 +562,7 @@ a:focus {
     }
 }
 
-/* ------------------------------------------- Page activites/medicaments --------------------------------------*/
+/* Page activites/medicaments */
 
 .logo {
     font-size: 28px;
@@ -597,7 +587,6 @@ a:focus {
     background: white;
     cursor: pointer;
 }
-
 .btn-header:hover {
     background-color: rgb(191, 211, 193);
     animation-delay: 2s;
@@ -657,7 +646,6 @@ h1 {
     font-size: 18px;
     cursor: pointer;
 }
-
 .btn:hover {
     background-color: rgb(191, 211, 193);
     animation-delay: 2s;
@@ -665,7 +653,8 @@ h1 {
 
 .duration input {
     width: 200px;
-    padding: 12px;
+    height: 100px;
+    padding: 10px;
     border: none;
     border-radius: 15px;
     margin-top: 20px;
@@ -679,18 +668,33 @@ h1 {
     border-radius: 20px;
     object-fit: cover;
 }
-
 .caseJour {
     color: #0d774d;
     padding: 15px;
     border-radius: 15px;
-    background: linear-gradient(to bottom right, #b6d0c1, #d8e6db);
-    ;
+    background: linear-gradient(to bottom right, #b6d0c1, #d8e6db);;
     font-size: 18px;
     font-weight: bold;
 }
 
-/* ------------------------------------------------Page paiement ---------------------------------------------- */
+.activity {
+    transition: all 0.2s ease;
+}
+
+.activity.active {
+    background-color: #4bd397;
+    color: white;
+    transform: scale(1.03);
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Page paiement */
 
 .logo {
     font-size: 32px;
@@ -801,7 +805,7 @@ input.error {
     cursor: pointer;
 }
 
-/* ----------------------------------------------- Page role ------------------------------------------- */
+/* Page role */
 [type=radio] {
     position: absolute;
     opacity: 0;
@@ -810,7 +814,7 @@ input.error {
 }
 
 /* IMAGE STYLES */
-[type=radio]+img {
+[type=radio] + img {
     cursor: pointer;
     background-color: white;
     border-radius: 15px;
@@ -819,12 +823,12 @@ input.error {
 }
 
 /* CHECKED STYLES */
-[type=radio]:checked+img {
+[type=radio]:checked + img {
     outline: 3px solid green;
     background-color: #c7c6c6;
 }
 
-[type=radio]:focus+img {
+[type=radio]:focus + img {
     outline: 3px solid green;
     background-color: #c7c6c6;
 }
@@ -841,18 +845,18 @@ input.error {
     border-radius: 10px;
 }
 
-.role_form>h1 {
+.role_form>h1{
     text-align: center;
 }
 
-.role_form input[type="submit"] {
+.role_form input[type="submit"]{
     width: 200px;
     height: 50px;
     box-sizing: border-box;
     border-radius: 20px;
     padding: 0.75rem 1rem;
     align-items: center;
-    margin: 0 auto
+    margin:0 auto
 }
 
 .boutton_form {
@@ -865,8 +869,7 @@ input.error {
     cursor: pointer;
 }
 
-.boutton_form:hover,
-.boutton_form:focus {
+.boutton_form:hover,.boutton_form:focus{
     padding: 0.75rem 1rem;
     background: #000000;
     color: #ffffff;
@@ -875,19 +878,18 @@ input.error {
     cursor: pointer;
 }
 
-.submit_role {
+.submit_role{
     display: flex;
     justify-content: center;
 }
 
-.form_role_container {
+.form_role_container{
     margin: auto;
     display: flex;
     justify-content: center;
 }
 
-.pas_de_compte,
-.deja_un_compte {
+.pas_de_compte, .deja_un_compte{
     text-align: center;
 }
 
@@ -947,443 +949,4 @@ input.error {
     width: 30px;
     height: 30px;
     cursor: pointer;
-}
-
-/*-------------------------------------------------Footer-------------------------------------------------------*/
-/* Pied de page Gluconet */
-footer {
-    background-color: #2c3e50;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin-top: 2%;
-    border-radius: 10px;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.footer-logo h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #1abc9c;
-}
-
-.footer-logo p {
-    font-size: 14px;
-    color: #ecf0f1;
-}
-
-.footer-links,
-.footer-social {
-    margin: 20px 0;
-}
-
-.footer-links h3,
-.footer-social h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #1abc9c;
-}
-
-.footer-links ul,
-.footer-social ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links ul li,
-.footer-social ul li {
-    margin-bottom: 8px;
-}
-
-.footer-links ul li a,
-.footer-social ul li a {
-    color: #ecf0f1;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-links ul li a:hover,
-.footer-social ul li a:hover {
-    color: #1abc9c;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 20px;
-    background-color: #1a252f;
-    font-size: 14px;
-    color: #bdc3c7;
-}
-
-/* ----------------------------------------------- Page track ------------------------------------------- */
-
-#top {
-    display: flex;
-    gap: 2%;
-    width: 100%;
-    align-items: stretch;
-}
-
-.box {
-    background-color: rgb(230, 230, 230);
-    border-radius: 10px;
-    box-shadow: none;
-    padding: 20px;
-}
-
-#rate_glucose_box {
-    display: inline-flex;
-    flex: 1;
-    gap: 5%;
-}
-
-.rate_glucose_box_side {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#cercle_exterieur_glucose,
-#cercle_interieur_glucose,
-#cercle_exterieur_calorie_abs,
-#cercle_interieur_calorie_abs,
-#cercle_exterieur_calorie_dep,
-#cercle_interieur_calorie_dep {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-}
-
-#cercle_exterieur_glucose {
-    background-color: rgb(180, 180, 250);
-}
-
-#cercle_interieur_glucose {
-    background-color: white;
-}
-
-#taux_glucose {
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 1.1;
-    color: rgb(70, 70, 70);
-}
-
-.cercle {
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    padding: 5px;
-}
-
-
-.rate_glucose {
-    display: flex;
-    width: 100px;
-    height: 30px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-}
-
-#max_value_box {
-    background-color: rgb(155, 220, 155);
-}
-
-#min_value_box {
-    background-color: rgb(255, 150, 150);
-}
-
-.title_gucose_rate {
-    font-size: 14px;
-    font-weight: normal;
-    margin: 5px 0;
-    color: rgb(70, 70, 70);
-}
-
-
-#second_colone {
-    display: flex;
-    flex: 0.7;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#alerte_box {
-    flex: 1.2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-}
-
-#button_and_range_display {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
-}
-
-.range_display {
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(70, 70, 70);
-    margin: 0;
-}
-
-#alerte_box button {
-    background-color: rgb(180, 180, 250);
-    border: none;
-    border-radius: 15px;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-}
-
-#alert_bell {
-    font-size: 1.2em;
-    margin-right: 5px;
-}
-
-#slider_container {
-    position: relative;
-    width: 90%;
-    margin-top: 15px;
-}
-
-.slider {
-    width: 100%;
-    background: transparent;
-    margin: 0;
-    top: 50%;
-}
-
-
-#slider_labels {
-    display: flex;
-    width: 90%;
-    justify-content: space-between;
-    font-size: 10px;
-    margin-top: 10px;
-}
-
-
-#calorie_box {
-    flex: 1;
-    display: inline-flex;
-    gap: 10%;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.calorie_side {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.title_calorie {
-    font-size: 14px;
-    font-weight: normal;
-    margin: 0 0 10px 0;
-    color: rgb(70, 70, 70);
-}
-
-#cercle_exterieur_calorie_dep,
-#cercle_interieur_calorie_dep,
-#cercle_exterieur_calorie_abs,
-#cercle_interieur_calorie_abs {
-    background-color: rgb(180, 180, 250);
-}
-
-#cercle_interieur_calorie_abs,
-#cercle_interieur_calorie_dep {
-    background-color: white;
-}
-
-
-
-#taux_calorie_abs,
-#taux_calorie_dep {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 1.1;
-    color: rgb(70, 70, 70);
-    text-align: center;
-}
-
-#chart {
-    height: 200px;
-    width: 100%;
-    margin-top: 20px;
-}
-
-header {
-    background: linear-gradient(to bottom, #e0f7ea 0%, #ffffff 100%);
-    padding: 15px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    height: 80px;
-    width: 100%;
-    margin-bottom: 2%;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    font-size: 32px;
-    font-weight: bold;
-    color: #4a7c59;
-}
-
-.logo-icon {
-    width: 40%;
-    object-fit: contain;
-    margin: 0 5px;
-}
-
-
-nav {
-    display: flex;
-    gap: 30px;
-    margin-right: 5%;
-}
-
-.nav-btn {
-    background-color: #9ebf9e;
-    color: #000;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-}
-
-.nav-btn:hover {
-    background-color: #8bad8b;
-}
-
-.user-icon {
-    width: 40px;
-    height: 40px;
-    color: #4a7c59;
-    cursor: pointer;
-}
-
-
-
-/* ----------------------------------------------- Page home ------------------------------------------- */
-
-
-
-
-body {
-    font-family: Arial, sans-serif;
-    background: #ffffff;
-    margin: 0;
-    padding: 40px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.container {
-    text-align: center;
-}
-
-h1 {
-    font-size: 40px;
-    font-weight: 600;
-    margin-bottom: 60px;
-}
-
-.images-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    margin-bottom: 80px;
-}
-
-.image-block {
-    position: relative;
-    border: 2px solid #8ed09f;
-    border-radius: 200px;
-    padding: 30px;
-}
-
-.image-block img {
-    width: 320px;
-    border-radius: 25px;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(46, 204, 113, 0.35);
-    border-radius: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
-    opacity: 0;
-    transition: 0.3s ease;
-}
-
-.image-block:hover .overlay {
-    opacity: 1;
-}
-
-.arrow {
-    font-size: 55px;
-    font-weight: bold;
-    color: #6ebc7d;
-}
-
-.welcome-btn {
-    font-size: 32px;
-    padding: 18px 40px;
-    background: #a6d8b5;
-    border-radius: 30px;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.welcome-btn:hover {
-    background: #8ccfa0;
 }
