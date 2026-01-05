@@ -11,6 +11,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="res/style.css">
+    <link href='res/logo_site.png' rel='icon'>
 </head>
 
 <body>

@@ -32,6 +32,7 @@ $demandes = $dashboardData['demandes'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href='res/logo_site.png' rel='icon'>
 </head>
 
 <body>

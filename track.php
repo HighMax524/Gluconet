@@ -14,6 +14,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlucoNet - Suivi de Glycémie</title>
     <link rel="stylesheet" href="res/style.css">
+    <link href='res/logo_site.png' rel='icon'>
 </head>
 
 <body>

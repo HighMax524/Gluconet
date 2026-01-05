@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="res/style.css">
     <script src="res/activites.js" defer></script>
     <title>Activités physiques</title>
+    <link href='res/logo_site.png' rel='icon'>
 </head>
 
 <body>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="res/style.css">
     <title>Role</title>
+    <link href='res/logo_site.png' rel='icon'>
 </head>
 
 <body>

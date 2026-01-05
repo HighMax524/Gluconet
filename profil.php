@@ -34,6 +34,7 @@ $message_error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href='res/logo_site.png' rel='icon'>
 </head>
 
 <body>
