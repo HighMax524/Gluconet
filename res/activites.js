@@ -9,14 +9,14 @@ const metValues = {
     autres: 4
 };
 
-const activityButtons = document.querySelectorAll(".activity");
-const result = document.getElementById("result");
+const buttons = document.querySelectorAll(".activity");
 const durationInput = document.getElementById("duration");
+const result = document.getElementById("result");
 
-activityButtons.forEach(button => {
+buttons.forEach(button => {
     button.addEventListener("click", () => {
 
-        // Si on clique sur la même activité → désélection
+        // Désélection
         if (selectedActivity === button.dataset.activity) {
             button.classList.remove("active");
             selectedActivity = null;
@@ -24,26 +24,35 @@ activityButtons.forEach(button => {
             return;
         }
 
-        // Sinon, on sélectionne la nouvelle activité
-        activityButtons.forEach(btn => btn.classList.remove("active"));
+        buttons.forEach(b => b.classList.remove("active"));
         button.classList.add("active");
         selectedActivity = button.dataset.activity;
     });
 });
 
 document.getElementById("calculate").addEventListener("click", () => {
-    const duration = parseInt(durationInput.value);
+    const minutes = parseInt(durationInput.value);
 
     if (!selectedActivity) {
         result.textContent = "Veuillez sélectionner une activité.";
         return;
     }
 
-    if (!duration || duration <= 0) {
+    if (!minutes || minutes <= 0) {
         result.textContent = "Veuillez entrer une durée valide.";
         return;
     }
 
-    const calories = metValues[selectedActivity] * duration;
-    result.textContent = ` Vous avez brûlé environ ${calories} calories !`;
+    if (!userWeight || userWeight <= 0) {
+        result.textContent = "Poids utilisateur introuvable.";
+        return;
+    }
+
+    const calories =
+        metValues[selectedActivity] *
+        userWeight *
+        (minutes / 60);
+
+    result.textContent =
+        `🔥 Vous avez brûlé environ ${Math.round(calories)} calories.`;
 });
