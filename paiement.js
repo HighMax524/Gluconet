@@ -10,57 +10,20 @@ function deselectAll() {
 standard.addEventListener("click", () => {
     deselectAll();
     standard.classList.add("active");
+    document.getElementById("selectedOffer").value = "Standard";
 });
 
 premium.addEventListener("click", () => {
     deselectAll();
     premium.classList.add("active");
+    document.getElementById("selectedOffer").value = "Premium";
 });
 
-
-// --- VALIDATION FORMULAIRE ---
-const cardNumber = document.getElementById("cardNumber");
-const cvv = document.getElementById("cvv");
-const expire = document.getElementById("expire");
-
-// Numéro de carte : 16 chiffres
-cardNumber.addEventListener("input", () => {
-    if (/^\d{16}$/.test(cardNumber.value)) {
-        cardNumber.classList.remove("error");
-    } else {
-        cardNumber.classList.add("error");
-    }
-});
-
-// CVV : 3 chiffres
-cvv.addEventListener("input", () => {
-    if (/^\d{3}$/.test(cvv.value)) {
-        cvv.classList.remove("error");
-    } else {
-        cvv.classList.add("error");
-    }
-});
-
-// Expiration > mois actuel
-expire.addEventListener("input", () => {
-    const today = new Date();
-    const inputDate = new Date(expire.value + "-01");
-
-    if (inputDate > today) {
-        expire.classList.remove("error");
-    } else {
-        expire.classList.add("error");
-    }
-});
 
 // Soumission du formulaire
-document.getElementById("paymentForm").addEventListener("submit", function(e) {
-    if (
-        cardNumber.classList.contains("error") ||
-        cvv.classList.contains("error") ||
-        expire.classList.contains("error")
-    ) {
+document.getElementById("paymentForm").addEventListener("submit", function (e) {
+    if (document.getElementById("selectedOffer").value === "") {
         e.preventDefault();
-        alert("Veuillez corriger les erreurs.");
+        alert("Veuillez sélectionner une offre.");
     }
 });

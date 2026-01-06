@@ -17,7 +17,14 @@ $data_poids = $profilData['data_poids'];
 $current_weight = $profilData['current_weight'];
 $medecins = $profilData['medecins'] ?? [];
 
-$message_success = isset($_GET['success']) ? "Poids enregistré avec succès !" : "";
+$message_success = "";
+if (isset($_GET['success'])) {
+    if ($_GET['success'] == 'paiement') {
+        $message_success = "Paiement réussi ! Votre abonnement est activé.";
+    } else {
+        $message_success = "Poids enregistré avec succès !";
+    }
+}
 $message_error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
 ?>
 
@@ -65,6 +72,10 @@ $message_error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
                     <span><?php echo htmlspecialchars($user_info['email']); ?></span>
                 </li>
                 <li>
+                    <span class="material-symbols-outlined">payments</span>
+                    <span><?php echo htmlspecialchars($user_info['type_abonnement'] ?? 'Gratuit'); ?></span>
+                </li>
+                <li>
                     <span class="material-symbols-outlined">cake</span>
                     <span><?php echo htmlspecialchars($user_info['age'] ?? '--'); ?> ans</span>
                 </li>
@@ -99,7 +110,8 @@ $message_error = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : "";
                         <?php foreach ($medecins as $medecin): ?>
                             <li style="margin-bottom: 10px; padding: 10px; background: #f9f9f9; border-radius: 8px;">
                                 <div style="font-weight: 600;">Dr.
-                                    <?php echo htmlspecialchars($medecin['prenom'] . ' ' . $medecin['nom']); ?></div>
+                                    <?php echo htmlspecialchars($medecin['prenom'] . ' ' . $medecin['nom']); ?>
+                                </div>
                                 <div style="font-size: 0.85rem; color: #666; margin-top: 2px;">
                                     <?php echo htmlspecialchars($medecin['etablissement']); ?>
                                 </div>
