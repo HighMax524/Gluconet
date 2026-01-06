@@ -3,7 +3,7 @@ session_start();
 
 // Connexion BDD
 $pdo = new PDO(
-    "mysql:host=localhost;dbname=gluconet;charset=utf8",
+    "mysql:host=localhost;dbname=gluconet_db;charset=utf8",
     "root",
     "",
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
