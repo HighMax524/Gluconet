@@ -42,7 +42,7 @@ session_start();
             </div>
             <h3>Par Téléphone</h3>
             <p>Du lundi au vendredi, 9h-18h</p>
-            <a href="tel:+33123456789" style="font-weight: bold; font-size: 1.1rem;">01 23 45 67 89</a>
+            <a href="tel:+33123456789" style="font-weight: bold; font-size: 1.1rem;">01 49 54 52 56</a>
         </div>
 
         <!-- Email -->

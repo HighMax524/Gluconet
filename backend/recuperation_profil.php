@@ -14,7 +14,7 @@ function getProfilData($conn)
     try {
         // On récupère les infos de la table utilisateur et, si dispo, de la table patient
         $stmt = $conn->prepare("
-            SELECT u.nom, u.prenom, u.email, 
+            SELECT u.nom, u.prenom, u.email, u.type_abonnement,
                    p.type_diabete, p.age, p.taille, p.sexe, p.date_diagnostic 
             FROM utilisateur u 
             LEFT JOIN patient p ON u.id = p.id_utilisateur 
