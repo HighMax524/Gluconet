@@ -705,6 +705,23 @@ h1 {
     font-weight: bold;
 }
 
+.apple-health-btn {
+    margin-top: 15px;
+    background-color: #f1f1f1;
+    color: #888;
+    cursor: not-allowed;
+    font-style: italic;
+    border: 2px dashed #ccc;
+}
+
+.calcul-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-top: 25px;       
+}
+
+
 /* ------------------------------------------------Page paiement ---------------------------------------------- */
 
 .logo {
