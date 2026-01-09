@@ -54,7 +54,17 @@ $poidsUtilisateur = $data ? $data['poids'] : null;
                 <input type="number" id="duration" placeholder="Durée (en minutes)">
             </div>
 
-            <button class="btn" id="calculate">Calculer mes calories brûlées</button>
+            <div class="calcul-btn">
+                <button class="btn" id="calculate">Calculer mes calories brûlées</button>
+            
+                <!-- Bouton Apple Health (simulation) -->
+                <button class="btn apple-health-btn" disabled>
+                    Calcul automatique via Apple Health (bientôt disponible) 
+                </button>
+            </div>
+
+
+            <!-- Résultat -->
 
             <p id="result"></p>
 
