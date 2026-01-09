@@ -38,15 +38,16 @@
                 <div class="row">
                     <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
                     <label for="expire">Date d'expiration</label>
-                <div id="expire-container">
-                <select id="expire-month">
-                    <option value="">Mois</option>
-                </select>
-                <select id="expire-year">
-                    <option value="">Année</option>
-                </select>
-                </div>
-<span id="expire-error" style="color:red; display:none;">Date invalide</span>
+
+                    <div id="expire-container">
+                        <select id="expire-month">
+                            <option value="">Mois</option>
+                        </select>
+                        <select id="expire-year">
+                            <option value="">Année</option>
+                        </select>
+                    </div>
+                    <span id="expire-error" style="color:red; display:none;">Date invalide</span>
 
                 </div>
 

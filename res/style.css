@@ -827,8 +827,9 @@ input.error {
 
 .row {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
 }
 
 .row input {
@@ -844,6 +845,19 @@ input.error {
     font-size: 20px;
     cursor: pointer;
 }
+#expire-container {
+    margin: 12px auto;
+    display: flex;
+    justify-content: left;
+    gap: 5px;
+}
+
+#expire-container select{
+    border-radius: 20px;
+    padding: 10px;
+}
+
+
 
 /* ----------------------------------------------- Page role ------------------------------------------- */
 [type=radio] {
