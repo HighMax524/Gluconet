@@ -64,3 +64,4 @@ document.getElementById("paymentForm").addEventListener("submit", function(e) {
         alert("Veuillez corriger les erreurs.");
     }
 });
+ 
