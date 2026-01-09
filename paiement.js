@@ -21,7 +21,7 @@ premium.addEventListener("click", () => {
 // --- VALIDATION FORMULAIRE ---
 const cardNumber = document.getElementById("cardNumber");
 const cvv = document.getElementById("cvv");
-const expire = document.getElementById("expire");
+
 
 // Numéro de carte : 16 chiffres
 cardNumber.addEventListener("input", () => {
@@ -90,14 +90,26 @@ yearSelect.addEventListener("change", validateExpiration);
 
 
 // Soumission du formulaire
-document.getElementById("paymentForm").addEventListener("submit", function(e) {
+// Soumission du formulaire
+document.getElementById("paymentForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Empêcher le rechargement de page par défaut
+
+    // Valider la date une dernière fois
+    validateExpiration();
+
+    const isDateEmpty = !monthSelect.value || !yearSelect.value;
+    const isDateInvalid = errorMsg.style.display === "inline";
+
     if (
         cardNumber.classList.contains("error") ||
         cvv.classList.contains("error") ||
-        expire.classList.contains("error")
+        isDateEmpty ||
+        isDateInvalid
     ) {
-        e.preventDefault();
         alert("Veuillez corriger les erreurs.");
+        return;
     }
+
+    // Redirection vers le profil avec un message de succès
+    window.location.href = './profil.php?success=paiement';
 });
- 
