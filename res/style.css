@@ -714,12 +714,6 @@ h1 {
     border: 2px dashed #ccc;
 }
 
-.calcul-btn {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    margin-top: 25px;       
-}
 
 
 /* ------------------------------------------------Page paiement ---------------------------------------------- */
