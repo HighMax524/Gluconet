@@ -1,23 +1,26 @@
 <?php
 session_start();
+require_once "backend/db_connect.php";
 
-// Connexion BDD
-$pdo = new PDO(
-    "mysql:host=localhost;dbname=gluconet_db;charset=utf8",
-    "root",
-    "",
-    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-);
+// ID utilisateur depuis la session
+$idUtilisateur = $_SESSION['user_id'];
 
-// Récupération du poids utilisateur
-$userId = $_SESSION['user_id'];
+// Récupération du dernier poids enregistré
+$stmt = $conn->prepare("
+    SELECT poids
+    FROM poids
+    WHERE id_utilisateur = ?
+    ORDER BY date_heure DESC
+    LIMIT 1
+");
 
-$stmt = $pdo->prepare("SELECT poids FROM users WHERE id = ? AND date_heure = max(date_heure)");
-$stmt->execute([$userId]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->execute([$idUtilisateur]);
+$data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$poids = $user['poids'];
+// Sécurité si aucun poids trouvé
+$poidsUtilisateur = $data ? $data['poids'] : null;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -63,7 +66,7 @@ $poids = $user['poids'];
 
 <!-- Sécurité -->    
     <script>
-        const userWeight = <?= json_encode($poids) ?>; // éviter l'injection SQL
+        const userWeight = <?= json_encode($poidsUtilisateur) ?>; // éviter l'injection SQL
     </script>
 
 <!-- Javascript -->
