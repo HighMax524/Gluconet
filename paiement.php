@@ -37,7 +37,7 @@
 
                 <div class="row">
                     <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
-                    <input type="month" id="expire" required>
+                    <input type="text" id="expire" placeholder="MM / YYYY" maxlength="7" inputmode="numeric" autocomplete="cc-exp"/>
                 </div>
 
                 <button type="submit" class="pay-btn">Payer</button>
