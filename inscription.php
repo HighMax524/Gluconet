@@ -28,9 +28,19 @@
 
                 <input type="tel" id="tel" name="tel" placeholder="Téléphone" required>
 
-                <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
+                <div class="password-field">
+                    <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
+                    <span class="afficheMdp" onclick="afficheMdp('mdp', this)">
+                        <img src="res/oeil.png" alt="icone oeil">
+                    </span>
+                </div>
 
-                <input type="password" id="conf_mdp" name="conf_mdp" placeholder="Confirmer mot de passe" required>
+                <div class="password-field">
+                    <input type="password" id="conf_mdp" name="conf_mdp" placeholder="Confirmer mot de passe" required>
+                    <span class="afficheMdp" onclick="afficheMdp('conf_mdp', this)">
+                        <img src="res/oeil.png" alt="icone oeil">
+                    </span>
+                </div>
 
                 <input type="submit" value="S'inscrire" class="boutton_form">
 
@@ -46,5 +56,22 @@
     </div>
     <?php include 'footer.php'; ?>
 </body>
+
+<script>
+    function afficheMdp(inputId, element) {
+        const input = document.getElementById(inputId);
+        const img = element.querySelector("img");
+
+        if (input.type === "password") {
+            input.type = "text";
+            img.src = "res/oeil_barre.png";
+            img.alt = "icone oeil";
+        } else {
+            input.type = "password";
+            img.src = "res/oeil.png";
+            img.alt= "icone oeil barré";
+        }
+    }
+</script>
 
 </html>
