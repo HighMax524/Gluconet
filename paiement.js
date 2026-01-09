@@ -42,52 +42,16 @@ cvv.addEventListener("input", () => {
 });
 
 // Expiration > mois actuel
-const expMonth = document.getElementById("expMonth");
-const expYear = document.getElementById("expYear");
-const expire = document.getElementById("expire");
+expire.addEventListener("input", () => {
+    const today = new Date();
+    const inputDate = new Date(expire.value + "-01");
 
-const startYear = 2026;
-const endYear = startYear + 15; // 15 ans max
-
-// Remplir les années
-for (let year = startYear; year <= endYear; year++) {
-    const option = document.createElement("option");
-    option.value = year;
-    option.textContent = year;
-    expYear.appendChild(option);
-}
-
-// Remplir les mois
-for (let month = 1; month <= 12; month++) {
-    const option = document.createElement("option");
-    option.value = String(month).padStart(2, "0");
-    option.textContent = String(month).padStart(2, "0");
-    expMonth.appendChild(option);
-}
-
-// Validation
-function validateExpire() {
-    const month = expMonth.value;
-    const year = expYear.value;
-
-    if (!month || !year) {
-        expire.classList.add("error");
-        return;
-    }
-
-    const selectedDate = new Date(year, month - 1);
-    const minDate = new Date(2026, 0); // Janvier 2026
-
-    if (selectedDate >= minDate) {
-        expire.value = `${month} / ${year}`;
+    if (inputDate > today) {
         expire.classList.remove("error");
     } else {
         expire.classList.add("error");
     }
-}
-
-expMonth.addEventListener("change", validateExpire);
-expYear.addEventListener("change", validateExpire);
+});
 
 // Soumission du formulaire
 document.getElementById("paymentForm").addEventListener("submit", function(e) {
