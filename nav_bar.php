@@ -16,7 +16,9 @@
         ?>
         <button class="nav-button" onclick="window.location.href = '<?php echo $dashboardLink; ?>'">Tableau de
             bord</button>
+
         <button class="nav-button" onclick="window.location.href = 'messagerie.php'">Messagerie</button>
+
         <button class="nav-button" onclick="window.location.href = 'aide.php'">Aide</button>
     </div>
 

@@ -5,7 +5,6 @@ require_once 'db_connect.php';
 // --- CONFIGURATION STRIPE ---
 // Note: Pour activer le mode réel, changez $mode_paiement à 'STRIPE'.
 $mode_paiement = 'STRIPE'; // 'STRIPE' ou 'SIMULATION'
-
 // -------------------------------------------------------
 
 if (!isset($_SESSION['user_id'])) {
@@ -49,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (empty($errors)) {
             // Définition du montant (en centimes)
-            $montant = ($offre == 'Premium') ? 700 : 400; // 7.00€ ou 4.00€
+            $montant = ($offre == 'Premium') ? 999999 : 400; // 7.00€ ou 4.00€
 
             // URL de retour
             $domain = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);

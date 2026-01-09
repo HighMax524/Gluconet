@@ -5,141 +5,54 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messagerie - GlucoNet</title>
+    <title>Messagerie - Gluconet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="res/style.css">
-    <link href='res/logo_site.png' rel='icon'>
 </head>
+
 <body>
 
+    <!-- Barre de navigation -->
     <?php include 'nav_bar.php'; ?>
 
-    <div class="messagerie-container">
-        <!-- Liste des contacts -->
-        <div class="contacts-list" id="contactsList">
-            <!-- Les contacts seront chargés ici par JS -->
-            <div style="padding:15px; text-align:center; color:#888;">Chargement...</div>
-        </div>
+    <div class="main-container">
+        <div class="messaging-layout">
 
-        <!-- Zone de discussion -->
-        <div class="chat-area">
-            <div class="chat-header" id="chatHeader">Sélectionnez un contact</div>
-            
-            <div class="messages-container" id="messagesContainer">
-                <!-- Les messages seront chargés ici -->
-            </div>
+            <aside class="contacts-sidebar">
+                <h3>Vos Contacts</h3>
+                <div id="contacts-list" class="contacts-list">
+                    <div class="loading-spinner">Chargement...</div>
+                </div>
+            </aside>
 
-            <div class="input-area">
-                <textarea id="messageInput" placeholder="Écrivez votre message..."></textarea>
-                <button onclick="sendMessage()">Envoyer</button>
-            </div>
+            <section class="chat-area" id="chat-area">
+                <div class="chat-header" id="chat-header">
+                    <span class="placeholder-text">Sélectionnez un contact pour discuter</span>
+                </div>
+
+                <div class="messages-container" id="messages-container">
+                </div>
+
+                <form id="message-form" class="message-input-area" style="display: none;">
+                    <input type="text" id="message-input" placeholder="Votre message..." autocomplete="off">
+                    <button type="submit" class="send-btn">
+                        <span class="material-symbols-outlined">send</span>
+                    </button>
+                </form>
+            </section>
+
         </div>
     </div>
 
-    <?php include 'footer.php'; ?>
-
-    <script>
-        let currentContactId = null;
-        const currentUser = <?php echo json_encode($_SESSION['user_id']); ?>;
-
-        // Charger les contacts au démarrage
-        document.addEventListener('DOMContentLoaded', loadContacts);
-
-        function loadContacts() {
-            fetch('backend/traitement_messagerie.php?action=get_contacts')
-                .then(response => response.json())
-                .then(data => {
-                    const list = document.getElementById('contactsList');
-                    list.innerHTML = '';
-                    if (data.length === 0) {
-                        list.innerHTML = '<div style="padding:15px;">Aucun contact trouvé.</div>';
-                        return;
-                    }
-                    data.forEach(contact => {
-                        const div = document.createElement('div');
-                        div.className = 'contact-item';
-                        div.innerHTML = `<div class="contact-name">${contact.prenom} ${contact.nom}</div>`;
-                        div.onclick = () => selectContact(contact.id, contact.prenom + ' ' + contact.nom, div);
-                        list.appendChild(div);
-                    });
-                })
-                .catch(err => console.error('Erreur:', err));
-        }
-
-        function selectContact(id, name, element) {
-            currentContactId = id;
-            document.getElementById('chatHeader').innerText = 'Discussion avec ' + name;
-            
-            // Gestion de la classe active
-            document.querySelectorAll('.contact-item').forEach(el => el.classList.remove('active'));
-            if(element) element.classList.add('active');
-
-            loadMessages();
-        }
-
-        function loadMessages() {
-            if (!currentContactId) return;
-
-            fetch(`backend/traitement_messagerie.php?action=get_messages&contact_id=${currentContactId}`)
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('messagesContainer');
-                    container.innerHTML = ''; // On vide (simple, pourrait être optimisé)
-                    
-                    data.forEach(msg => {
-                        const div = document.createElement('div');
-                        div.className = `message ${msg.emetteur_type}`; // 'moi' ou 'autre'
-                        div.innerHTML = `
-                            ${msg.contenu.replace(/\n/g, '<br>')}
-                            <div class="message-time">${new Date(msg.date_heure).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
-                        `;
-                        container.appendChild(div);
-                    });
-                    
-                    // Scroll to bottom
-                    container.scrollTop = container.scrollHeight;
-                });
-        }
-
-        function sendMessage() {
-            if (!currentContactId) {
-                alert("Veuillez sélectionner un contact");
-                return;
-            }
-            const input = document.getElementById('messageInput');
-            const contenu = input.value.trim();
-            
-            if (!contenu) return;
-
-            fetch('backend/traitement_messagerie.php?action=send_message', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    destinataire_id: currentContactId,
-                    contenu: contenu
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success) {
-                    input.value = '';
-                    loadMessages(); // Recharger pour voir son message
-                } else {
-                    alert("Erreur lors de l'envoi");
-                }
-            });
-        }
-
-        // Auto refresh toutes les 5 secondes
-        setInterval(() => {
-            if (currentContactId) loadMessages();
-        }, 5000);
-
-    </script>
+    <script src="res/messagerie.js"></script>
 </body>
+
 </html>
