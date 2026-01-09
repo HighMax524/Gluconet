@@ -6,25 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paiement - Gluconet</title>
     <link rel="stylesheet" href="res/style.css">
-    <link href='res/logo_site.png' rel='icon'>
 </head>
 
 <body>
-    <?php
-    session_start();
-    include 'nav_bar.php';
-    ?>
+    <?php include 'nav_bar.php'; ?>
 
     <main>
         <div class="card">
 
             <h1>Paiement</h1>
-
-            <?php if (isset($_GET['error'])): ?>
-                <div class="error-message" style="color: red; text-align: center; margin-bottom: 15px;">
-                    <?php echo htmlspecialchars($_GET['error']); ?>
-                </div>
-            <?php endif; ?>
 
             <div class="offers">
                 <div id="standard" class="offer">
@@ -39,20 +29,18 @@
             </div>
 
             <!-- FORMULAIRE -->
-            <!-- FORMULAIRE -->
-            <form id="paymentForm" action="backend/traitement_paiement.php" method="POST">
-                <input type="hidden" id="selectedOffer" name="offre" value="">
+            <form id="paymentForm">
 
-                <!-- Le nom peut être pré-rempli ou laissé vide, Stripe le redemandera souvent de toute façon sur Checkout,
-                     mais on peut l'envoyer ou juste l'utiliser pour notre base. Ici on le garde simple. -->
-                <!-- <input type="text" id="name" name="nom_titulaire" placeholder="Nom du titulaire (facultatif)" > -->
+                <input type="text" id="name" placeholder="Nom du titulaire de la carte" required>
 
-                <div class="secure-payment-notice" style="text-align: center; margin: 20px 0; color: #555;">
-                    <p>Vous allez être redirigé vers une plateforme de paiement sécurisée pour valider votre abonnement.
-                    </p>
+                <input type="text" id="cardNumber" placeholder="Numéro de carte" maxlength="16" required>
+
+                <div class="row">
+                    <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
+                    <input type="month" id="expire" required>
                 </div>
 
-                <button type="submit" class="pay-btn">Procéder au paiement sécurisé</button>
+                <button type="submit" class="pay-btn">Payer</button>
 
             </form>
         </div>
