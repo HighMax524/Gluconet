@@ -42,16 +42,19 @@ cvv.addEventListener("input", () => {
 });
 
 // Expiration > mois actuel
-expire.addEventListener("input", () => {
-    const today = new Date();
-    const inputDate = new Date(expire.value + "-01");
+const expire = document.getElementById("expire");
 
-    if (inputDate > today) {
+expire.addEventListener("input", () => {
+    const minDate = new Date("2026-01");
+    const inputDate = new Date(expire.value);
+
+    if (expire.value && inputDate >= minDate) {
         expire.classList.remove("error");
     } else {
         expire.classList.add("error");
     }
 });
+
 
 // Soumission du formulaire
 document.getElementById("paymentForm").addEventListener("submit", function(e) {
