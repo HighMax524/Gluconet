@@ -42,11 +42,6 @@
             <!-- FORMULAIRE -->
             <form id="paymentForm" action="backend/traitement_paiement.php" method="POST">
                 <input type="hidden" id="selectedOffer" name="offre" value="">
-
-                <!-- Le nom peut être pré-rempli ou laissé vide, Stripe le redemandera souvent de toute façon sur Checkout,
-                     mais on peut l'envoyer ou juste l'utiliser pour notre base. Ici on le garde simple. -->
-                <!-- <input type="text" id="name" name="nom_titulaire" placeholder="Nom du titulaire (facultatif)" > -->
-
                 <div class="secure-payment-notice" style="text-align: center; margin: 20px 0; color: #555;">
                     <p>Vous allez être redirigé vers une plateforme de paiement sécurisée pour valider votre abonnement.
                     </p>
