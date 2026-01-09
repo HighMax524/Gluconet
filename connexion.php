@@ -22,7 +22,12 @@
             <form id="form_inscr" action="backend/traitement_connexion.php" method="post">
                 <input type="email" id="email" name="email" placeholder="Adresse de courriel" required>
 
-                <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
+                <div class="password-field">
+                    <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
+                    <span class="afficheMdp" onclick="afficheMdp('mdp', this)">
+                        <img src="res/oeil.png" alt="icone oeil">
+                    </span>
+                </div>
 
                 <input type="submit" value="Se connecter" class="boutton_form">
             </form>
@@ -40,5 +45,22 @@
     </div>
 </body>
 <?php include 'footer.php'; ?>
+
+<script>
+    function afficheMdp(inputId, element) {
+        const input = document.getElementById(inputId);
+        const img = element.querySelector("img");
+
+        if (input.type === "password") {
+            input.type = "text";
+            img.src = "res/oeil_barre.png";
+            img.alt = "icone oeil";
+        } else {
+            input.type = "password";
+            img.src = "res/oeil.png";
+            img.alt= "icone oeil barré";
+        }
+    }
+</script>
 
 </html>
