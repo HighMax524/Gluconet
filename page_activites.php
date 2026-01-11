@@ -2,8 +2,9 @@
 session_start();
 require_once "backend/db_connect.php";
 
+try {
 // ID utilisateur depuis la session
-$idUtilisateur = $_SESSION['user_id'];
+    $idUtilisateur = $_SESSION['user_id'];
 
 // Récupération du dernier poids enregistré
 $stmt = $conn->prepare("
@@ -19,6 +20,10 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Sécurité si aucun poids trouvé
 $poidsUtilisateur = $data ? $data['poids'] : null;
+}
+catch (PDOException $e) {
+        die("Erreur : " . $e->getMessage());
+    }
 ?>
 
 
