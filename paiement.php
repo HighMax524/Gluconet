@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paiement - Gluconet</title>
     <link rel="stylesheet" href="res/style.css">
+    <link href='res/logo_site.png' rel='icon'>
 </head>
 
 <body>
@@ -37,7 +38,18 @@
 
                 <div class="row">
                     <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
-                    <input type="text" id="expire" placeholder="MM / YYYY" maxlength="7" inputmode="numeric" autocomplete="cc-exp"/>
+                    <label for="expire">Date d'expiration</label>
+
+                    <div id="expire-container">
+                        <select id="expire-month">
+                            <option value="">Mois</option>
+                        </select>
+                        <select id="expire-year">
+                            <option value="">Année</option>
+                        </select>
+                    </div>
+                    <span id="expire-error" style="color:red; display:none;">Date invalide</span>
+
                 </div>
 
                 <button type="submit" class="pay-btn">Payer</button>
