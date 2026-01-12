@@ -1,0 +1,9 @@
+.card_about{
+    background-color: #81c784;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.card_about > p > a{
+    color: red;
+}
