@@ -7,10 +7,11 @@
     <div class="footer-links">
       <h3>Liens utiles</h3>
       <ul>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="about.php">À propos</a></li>
-        <li><a href="features.php">Fonctionnalités</a></li>
-        <li><a href="contact.php">Contact</a></li>
+          <li><a href="index.php">Accueil</a></li>
+          <li><a href="about.php">À propos</a></li>
+          <li><a href="features.php">Fonctionnalités</a></li>
+          <li><a href="contact.php">Contact</a></li>
+          <li><a href="mention_legale.html">Mentions légales</a></li>
       </ul>
     </div>
     <div class="footer-social">
