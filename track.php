@@ -155,7 +155,8 @@ try {
     </div>
 
     <!-- Graphique -->
-    <div class="box" id="chart" style="position: relative; height:40vh; width:100%; max-width: 1200px; margin: 0 auto 30px auto; padding: 20px;">
+    <div class="box" id="chart"
+        style="position: relative; height:40vh; width:100%; max-width: 1200px; margin: 0 auto 30px auto; padding: 20px;">
         <canvas id="myGlucoseChart"></canvas>
     </div>
 
@@ -228,20 +229,77 @@ try {
                         grid: {
                             color: 'rgba(255, 255, 255, 0.1)'
                         },
-                        ticks: { color: '#ddd' }
+                        ticks: { color: '#666' }
                     },
                     x: {
                         grid: {
                             display: false
                         },
-                        ticks: { color: '#ddd' }
+                        ticks: { color: '#666' }
                     }
                 },
                 plugins: {
                     legend: {
-                        labels: { color: '#fff' }
+                        labels: { color: '#333' }
                     }
                 }
+            }
+        });
+
+        // --- Notification Logic ---
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentGlucose = <?php echo htmlspecialchars($last_glucose !== "N/A" ? $last_glucose : 'null'); ?>;
+            const alertMin = <?php echo floatval($alert_min); ?>;
+            const alertMax = <?php echo floatval($alert_max); ?>;
+            const alertButton = document.querySelector('#alerte_box button');
+            const alertBox = document.getElementById('alerte_box');
+
+            function requestNotificationPermission() {
+                if (!("Notification" in window)) {
+                    alert("Ce navigateur ne supporte pas les notifications de bureau");
+                } else if (Notification.permission !== "denied") {
+                    Notification.requestPermission().then(function (permission) {
+                        if (permission === "granted") {
+                            checkAndNotify();
+                        }
+                    });
+                }
+            }
+
+            function checkAndNotify() {
+                if (currentGlucose === null) return;
+
+                if (currentGlucose < alertMin || currentGlucose > alertMax) {
+                    // Visual Alert
+                    alertBox.style.boxShadow = "0 0 15px red";
+                    alertBox.style.border = "2px solid red";
+
+                    // Browser Notification
+                    if (Notification.permission === "granted") {
+                        const title = "⚠️ Alerte Glycémie !";
+                        const msg = `Votre taux de glycémie (${currentGlucose} g/L) est hors des seuils recommandés (${alertMin} - ${alertMax}).`;
+                        new Notification(title, { body: msg, icon: 'res/logo_site.png' });
+                    }
+                }
+            }
+
+            // Ask permission on button click (better UX than on load)
+            alertButton.addEventListener('click', function () {
+                if (Notification.permission !== "granted") {
+                    requestNotificationPermission();
+                } else {
+                    // Toggle fake state or re-check
+                    alert("Les alertes sont activées !");
+                    checkAndNotify();
+                }
+            });
+
+            // Also try to check on load if permission already granted
+            if (Notification.permission === "granted") {
+                checkAndNotify();
+            } else if (Notification.permission !== "denied") {
+                // Optional: Ask automatically on load? standard practice suggests user action first. 
+                // We will wait for click for first permission, but check checks logic immediately if already granted.
             }
         });
     </script>
