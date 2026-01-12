@@ -95,25 +95,23 @@ yearSelect.addEventListener("change", validateExpiration);
 
 
 // Soumission du formulaire
-// Soumission du formulaire
 document.getElementById("paymentForm").addEventListener("submit", function (e) {
     e.preventDefault(); // Empêcher le rechargement de page par défaut
 
     // Valider la date une dernière fois
-    validateExpiration();
+   function isValidExpire(value) {
+    const match = value.match(/^(0[1-9]|1[0-2]) \/ (\d{2})$/);
+    if (!match) return false;
 
-    const isDateEmpty = !monthSelect.value || !yearSelect.value;
-    const isDateInvalid = errorMsg.style.display === "inline";
+    const month = parseInt(match[1], 10);
+    const year = 2000 + parseInt(match[2], 10);
 
-    if (
-        cardNumber.classList.contains("error") ||
-        cvv.classList.contains("error") ||
-        isDateEmpty ||
-        isDateInvalid
-    ) {
-        alert("Veuillez corriger les erreurs.");
-        return;
-    }
+    const now = new Date();
+    const expiry = new Date(year, month);
+
+    return expiry > now;
+}
+
 
     // Redirection vers le profil avec un message de succès
     window.location.href = './profil.php?success=paiement';
