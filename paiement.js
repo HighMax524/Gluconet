@@ -42,9 +42,19 @@ cvv.addEventListener("input", () => {
 });
 
 // Expiration > mois actuel
-const monthSelect = document.getElementById("expire-month");
-const yearSelect = document.getElementById("expire-year");
-const errorMsg = document.getElementById("expire-error");
+const expireInput = document.getElementById("expire");
+
+expireInput.addEventListener("input", () => {
+    let value = expireInput.value.replace(/\D/g, "");
+
+    if (value.length > 4) value = value.slice(0, 4);
+
+    if (value.length >= 3) {
+        value = value.slice(0, 2) + " / " + value.slice(2);
+    }
+
+    expireInput.value = value;
+});
 
 // Remplir les mois
 for (let m = 1; m <= 12; m++) {
@@ -65,24 +75,19 @@ for (let y = currentYear; y <= currentYear + 10; y++) {
 }
 
 // Validation de la date
-function validateExpiration() {
-    const month = monthSelect.value;
-    const year = yearSelect.value;
-    if (!month || !year) {
-        errorMsg.style.display = "none";
-        return;
-    }
+function isValidExpire(value) {
+    const match = value.match(/^(0[1-9]|1[0-2]) \/ (\d{2})$/);
+    if (!match) return false;
 
-    const today = new Date();
-    const inputDate = new Date(year, parseInt(month) - 1, 1);
+    const month = parseInt(match[1], 10);
+    const year = 2000 + parseInt(match[2], 10);
 
-    if (inputDate < new Date(today.getFullYear(), today.getMonth(), 1)) {
-        // date passée
-        errorMsg.style.display = "inline";
-    } else {
-        errorMsg.style.display = "none";
-    }
+    const now = new Date();
+    const expiry = new Date(year, month);
+
+    return expiry > now;
 }
+
 
 // Événements
 monthSelect.addEventListener("change", validateExpiration);
