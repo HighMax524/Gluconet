@@ -23,7 +23,7 @@
             <br>
 
             <section class="card_about">
-                <h2>Fonctionnalités principales</h2>
+                <h1>Fonctionnalités principales</h1>
                 <ul>
                     <li>Suivi de la glycémie : Enregistrement facile des niveaux de glucose sanguin.</li>
                     <li>Analyse des tendances : Visualisation des données pour identifier les schémas et ajuster le traitement.</li>
@@ -34,7 +34,7 @@
             <br>
 
             <section class="card_about">
-                <h2>Notre équipe</h2>
+                <h1>Notre équipe</h1>
                 <p>L'équipe derrière Gluconet est composée de professionnels de la santé, de développeurs et de designers
                     passionnés par l'amélioration des soins aux patients diabétiques. Nous travaillons en étroite
                     collaboration avec des experts médicaux pour garantir que notre application répond aux besoins réels des
@@ -43,7 +43,7 @@
             <br>
 
             <section class="card_about">
-                <h2>Contactez-nous</h2>
+                <h1>Contactez-nous</h1>
                 <p>Pour toute question, suggestion ou assistance, n'hésitez pas à <a href="contact.php"><strong>nous contacter</strong></a>.
                     Nous sommes là pour vous aider !</p>
             </section>

@@ -1,9 +1,26 @@
+.about{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+
+}
+
 .card_about{
     background-color: #81c784;
     padding: 25px;
     border-radius: 20px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .card_about > p > a{
     color: red;
+}
+
+.card_about > p > a:hover{
+    color: blue;
 }
