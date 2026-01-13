@@ -37,8 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $conn->commit();
 
-                // Redirection vers la page d'accueil ou tableau de bord
-                header("Location: ../index.php");
+                // Redirection vers la page de paiement (obligatoire)
+                header("Location: ../paiement.php");
                 exit();
 
             } catch (PDOException $e) {

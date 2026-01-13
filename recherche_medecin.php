@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'backend/check_subscription.php';
 require_once 'backend/db_connect.php';
 
 require_once 'backend/traitement_recherche_medecin.php';
@@ -87,9 +88,9 @@ if (isset($searchData['error_msg'])) {
                         <form action="backend/traitement_demande_medecin.php" method="POST">
                             <input type="hidden" name="id_medecin" value="<?php echo htmlspecialchars($doctor['RPPS']); ?>">
                             <button type="submit" class="btn-request">Demander</button>
-                                </form>
-                            </div>
-                    <?php endforeach; ?>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
             <?php endif; ?>
         </div>
     </div>

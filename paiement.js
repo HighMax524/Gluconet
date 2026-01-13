@@ -1,6 +1,7 @@
 // --- SELECTION OFFRES ---
 const standard = document.getElementById("standard");
 const premium = document.getElementById("premium");
+const selectedOfferInput = document.getElementById("selectedOffer");
 
 function deselectAll() {
     standard.classList.remove("active");
@@ -10,11 +11,13 @@ function deselectAll() {
 standard.addEventListener("click", () => {
     deselectAll();
     standard.classList.add("active");
+    selectedOfferInput.value = "Standard";
 });
 
 premium.addEventListener("click", () => {
     deselectAll();
     premium.classList.add("active");
+    selectedOfferInput.value = "Premium";
 });
 
 
@@ -42,74 +45,51 @@ cvv.addEventListener("input", () => {
 });
 
 // Expiration > mois actuel
-const monthSelect = document.getElementById("expire-month");
-const yearSelect = document.getElementById("expire-year");
-const errorMsg = document.getElementById("expire-error");
+const expireInput = document.getElementById("expire");
 
-// Remplir les mois
-for (let m = 1; m <= 12; m++) {
-    const month = m < 10 ? "0" + m : m;
-    const option = document.createElement("option");
-    option.value = month;
-    option.textContent = month;
-    monthSelect.appendChild(option);
-}
+expireInput.addEventListener("input", () => {
+    let value = expireInput.value.replace(/\D/g, "");
 
-// Remplir les années (2026 → 2035)
-const currentYear = new Date().getFullYear();
-for (let y = currentYear; y <= currentYear + 10; y++) {
-    const option = document.createElement("option");
-    option.value = y;
-    option.textContent = y;
-    yearSelect.appendChild(option);
-}
+    if (value.length > 4) value = value.slice(0, 4);
 
-// Validation de la date
-function validateExpiration() {
-    const month = monthSelect.value;
-    const year = yearSelect.value;
-    if (!month || !year) {
-        errorMsg.style.display = "none";
-        return;
+    if (value.length >= 3) {
+        value = value.slice(0, 2) + " / " + value.slice(2);
     }
 
-    const today = new Date();
-    const inputDate = new Date(year, parseInt(month) - 1, 1);
-
-    if (inputDate < new Date(today.getFullYear(), today.getMonth(), 1)) {
-        // date passée
-        errorMsg.style.display = "inline";
-    } else {
-        errorMsg.style.display = "none";
-    }
-}
-
-// Événements
-monthSelect.addEventListener("change", validateExpiration);
-yearSelect.addEventListener("change", validateExpiration);
+    expireInput.value = value;
+});
 
 
-// Soumission du formulaire
+
 // Soumission du formulaire
 document.getElementById("paymentForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Empêcher le rechargement de page par défaut
 
     // Valider la date une dernière fois
-    validateExpiration();
+    function isValidExpire(value) {
+        const match = value.match(/^(0[1-9]|1[0-2]) \/ (\d{2})$/);
+        if (!match) return false;
 
-    const isDateEmpty = !monthSelect.value || !yearSelect.value;
-    const isDateInvalid = errorMsg.style.display === "inline";
+        const month = parseInt(match[1], 10);
+        const year = 2000 + parseInt(match[2], 10);
 
-    if (
-        cardNumber.classList.contains("error") ||
-        cvv.classList.contains("error") ||
-        isDateEmpty ||
-        isDateInvalid
-    ) {
-        alert("Veuillez corriger les erreurs.");
+        const now = new Date();
+        const expiry = new Date(year, month);
+
+        return expiry > now;
+    }
+
+    if (!selectedOfferInput.value) {
+        e.preventDefault();
+        alert("Veuillez sélectionner une offre.");
         return;
     }
 
-    // Redirection vers le profil avec un message de succès
-    window.location.href = './profil.php?success=paiement';
+    if (!isValidExpire(expireInput.value)) {
+        e.preventDefault();
+        document.getElementById('expire-error').style.display = 'block';
+        return;
+    }
+
+    // Si tout est bon, on laisse le formulaire s'envoyer (pas de preventDefault)
+    // Le backend traitera la demande
 });

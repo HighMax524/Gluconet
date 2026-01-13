@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'backend/check_subscription.php';
 require_once 'backend/db_connect.php';
 
 require_once 'backend/recuperation_profil.php';
