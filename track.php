@@ -194,7 +194,7 @@ try {
 
         <div class="action-item" onclick="window.location.href='journal_alimentaire.php'">
             <div class="action-icon-circle">
-                <span class="material-symbols-outlined">person_search</span>
+                <span class="material-symbols-outlined">fork_spoon</span>
             </div>
             <h3 class="action-title">Journal alimentaire</h3>
         </div>
