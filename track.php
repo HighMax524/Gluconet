@@ -191,6 +191,13 @@ try {
             </div>
             <h3 class="action-title">Mon Médecin</h3>
         </div>
+
+        <div class="action-item" onclick="window.location.href='journal_alimentaire.php'">
+            <div class="action-icon-circle">
+                <span class="material-symbols-outlined">person_search</span>
+            </div>
+            <h3 class="action-title">Journal alimentaire</h3>
+        </div>
     </div>
 
     <?php include 'footer.php'; ?>
