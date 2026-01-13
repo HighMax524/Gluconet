@@ -101,6 +101,5 @@ document.getElementById("paymentForm").addEventListener("submit", function (e) {
         return;
     }
 
-    // Si tout est bon, on laisse le formulaire s'envoyer (pas de preventDefault)
-    // Le backend traitera la demande
+
 });
