@@ -54,7 +54,7 @@
         </div>
     </main>
     <?php include 'footer.php'; ?>
-    <script src="paiement.js"></script>
+    <script src="JS/paiement.js"></script>
 </body>
 
 </html>

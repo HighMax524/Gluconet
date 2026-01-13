@@ -91,7 +91,7 @@ try {
     </script>
 
     <!-- Javascript -->
-    <script src="res/activites.js"></script>
+    <script src="JS/activites.js"></script>
 
 </body>
 

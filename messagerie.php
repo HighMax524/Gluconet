@@ -53,7 +53,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 
-    <script src="res/messagerie.js"></script>
+    <script src="JS/messagerie.js"></script>
 </body>
 
 </html>
