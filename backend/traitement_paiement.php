@@ -4,7 +4,7 @@ require_once 'db_connect.php';
 
 // --- CONFIGURATION STRIPE ---
 // Note: Pour activer le mode réel, changez $mode_paiement à 'STRIPE'.
-$mode_paiement = 'STRIPE'; // 'STRIPE' ou 'SIMULATION'
+$mode_paiement = 'SIMULATION'; // 'STRIPE' ou 'SIMULATION'
 // -------------------------------------------------------
 
 if (!isset($_SESSION['user_id'])) {

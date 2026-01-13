@@ -1,6 +1,7 @@
 // --- SELECTION OFFRES ---
 const standard = document.getElementById("standard");
 const premium = document.getElementById("premium");
+const selectedOfferInput = document.getElementById("selectedOffer");
 
 function deselectAll() {
     standard.classList.remove("active");
@@ -10,11 +11,13 @@ function deselectAll() {
 standard.addEventListener("click", () => {
     deselectAll();
     standard.classList.add("active");
+    selectedOfferInput.value = "Standard";
 });
 
 premium.addEventListener("click", () => {
     deselectAll();
     premium.classList.add("active");
+    selectedOfferInput.value = "Premium";
 });
 
 
@@ -60,7 +63,6 @@ expireInput.addEventListener("input", () => {
 
 // Soumission du formulaire
 document.getElementById("paymentForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Empêcher le rechargement de page par défaut
 
     // Valider la date une dernière fois
     function isValidExpire(value) {
@@ -76,7 +78,18 @@ document.getElementById("paymentForm").addEventListener("submit", function (e) {
         return expiry > now;
     }
 
+    if (!selectedOfferInput.value) {
+        e.preventDefault();
+        alert("Veuillez sélectionner une offre.");
+        return;
+    }
 
-    // Redirection vers le profil avec un message de succès
-    window.location.href = './profil.php?success=paiement';
+    if (!isValidExpire(expireInput.value)) {
+        e.preventDefault();
+        document.getElementById('expire-error').style.display = 'block';
+        return;
+    }
+
+    // Si tout est bon, on laisse le formulaire s'envoyer (pas de preventDefault)
+    // Le backend traitera la demande
 });

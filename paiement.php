@@ -30,7 +30,8 @@
             </div>
 
             <!-- FORMULAIRE -->
-            <form id="paymentForm">
+            <form id="paymentForm" action="backend/traitement_paiement.php" method="POST">
+                <input type="hidden" name="offre" id="selectedOffer" value="">
 
                 <input type="text" id="name" placeholder="Nom du titulaire de la carte" required>
 
@@ -38,16 +39,16 @@
 
                 <div class="row">
                     <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
-                   <label for="expire">Date d'expiration</label>
+                    <label for="expire">Date d'expiration</label>
 
-                <input type="text" id="expire" placeholder="MM / AA" inputmode="numeric" maxlength="7" required>
+                    <input type="text" id="expire" placeholder="MM / AA" inputmode="numeric" maxlength="7" required>
 
-                <span id="expire-error" style="color:red; display:none;">
-                    Date invalide
-                </span>
+                    <span id="expire-error" style="color:red; display:none;">
+                        Date invalide
+                    </span>
 
 
-                <button type="submit" class="pay-btn">Payer</button>
+                    <button type="submit" class="pay-btn">Payer</button>
 
             </form>
         </div>
