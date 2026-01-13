@@ -16,7 +16,7 @@ if (isset($_SESSION['user_id'])) {
     // paiement.php : pour payer
     // deconnexion.php : pour pouvoir sortir si bloqué
     // traitement_paiement.php : pour traiter le formulaire
-    $allowed_scripts = ['paiement.php', 'traitement_paiement.php', 'deconnexion.php', 'traitement_connexion.php'];
+    $allowed_scripts = ['paiement.php', 'traitement_paiement.php', 'deconnexion.php', 'traitement_connexion.php', 'abonnement.php'];
 
     if (!in_array($current_script, $allowed_scripts)) {
 
@@ -24,7 +24,7 @@ if (isset($_SESSION['user_id'])) {
         require_once __DIR__ . '/db_connect.php';
 
         // On vérifie le rôle. Si c'est un patient, on vérifie l'abonnement.
-        
+
 
         $user_id = $_SESSION['user_id'];
         $is_patient = false;
@@ -49,15 +49,20 @@ if (isset($_SESSION['user_id'])) {
             $stmtSub->execute([$user_id]);
             $res = $stmtSub->fetch(PDO::FETCH_ASSOC);
 
+            // Stocker le type d'abonnement en session pour usage ultérieur
+            if ($res) {
+                $_SESSION['type_abonnement'] = $res['type_abonnement'];
+            }
+
             // Si pas d'abonnement ou 'Gratuit' -> Redirection
             if (!$res || empty($res['type_abonnement']) || $res['type_abonnement'] === 'Gratuit') {
-            
+
 
                 // Détection du chemin relatif
-                if (file_exists('paiement.php')) {
-                    header("Location: paiement.php");
+                if (file_exists('abonnement.php')) {
+                    header("Location: abonnement.php");
                 } else {
-                    header("Location: ../paiement.php");
+                    header("Location: ../abonnement.php");
                 }
                 exit();
             }

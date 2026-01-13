@@ -20,6 +20,17 @@ premium.addEventListener("click", () => {
     selectedOfferInput.value = "Premium";
 });
 
+// Pré-sélection depuis l'URL
+const urlParams = new URLSearchParams(window.location.search);
+const offerParam = urlParams.get('offre');
+if (offerParam) {
+    if (offerParam.toLowerCase() === 'standard') {
+        standard.click();
+    } else if (offerParam.toLowerCase() === 'premium') {
+        premium.click();
+    }
+}
+
 
 // --- VALIDATION FORMULAIRE ---
 const cardNumber = document.getElementById("cardNumber");

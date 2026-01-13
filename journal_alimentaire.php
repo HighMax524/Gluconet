@@ -1,5 +1,7 @@
+<?php require_once 'backend/check_subscription.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,11 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="res/style.css">
   <link href='res/logo_site.png' rel='icon'>
-  <link rel="stylesheet" href="res/css_journalAlim.css"
+  <link rel="stylesheet" href="res/css_journalAlim.css">
+  <script>
+    const USER_SUBSCRIPTION = "<?php echo $_SESSION['type_abonnement'] ?? 'Standard'; ?>";
+  </script>
 </head>
 
 <body>
-<?php include 'nav_bar.php'; ?>
+  <?php include 'nav_bar.php'; ?>
   <main class="page-wrapper">
     <section class="card">
       <h1 class="card-title">Journal alimentaire </h1>
@@ -97,12 +102,17 @@
         <div class="food-list" id="foodList">
           <button class="food-item" type="button" data-name="Pomme" onclick="selectFood('Pomme')">Pomme</button>
           <button class="food-item" type="button" data-name="Banane" onclick="selectFood('Banane')">Banane</button>
-          <button class="food-item" type="button" data-name="Riz cuit" onclick="selectFood('Riz cuit')">Riz cuit</button>
+          <button class="food-item" type="button" data-name="Riz cuit" onclick="selectFood('Riz cuit')">Riz
+            cuit</button>
           <button class="food-item" type="button" data-name="Poulet" onclick="selectFood('Poulet')">Poulet</button>
-          <button class="food-item" type="button" data-name="Yaourt nature" onclick="selectFood('Yaourt nature')">Yaourt nature</button>
-          <button class="food-item" type="button" data-name="Pain complet" onclick="selectFood('Pain complet')">Pain complet</button>
-          <button class="food-item" type="button" data-name="Couscous" onclick="selectFood('Couscous')">Couscous</button>
-          <button class="food-item" type="button" data-name="Fromage blanc" onclick="selectFood('Fromage blanc')">Fromage blanc</button>
+          <button class="food-item" type="button" data-name="Yaourt nature" onclick="selectFood('Yaourt nature')">Yaourt
+            nature</button>
+          <button class="food-item" type="button" data-name="Pain complet" onclick="selectFood('Pain complet')">Pain
+            complet</button>
+          <button class="food-item" type="button" data-name="Couscous"
+            onclick="selectFood('Couscous')">Couscous</button>
+          <button class="food-item" type="button" data-name="Fromage blanc"
+            onclick="selectFood('Fromage blanc')">Fromage blanc</button>
         </div>
 
         <div class="form-section" style="text-align:left;">
@@ -182,7 +192,7 @@
     let selectedFood = null;
     let mood = "";
 
-    function openModal(mealKey){
+    function openModal(mealKey) {
       currentMeal = mealKey;
       selectedFood = null;
 
@@ -202,9 +212,9 @@
       filterFoods();
     }
 
-    function closeModal(){ document.getElementById("overlay").classList.remove("show"); }
+    function closeModal() { document.getElementById("overlay").classList.remove("show"); }
 
-    function filterFoods(){
+    function filterFoods() {
       const q = document.getElementById("searchFood").value.trim().toLowerCase();
       document.querySelectorAll(".food-item").forEach(btn => {
         const name = (btn.dataset.name || "").toLowerCase();
@@ -212,35 +222,35 @@
       });
     }
 
-    function selectFood(name){ selectedFood = name; renderSelectedBox(); }
+    function selectFood(name) { selectedFood = name; renderSelectedBox(); }
 
-    function renderSelectedBox(){
+    function renderSelectedBox() {
       const box = document.getElementById("selectedBox");
       box.innerHTML = selectedFood ? ("<strong>" + esc(selectedFood) + "</strong>") : "Aucun aliment sélectionné.";
     }
 
-    function addSelected(){
-      if(!currentMeal) return;
-      if(!selectedFood){ alert("Choisis un aliment."); return; }
+    function addSelected() {
+      if (!currentMeal) return;
+      if (!selectedFood) { alert("Choisis un aliment."); return; }
 
       const qty = parseFloat(document.getElementById("selQty").value);
       const unit = document.getElementById("selUnit").value;
 
-      if(!Number.isFinite(qty) || qty <= 0){ alert("Quantité invalide."); return; }
+      if (!Number.isFinite(qty) || qty <= 0) { alert("Quantité invalide."); return; }
 
       meals[currentMeal].push({ name: selectedFood, qty, unit });
       document.getElementById("selQty").value = "";
       renderMealItems();
     }
 
-    function addManual(){
-      if(!currentMeal) return;
+    function addManual() {
+      if (!currentMeal) return;
 
       const name = document.getElementById("manualName").value.trim();
       const qty = parseFloat(document.getElementById("qty").value);
       const unit = document.getElementById("unit").value;
 
-      if(name === "" || !Number.isFinite(qty) || qty <= 0){
+      if (name === "" || !Number.isFinite(qty) || qty <= 0) {
         alert("Remplis nom + quantité.");
         return;
       }
@@ -251,16 +261,16 @@
       renderMealItems();
     }
 
-    function removeItem(index){
+    function removeItem(index) {
       meals[currentMeal].splice(index, 1);
       renderMealItems();
     }
 
-    function renderMealItems(){
+    function renderMealItems() {
       const area = document.getElementById("mealItems");
       const list = meals[currentMeal] || [];
 
-      if(list.length === 0){
+      if (list.length === 0) {
         area.innerHTML = "<div style='opacity:.8;'>Aucun aliment.</div>";
         return;
       }
@@ -276,25 +286,25 @@
       `).join("");
     }
 
-    function saveAndClose(){
+    function saveAndClose() {
       updateSummary("petitdej");
       updateSummary("dejeuner");
       updateSummary("diner");
       closeModal();
     }
 
-    function updateSummary(mealKey){
+    function updateSummary(mealKey) {
       const target = document.getElementById("summary_" + mealKey);
       const list = meals[mealKey];
 
-      if(list.length === 0){ target.textContent = "Aucun aliment ajouté."; return; }
+      if (list.length === 0) { target.textContent = "Aucun aliment ajouté."; return; }
 
       target.innerHTML = "<ul>" + list.map(it =>
         "<li>" + esc(it.name) + " — " + it.qty + " " + esc(it.unit) + "</li>"
       ).join("") + "</ul>";
     }
 
-    function setMood(value, btn){
+    function setMood(value, btn) {
       mood = value;
       document.getElementById("moodText").textContent = value;
       document.querySelectorAll(".mood-btn").forEach(b => b.classList.remove("selected"));
@@ -303,12 +313,12 @@
 
     /* ------------------ API Open Food Facts (direct) ------------------ */
 
-    function toNum(v){
+    function toNum(v) {
       const x = parseFloat(v);
       return Number.isFinite(x) ? x : 0;
     }
 
-    async function fetchNutritionPer100g(foodName){
+    async function fetchNutritionPer100g(foodName) {
       const offUrl =
         "https://world.openfoodfacts.org/api/v2/search?search_terms=" +
         encodeURIComponent(foodName) +
@@ -316,11 +326,11 @@
 
       // IMPORTANT : fetch direct (pas de proxy)
       const res = await fetch(offUrl);
-      if(!res.ok) throw new Error("HTTP " + res.status);
+      if (!res.ok) throw new Error("HTTP " + res.status);
 
       const data = await res.json();
       const p = (data && data.products && data.products[0]) ? data.products[0] : null;
-      if(!p || !p.nutriments) return null;
+      if (!p || !p.nutriments) return null;
 
       const n = p.nutriments;
 
@@ -329,14 +339,27 @@
         kcal_100g: toNum(n["energy-kcal_100g"]),
         carbs_100g: toNum(n["carbohydrates_100g"]),
         prot_100g: toNum(n["proteins_100g"]),
-        fat_100g:  toNum(n["fat_100g"])
+        fat_100g: toNum(n["fat_100g"])
       };
     }
 
-    async function analyserJourneeAPI(){
-      if(mood === ""){
+    async function analyserJourneeAPI() {
+      if (mood === "") {
         alert("Choisis ton ressenti avant l’analyse.");
         return;
+      }
+
+      // Check Limitation Standard
+      if (USER_SUBSCRIPTION === 'Standard') {
+        const today = new Date().toISOString().split('T')[0];
+        const lastAnalysis = localStorage.getItem('last_diet_analysis_date');
+
+        if (lastAnalysis === today) {
+          alert("🚫 Limite atteinte (Standard)\n\nVous avez droit à une seule proposition par jour.\nPassez Premium pour un nombre illimité d'analyses !");
+          return; // Bloque l'exécution
+        }
+        // On marque comme utilisé pour aujourd'hui
+        localStorage.setItem('last_diet_analysis_date', today);
       }
 
       const resultBox = document.getElementById("resultBox");
@@ -345,34 +368,34 @@
       let totalKcal = 0, totalCarbs = 0, totalProt = 0, totalFat = 0;
       let notes = [];
 
-      const allMeals = ["petitdej","dejeuner","diner"];
+      const allMeals = ["petitdej", "dejeuner", "diner"];
 
-      for(const mk of allMeals){
-        for(const item of meals[mk]){
+      for (const mk of allMeals) {
+        for (const item of meals[mk]) {
           const qty = Number(item.qty);
           const unit = item.unit;
 
           // calcul précis seulement si en g
-          if(unit !== "g"){
+          if (unit !== "g") {
             notes.push(`- ${item.name}: unité "${unit}" -> pas calculé précisément (mets en g pour test)`);
             continue;
           }
 
-          try{
+          try {
             const nut = await fetchNutritionPer100g(item.name);
-            if(!nut){
+            if (!nut) {
               notes.push(`- ${item.name}: pas trouvé dans Open Food Facts`);
               continue;
             }
 
             const facteur = qty / 100;
 
-            totalKcal  += nut.kcal_100g  * facteur;
+            totalKcal += nut.kcal_100g * facteur;
             totalCarbs += nut.carbs_100g * facteur;
-            totalProt  += nut.prot_100g  * facteur;
-            totalFat   += nut.fat_100g   * facteur;
+            totalProt += nut.prot_100g * facteur;
+            totalFat += nut.fat_100g * facteur;
 
-          }catch(e){
+          } catch (e) {
             // ici on affiche le vrai message d'erreur
             notes.push(`- ${item.name}: erreur API (${e.message})`);
           }
@@ -380,8 +403,8 @@
       }
 
       let conseil = "";
-      if(totalCarbs > 250) conseil = "Glucides assez élevés aujourd'hui, surveille les portions de féculents/sucrés.";
-      else if(totalCarbs < 120) conseil = "Glucides plutôt bas, attention aux risques d'hypo si traitement.";
+      if (totalCarbs > 250) conseil = "Glucides assez élevés aujourd'hui, surveille les portions de féculents/sucrés.";
+      else if (totalCarbs < 120) conseil = "Glucides plutôt bas, attention aux risques d'hypo si traitement.";
       else conseil = "Répartition glucides ok globalement (estimation).";
 
       resultBox.textContent =
@@ -398,13 +421,14 @@
         "python -m http.server 8000 puis ouvre http://localhost:8000/";
     }
 
-    function esc(str){
+    function esc(str) {
       return String(str)
         .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;").replaceAll("'", "&#039;");
     }
   </script>
 
-<?php include 'footer.php'; ?>
+  <?php include 'footer.php'; ?>
 </body>
+
 </html>
