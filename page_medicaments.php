@@ -1,35 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="res/style.css">
-    <title>Activités physiques</title>
-    <link href='res/logo_site.png' rel='icon'>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="res/style.css">
+<title>Médicaments</title>
+<link href='res/logo_site.png' rel='icon'>
 </head>
-
 <body>
     <?php include 'nav_bar.php'; ?>
 
     <main>
-        <section class="card">
+        <section class="card center-card">
             <img src="res/medicaments.jpg" class="medics-img" alt="médicaments">
             <h1>Médicaments</h1>
 
-            <div class="grid">
-                <button class="caseJour">Matin</button>
-                <button class="btn">Ajouter/Afficher</button>
-                <button class="caseJour">Midi</button>
-                <button class="btn">Ajouter/Afficher</button>
-                <button class="caseJour">Soir</button>
-                <button class="btn">Ajouter/Afficher</button>
+            <!-- Formulaire centré -->
+            <div class="form">
+                <div class="form-row">
+                    <label>Heure :
+                        <input type="time" id="heure">
+                    </label>
+                    <label>Fréquence :
+                        <select id="frequence">
+                            <option value="Quotidien">Quotidien</option>
+                            <option value="Hebdomadaire">Hebdomadaire</option>
+                            <option value="Mensuel">Mensuel</option>
+                        </select>
+                    </label>
+
+                    <label id="jourSemaineLabel" style="display:none;">
+                        Jour :
+                        <select id="jourSemaine">
+                            <option value="Lundi">Lundi</option>
+                            <option value="Mardi">Mardi</option>
+                            <option value="Mercredi">Mercredi</option>
+                            <option value="Jeudi">Jeudi</option>
+                            <option value="Vendredi">Vendredi</option>
+                            <option value="Samedi">Samedi</option>
+                            <option value="Dimanche">Dimanche</option>
+                        </select>
+                    </label>
+
+                    <label id="dateMensuelleLabel" style="display:none;">
+                        Date :
+                        <input type="number" id="dateMensuelle" min="1" max="31">
+                    </label>
+
+                    
+                </div>
+                <button class="btn" id="saveRappel">Enregistrer</button>
+                <p id="result"></p>
             </div>
 
-            <button class="btn">Activer un rappel</button>
-
+            <!-- Liste des rappels -->
+            <table id="listeRappels" class="rappel-table">
+                <thead>
+                    <tr>
+                        <th>Heure</th>
+                        <th>Fréquence</th>
+                        <th>Jour / Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </section>
     </main>
-    <?php include 'footer.php'; ?>
-</body>
 
+    <?php include 'footer.php'; ?>
+    <script src="res/medicaments.js"></script>
+</body>
 </html>

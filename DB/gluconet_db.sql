@@ -266,6 +266,7 @@ ALTER TABLE `poids`
 ALTER TABLE `rappel`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_patient` (`id_patient`);
+  
 
 --
 -- Index pour la table `relation_patient_medecin`
@@ -434,6 +435,13 @@ ALTER TABLE `relation_patient_medecin`
 ALTER TABLE `repas`
   ADD CONSTRAINT `fk_repas_patient` FOREIGN KEY (`id_patient`) REFERENCES `patient` (`id_utilisateur`) ON DELETE CASCADE;
 COMMIT;
+
+--
+-- Mise à jour de la table rappel pour ajouter les colonnes jour_semaine et date_mensuelle
+--
+ALTER TABLE rappel
+ADD COLUMN jour_semaine ENUM('Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche') DEFAULT NULL,
+ADD COLUMN date_mensuelle TINYINT(2) DEFAULT NULL;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
