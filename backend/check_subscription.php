@@ -24,8 +24,7 @@ if (isset($_SESSION['user_id'])) {
         require_once __DIR__ . '/db_connect.php';
 
         // On vérifie le rôle. Si c'est un patient, on vérifie l'abonnement.
-        // (Si $_SESSION['role'] n'est pas défini, on suppose qu'on ne bloque pas ou on vérifie en BDD)
-        // Ici on se base sur la session ou la BDD.
+        
 
         $user_id = $_SESSION['user_id'];
         $is_patient = false;
