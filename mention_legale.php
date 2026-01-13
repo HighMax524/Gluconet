@@ -2,10 +2,14 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="res/style.css">
     <link rel="stylesheet" href="res/mention_legale.css">
     <title>Mentions Légales</title>
 </head>
+
 <body>
+<?php include 'nav_bar.php'; ?>
+
 <div class="container">
     <h1>Mentions Légales</h1>
     <p><strong>Éditeur du site :</strong> G2B</p>
@@ -20,7 +24,8 @@
 
         Aucune information personnelle n’est cédée à des tiers. Les courriels, les adresses électroniques ou autres informations nominatives dont ce site est destinataire ne font l’objet d’aucune exploitation et ne sont conservés que pour la durée nécessaire à leur traitement.</p>
     <p><strong>Responsabilité :</strong> L'éditeur ne peut être tenu responsable des dommages directs ou indirects causés par l'utilisation du site.</p>
-    <!-- Remplacez les placeholders par vos informations réelles -->
+
 </div>
+<?php include 'footer.php'; ?>
 </body>
 </html>
