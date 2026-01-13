@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'backend/check_subscription.php';
 if (!isset($_SESSION['user_id'])) {
     header("Location: connexion.php");
     exit();
