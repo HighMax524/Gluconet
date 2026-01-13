@@ -52,10 +52,7 @@ if (isset($_SESSION['user_id'])) {
 
             // Si pas d'abonnement ou 'Gratuit' -> Redirection
             if (!$res || empty($res['type_abonnement']) || $res['type_abonnement'] === 'Gratuit') {
-                // Redirection vers paiement
-                // Si le fichier est inclus depuis la racine -> paiement.php
-                // Si inclus depuis backend/ -> ../paiement.php
-                // On suppose inclusion depuis la racine pour les pages vues (track.php, etc)
+            
 
                 // Détection du chemin relatif
                 if (file_exists('paiement.php')) {
