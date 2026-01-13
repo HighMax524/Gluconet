@@ -161,35 +161,7 @@
         </section>
     </main>
 
-    <!-- JS -->
-    <script>
-        // Script inline pour gérer les boutons et inputs cachés
-        document.addEventListener('DOMContentLoaded', () => {
-            // Sélection du sexe
-            const genderButtons = document.querySelectorAll(".gender-btn");
-            const genderInput = document.getElementById("sexe");
-
-            genderButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    genderButtons.forEach(b => b.classList.remove("selected"));
-                    btn.classList.add("selected");
-                    if (genderInput) genderInput.value = btn.getAttribute("data-gender");
-                });
-            });
-
-            // Sélection du type de diabète
-            const diabetesButtons = document.querySelectorAll(".diabetes-btn");
-            const diabetesInput = document.getElementById("type_diabete");
-
-            diabetesButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    diabetesButtons.forEach(b => b.classList.remove("selected"));
-                    btn.classList.add("selected");
-                    if (diabetesInput) diabetesInput.value = btn.getAttribute("data-type");
-                });
-            });
-        });
-    </script>
+    <script src="JS/informations.js"></script>
     <?php include 'footer.php'; ?>
 </body>
 
