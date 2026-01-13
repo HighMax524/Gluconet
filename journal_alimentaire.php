@@ -6,10 +6,13 @@
   <title>Gluconet – Journal alimentaire</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="res/css_journalAlim">
+  <link rel="stylesheet" href="res/style.css">
+  <link href='res/logo_site.png' rel='icon'>
+  <link rel="stylesheet" href="res/css_journalAlim.css"
 </head>
 
 <body>
+<?php include 'nav_bar.php'; ?>
   <main class="page-wrapper">
     <section class="card">
       <h1 class="card-title">Journal alimentaire </h1>
@@ -401,5 +404,7 @@
         .replaceAll('"', "&quot;").replaceAll("'", "&#039;");
     }
   </script>
+
+<?php include 'footer.php'; ?>
 </body>
 </html>
