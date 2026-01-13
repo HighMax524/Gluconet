@@ -77,6 +77,6 @@ if (!isset($_SESSION['type_abonnement']) || $_SESSION['type_abonnement'] !== 'Pr
     </main>
 
     <?php include 'footer.php'; ?>
-    <script src="res/medicaments.js"></script>
+    <script src="JS/medicaments.js"></script>
 </body>
 </html>
