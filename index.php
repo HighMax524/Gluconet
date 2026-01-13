@@ -39,7 +39,16 @@
 
         </div>
 
-        <a href="track.php" class="welcome-btn">Bienvenue →</a>
+        <?php
+        if (($_SESSION['role'] ?? '') === 'patient'): ?>
+            <a href="track.php" class="welcome-btn">Bienvenue</a>
+        <?php elseif (($_SESSION['role'] ?? '') === 'medecin'): ?>
+            <a href="medecin_dashboard.php" class="welcome-btn">Bienvenue</a>
+        <?php else: ?>
+            <a href="inscription.php" class="welcome-btn">Bienvenue</a>
+            <a href="connexion.php" class="connexion-btn">Se connecter</a>
+        <?php endif; ?>
+
 
     </div>
     <?php include 'footer.php'; ?>
