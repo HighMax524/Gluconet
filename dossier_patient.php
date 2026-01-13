@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'backend/check_subscription.php';
 // 1. Vérification Médecin (reste ici pour la redirection immédiate si accès direct)
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'medecin') {
     header("Location: connexion.php");

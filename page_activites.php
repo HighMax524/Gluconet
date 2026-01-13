@@ -1,13 +1,20 @@
 <?php
 session_start();
+require_once 'backend/check_subscription.php';
 require_once "backend/db_connect.php";
 
+// Restriction Premium
+if (!isset($_SESSION['type_abonnement']) || $_SESSION['type_abonnement'] !== 'Premium') {
+    echo "<script>alert('Cette fonctionnalité est réservée aux membres Premium.'); window.location.href='abonnement.php';</script>";
+    exit();
+}
+
 try {
-// ID utilisateur depuis la session
+    // ID utilisateur depuis la session
     $idUtilisateur = $_SESSION['user_id'];
 
-// Récupération du dernier poids enregistré
-$stmt = $conn->prepare("
+    // Récupération du dernier poids enregistré
+    $stmt = $conn->prepare("
     SELECT poids
     FROM poids
     WHERE id_utilisateur = ?
@@ -15,15 +22,14 @@ $stmt = $conn->prepare("
     LIMIT 1
 ");
 
-$stmt->execute([$idUtilisateur]);
-$data = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->execute([$idUtilisateur]);
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Sécurité si aucun poids trouvé
-$poidsUtilisateur = $data ? $data['poids'] : null;
+    // Sécurité si aucun poids trouvé
+    $poidsUtilisateur = $data ? $data['poids'] : null;
+} catch (PDOException $e) {
+    die("Erreur : " . $e->getMessage());
 }
-catch (PDOException $e) {
-        die("Erreur : " . $e->getMessage());
-    }
 ?>
 
 
@@ -61,10 +67,10 @@ catch (PDOException $e) {
 
             <div class="calorie_side">
                 <button class="btn" id="calculate">Calculer mes calories brûlées</button>
-            
+
                 <!-- Bouton Apple Health (simulation) -->
                 <button class="btn apple-health-btn" disabled>
-                    Calcul automatique via Apple Health (bientôt disponible) 
+                    Calcul automatique via Apple Health (bientôt disponible)
                 </button>
             </div>
 
@@ -79,13 +85,13 @@ catch (PDOException $e) {
     <?php include 'footer.php'; ?>
 
 
-<!-- Sécurité -->    
+    <!-- Sécurité -->
     <script>
         const userWeight = <?= json_encode($poidsUtilisateur) ?>; // éviter l'injection SQL
     </script>
 
-<!-- Javascript -->
-    <script src="res/activites.js"></script>
+    <!-- Javascript -->
+    <script src="JS/activites.js"></script>
 
 </body>
 

@@ -1,3 +1,12 @@
+<?php
+require_once 'backend/check_subscription.php';
+
+// Restriction Premium
+if (!isset($_SESSION['type_abonnement']) || $_SESSION['type_abonnement'] !== 'Premium') {
+    echo "<script>alert('Cette fonctionnalité est réservée aux membres Premium.'); window.location.href='abonnement.php';</script>";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
