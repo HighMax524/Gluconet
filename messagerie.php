@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="res/main.css">
+    <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/messagerie.css">
     <link href='res/logo_site.png' rel='icon'>
 </head>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paiement - Gluconet</title>
-    <link rel="stylesheet" href="res/main.css">
+    <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/paiement.css">
     <link href='res/logo_site.png' rel='icon'>
 </head>

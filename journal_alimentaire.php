@@ -8,9 +8,9 @@
   <title>Gluconet – Journal alimentaire</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="res/main.css">
+  <link rel="stylesheet" href="style/main.css">
   <link href='res/logo_site.png' rel='icon'>
-  <link rel="stylesheet" href="res/css_journalAlim.css">
+  <link rel="stylesheet" href="style/css_journalAlim.css">
   <script>
     const USER_SUBSCRIPTION = "<?php echo $_SESSION['type_abonnement'] ?? 'Standard'; ?>";
   </script>
