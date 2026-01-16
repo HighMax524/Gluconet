@@ -38,7 +38,7 @@ try {
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="res/style.css">
+    <link rel="stylesheet" href="res/main.css">
     <title>Activités physiques</title>
     <link href='res/logo_site.png' rel='icon'>
 </head>

@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="res/style.css">
+    <link rel="stylesheet" href="res/main.css">
+    <link rel="stylesheet" href="style/info_patient.css">
     <link href='res/logo_site.png' rel='icon'>
 </head>
 

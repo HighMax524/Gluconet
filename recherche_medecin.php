@@ -26,7 +26,8 @@ if (isset($searchData['error_msg'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche Médecin - GlucoNet</title>
-    <link rel="stylesheet" href="res/style.css">
+    <link rel="stylesheet" href="res/main.css">
+    <link rel="stylesheet" href="style/recherche_medecin.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
