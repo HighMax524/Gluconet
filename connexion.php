@@ -35,7 +35,7 @@
             <br>
 
             <div class="options_conn">
-                <a href="">Mot de passe oublié ?</a>
+                <a href="mot_de_passe_oublie.php">Mot de passe oublié ?</a>
 
                 <div class="pas_de_compte">
                     <p>Pas de compte ?</p>
