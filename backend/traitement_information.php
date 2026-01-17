@@ -50,12 +50,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             $missing = [];
-            if (!$sexe) $missing[] = "Sexe";
-            if (!$age) $missing[] = "Age";
-            if (!$taille) $missing[] = "Taille";
-            if (!$poids) $missing[] = "Poids";
-            if (!$date_diagnostic) $missing[] = "Date diagnostic";
-            if (!$type_diabete) $missing[] = "Type diabète";
+            if ($sexe === '') $missing[] = "Sexe";
+            if ($age === '') $missing[] = "Age";
+            if ($taille === '') $missing[] = "Taille";
+            if ($poids === '') $missing[] = "Poids";
+            if ($date_diagnostic === '') $missing[] = "Date diagnostic";
+            if ($type_diabete === '') $missing[] = "Type diabète";
             
             $errorMsg = "Champs manquants : " . implode(", ", $missing);
             header("Location: ../information.php?error=" . urlencode($errorMsg));
@@ -88,10 +88,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
 
             $missing = [];
-            if (!$rpps) $missing[] = "RPPS";
-            if (!$etablissement) $missing[] = "Etablissement";
-            if (!$adresse_pro) $missing[] = "Adresse Pro";
-            if (!$telephone_pro) $missing[] = "Téléphone Pro";
+            if ($rpps === '') $missing[] = "RPPS";
+            if ($etablissement === '') $missing[] = "Etablissement";
+            if ($adresse_pro === '') $missing[] = "Adresse Pro";
+            if ($telephone_pro === '') $missing[] = "Téléphone Pro";
 
             $errorMsg = "Champs manquants : " . implode(", ", $missing);
             header("Location: ../information.php?error=" . urlencode($errorMsg));

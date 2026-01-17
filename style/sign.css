@@ -147,3 +147,9 @@ a:focus {
 .afficheMdp img {
     width: 30px;
 }
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
