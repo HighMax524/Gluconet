@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 require __DIR__ . '/db_connect.php';
 session_start();
 
-$id_patient = $_SESSION['id_patient'];
+$id_patient = $_SESSION['user_id'];
 
 $method = $_SERVER['REQUEST_METHOD'];
 $action = $_GET['action'] ?? null;
