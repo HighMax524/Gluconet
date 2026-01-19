@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $type_diabete = $_POST['type_diabete'] ?? '';
 
         // Validation basique
-        if ($sexe && $age && $taille && $poids && $date_diagnostic && $type_diabete) {
+        if ($sexe !== '' && $age !== '' && $taille !== '' && $poids !== '' && $date_diagnostic !== '' && $type_diabete !== '') {
             try {
                 $conn->beginTransaction();
 
@@ -49,7 +49,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         } else {
-            header("Location: ../information.php?error=" . urlencode("Veuillez remplir tous les champs obligatoires"));
+            $missing = [];
+            if ($sexe === '') $missing[] = "Sexe";
+            if ($age === '') $missing[] = "Age";
+            if ($taille === '') $missing[] = "Taille";
+            if ($poids === '') $missing[] = "Poids";
+            if ($date_diagnostic === '') $missing[] = "Date diagnostic";
+            if ($type_diabete === '') $missing[] = "Type diabète";
+            
+            $errorMsg = "Champs manquants : " . implode(", ", $missing);
+            header("Location: ../information.php?error=" . urlencode($errorMsg));
             exit();
         }
 
@@ -60,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $adresse_pro = $_POST['adresse_pro'] ?? '';
         $telephone_pro = $_POST['telephone_pro'] ?? '';
 
-        if ($rpps && $etablissement && $adresse_pro && $telephone_pro) {
+        if ($rpps !== '' && $etablissement !== '' && $adresse_pro !== '' && $telephone_pro !== '') {
             try {
                 // Insertion dans la table MEDECIN
                 // id_utilisateur correspond à la foreign key Utilisateur_id dans la table medecin
@@ -77,7 +86,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         } else {
-            header("Location: ../information.php?error=" . urlencode("Veuillez remplir tous les champs obligatoires"));
+
+            $missing = [];
+            if ($rpps === '') $missing[] = "RPPS";
+            if ($etablissement === '') $missing[] = "Etablissement";
+            if ($adresse_pro === '') $missing[] = "Adresse Pro";
+            if ($telephone_pro === '') $missing[] = "Téléphone Pro";
+
+            $errorMsg = "Champs manquants : " . implode(", ", $missing);
+            header("Location: ../information.php?error=" . urlencode($errorMsg));
             exit();
         }
 

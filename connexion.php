@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="res/style.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/sign.css">
     <link href='res/logo_site.png' rel='icon'>
     <title>Connexion</title>
 </head>
@@ -14,7 +15,7 @@
         <img src="res/img_conn.png" alt="image glucometre" id="img_conn">
         <div class="form_inscr_conn_container">
             <?php if (isset($_GET['error'])): ?>
-                <div class="error-message" style="color: red; text-align: center; margin-bottom: 10px;">
+                <div class="error-message">
                     <?php echo htmlspecialchars($_GET['error']); ?>
                 </div>
             <?php endif; ?>
@@ -34,7 +35,7 @@
             <br>
 
             <div class="options_conn">
-                <a href="">Mot de passe oublié ?</a>
+                <a href="mot_de_passe_oublie.php">Mot de passe oublié ?</a>
 
                 <div class="pas_de_compte">
                     <p>Pas de compte ?</p>
@@ -46,21 +47,6 @@
 </body>
 <?php include 'footer.php'; ?>
 
-<script>
-    function afficheMdp(inputId, element) {
-        const input = document.getElementById(inputId);
-        const img = element.querySelector("img");
-
-        if (input.type === "password") {
-            input.type = "text";
-            img.src = "res/oeil_barre.png";
-            img.alt = "icone oeil";
-        } else {
-            input.type = "password";
-            img.src = "res/oeil.png";
-            img.alt= "icone oeil barré";
-        }
-    }
-</script>
+<script src="JS/connexion.js"></script>
 
 </html>

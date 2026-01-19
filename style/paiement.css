@@ -1,0 +1,121 @@
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4a7c59;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 35px;
+    margin: 0 5px;
+}
+
+.help-btn {
+    background: #cde6c9;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.user-icon svg {
+    width: 35px;
+    height: 35px;
+    color: #4a7c59;
+    cursor: pointer;
+}
+
+/* CARD */
+main {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.card {
+    background: #b7c8ad;
+    padding: 40px;
+    width: 60%;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* OFFERS */
+.offers {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.offer {
+    padding: 20px 30px;
+    background-color: white;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.offer.active {
+    border-color: #2d6a4f;
+}
+
+.offer p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.offer span {
+    color: #2d6a4f;
+}
+
+/* FORM */
+input {
+    display: block;
+    margin: 12px auto;
+    width: 80%;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+input.error {
+    border: 2px solid red;
+    background: #ffd6d6;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.row input {
+    width: 35%;
+}
+
+.pay-btn {
+    margin-top: 20px;
+    background: #6da57f;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+#expire-container {
+    margin: 12px auto;
+    display: flex;
+    justify-content: left;
+    gap: 5px;
+}
+
+#expire-container select{
+    border-radius: 20px;
+    padding: 10px;
+}

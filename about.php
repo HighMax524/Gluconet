@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="res/style.css">
-    <link rel="stylesheet" href="res/about_css.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/about.css">
     <title>A propos</title>
     <link href='res/logo_site.png' rel='icon'>
 </head>

@@ -8,7 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aide et FAQ - GlucoNet</title>
-    <link rel="stylesheet" href="res/style.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/aide.css">
     <!-- Google Fonts & Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" />
     <link rel="stylesheet"

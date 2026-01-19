@@ -11,7 +11,8 @@ if (!isset($_SESSION['type_abonnement']) || $_SESSION['type_abonnement'] !== 'Pr
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="res/style.css">
+<link rel="stylesheet" href="style/main.css">
+<link rel="stylesheet" href="style/activite_medicament.css">
 <title>Médicaments</title>
 <link href='res/logo_site.png' rel='icon'>
 </head>

@@ -7,7 +7,7 @@
 }
 
 .card_about{
-    background-color: #81c784;
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.2) 0%, rgba(129, 199, 132, 0.2) 100%);
     padding: 25px;
     border-radius: 20px;
     width: 40%;
