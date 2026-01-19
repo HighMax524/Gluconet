@@ -25,6 +25,11 @@ $historique_poids = $dossierData['historique_poids'];
 $labels_poids = $dossierData['labels_poids'];
 $data_poids = $dossierData['data_poids'];
 $current_weight = $dossierData['current_weight'];
+
+$historique_glycemie = $dossierData['historique_glycemie'];
+$labels_glycemie = $dossierData['labels_glycemie'];
+$data_glycemie = $dossierData['data_glycemie'];
+$current_glycemie = $dossierData['current_glycemie'];
 ?>
 
 <!DOCTYPE html>
@@ -92,17 +97,18 @@ $current_weight = $dossierData['current_weight'];
                 </p>
             </div>
 
-            <!-- Graphique Glycémie (Placeholder / Statique pour l'instant) -->
+            <!-- Graphique Glycémie -->
             <div class="metric-card">
                 <div class="metric-title">
                     <span class="material-symbols-outlined">water_drop</span>
-                    Glycémie (Simulation)
+                    Glycémie
                 </div>
-                <div class="chart-box"
-                    style="display: flex; align-items: center; justify-content: center; background: #f9f9f9; border-radius: 10px;">
-                    <p style="color: #888; text-align: center;">Aucune donnée de glycémie connectée.<br>Affichage des
-                        données simulées.</p>
+                <div class="chart-box">
+                    <canvas id="glycemiaChart"></canvas>
                 </div>
+                <p style="text-align: center; margin-top: 10px; font-weight: bold; color: #1565c0;">
+                    Glycémie Actuelle : <?php echo htmlspecialchars($current_glycemie); ?> mmol/L
+                </p>
             </div>
         </div>
 
@@ -156,6 +162,41 @@ $current_weight = $dossierData['current_weight'];
                 },
                 scales: {
                     y: { beginAtZero: false }
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // Graphique Glycémie
+        const ctxGly = document.getElementById('glycemiaChart').getContext('2d');
+        new Chart(ctxGly, {
+            type: 'line',
+            data: {
+                labels: <?php echo json_encode($labels_glycemie); ?>,
+                datasets: [{
+                    label: 'Glycémie (mmol/L)',
+                    data: <?php echo json_encode($data_glycemie); ?>,
+                    borderColor: '#1565c0',
+                    backgroundColor: 'rgba(21, 101, 192, 0.08)',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#1565c0',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: { display: true, text: 'mmol/L' }
+                    }
                 }
             }
         });

@@ -54,12 +54,35 @@ function getDossierPatientData($conn, $medecin_rpps, $patient_user_id)
             $current_weight = end($data_poids);
         }
 
+
+        // 4. Récupération Historique Glycémie
+        $stmtGly = $conn->prepare("SELECT valeur, date_heure FROM mesureglycemie WHERE id_patient = ? ORDER BY date_heure ASC");
+        $stmtGly->execute([$patient_user_id]);
+        $historique_glycemie = $stmtGly->fetchAll(PDO::FETCH_ASSOC);
+
+        $labels_glycemie = [];
+        $data_glycemie = [];
+        $current_glycemie = "N/A";
+
+        if ($historique_glycemie) {
+            foreach ($historique_glycemie as $entry) {
+                $date = new DateTime($entry['date_heure']);
+                $labels_glycemie[] = $date->format('d/m/Y H:i');
+                $data_glycemie[] = $entry['valeur'];
+            }
+            $current_glycemie = end($data_glycemie);
+        }
+
         return [
             'patientData' => $patientData,
             'historique_poids' => $historique_poids,
             'labels_poids' => $labels_poids,
             'data_poids' => $data_poids,
-            'current_weight' => $current_weight
+            'current_weight' => $current_weight,
+            'historique_glycemie' => $historique_glycemie,
+            'labels_glycemie' => $labels_glycemie,
+            'data_glycemie' => $data_glycemie,
+            'current_glycemie' => $current_glycemie
         ];
 
     } catch (PDOException $e) {
