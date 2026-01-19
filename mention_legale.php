@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/mention_legale.css">
     <title>Mentions Légales</title>
+    <link rel="icon" href="res/logo_site.png">
 </head>
 
 <body>
