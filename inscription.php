@@ -58,21 +58,6 @@
     <?php include 'footer.php'; ?>
 </body>
 
-<script>
-    function afficheMdp(inputId, element) {
-        const input = document.getElementById(inputId);
-        const img = element.querySelector("img");
-
-        if (input.type === "password") {
-            input.type = "text";
-            img.src = "res/oeil_barre.png";
-            img.alt = "icone oeil";
-        } else {
-            input.type = "password";
-            img.src = "res/oeil.png";
-            img.alt= "icone oeil barré";
-        }
-    }
-</script>
+<script src="JS/connexion.js"></script>
 
 </html>

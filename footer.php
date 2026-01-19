@@ -10,7 +10,7 @@
           <li><a href="index.php">Accueil</a></li>
           <li><a href="about.php">À propos</a></li>
           <li><a href="contact.php">Contact</a></li>
-          <li><a href="mention_legale.html">Mentions légales</a></li>
+          <li><a href="mention_legale.php">Mentions légales</a></li>
       </ul>
     </div>
     <div class="footer-social">
