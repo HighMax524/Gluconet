@@ -2,8 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="res/style.css">
-    <link rel="stylesheet" href="res/mention_legale.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/mention_legale.css">
     <title>Mentions Légales</title>
 </head>
 
