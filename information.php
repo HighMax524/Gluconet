@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="res/style.css">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/info_patient.css">
     <link href='res/logo_site.png' rel='icon'>
 </head>
 
@@ -49,7 +50,7 @@
                             <!-- Sexe -->
                             <div>
                                 <p class="section-title">Sexe</p>
-                                <input type="hidden" id="sexe" name="sexe" required>
+                                <input type="hidden" id="sexe" name="sexe">
                                 <div class="gender-choices">
                                     <button type="button" class="gender-btn" data-gender="Homme"
                                         aria-label="Homme">♂</button>
@@ -89,7 +90,7 @@
                             <!-- Type diabète -->
                             <div class="diabetes-section">
                                 <p class="diabetes-label">Type de diabète</p>
-                                <input type="hidden" id="type_diabete" name="type_diabete" required>
+                                <input type="hidden" id="type_diabete" name="type_diabete">
                                 <div class="diabetes-choices">
                                     <button type="button" class="diabetes-btn" data-type="Type 1">1</button>
                                     <button type="button" class="diabetes-btn" data-type="Type 2">2</button>
@@ -161,7 +162,7 @@
         </section>
     </main>
 
-    <script src="JS/informations.js"></script>
+    <script src="JS/informations.js?v=<?php echo time(); ?>"></script>
     <?php include 'footer.php'; ?>
 </body>
 

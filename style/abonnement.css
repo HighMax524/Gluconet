@@ -1,0 +1,89 @@
+.pricing-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #a5d6a7, #c8e6c9); /* Matching the green gradient vibe */
+    min-height: 80vh;
+}
+
+.pricing-title {
+    color: #1b5e20;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+}
+
+.pricing-plan {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #000;
+    line-height: 1.6;
+}
+
+.pricing-features li {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.pricing-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.pricing-price .period {
+    color: #2e7d32; /* Green color for /mois */
+    font-size: 1.5rem;
+}
+
+.pricing-btn {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.pricing-btn:hover {
+    background: #1b5e20;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
