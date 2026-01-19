@@ -24,3 +24,8 @@ h1 {
 p {
     margin: 10px 0;
 }
+
+.center_box{
+    display: flex;
+    justify-content: center;
+}
