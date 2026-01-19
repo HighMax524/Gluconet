@@ -64,11 +64,11 @@ try {
 
             <div class="duration">
                 <input type="number" id="duration" placeholder="Durée (en minutes)">
-            </div>
+            </div> </br>
 
             <div class="calorie_side">
                 <button class="btn" id="calculate">Calculer mes calories brûlées</button>
-
+                </br>
                 <!-- Bouton Apple Health (simulation) -->
                 <button class="btn apple-health-btn" disabled>
                     Calcul automatique via Apple Health (bientôt disponible)
