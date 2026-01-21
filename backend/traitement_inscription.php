@@ -2,6 +2,31 @@
 session_start();
 require_once 'db_connect.php';
 
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: ../inscription.php");
+    exit;
+}
+
+if (empty($_POST['g-recaptcha-response'])) {
+    header("Location: ../inscription.php?error=Veuillez valider le captcha");
+    exit;
+}
+
+$secretKey = "6LcHyVEsAAAAADorxJ2-SecXmiv3tnUtDn32IjE7";
+$response = $_POST['g-recaptcha-response'];
+$remoteIp = $_SERVER['REMOTE_ADDR'];
+
+$verify = file_get_contents(
+    "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$remoteIp"
+);
+
+$captchaSuccess = json_decode($verify);
+
+if (!$captchaSuccess || !$captchaSuccess->success) {
+    header("Location: ../inscription.php?error=Captcha invalide");
+    exit;
+}
+
 // Vérification que le formulaire a bien été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération et nettoyage des données

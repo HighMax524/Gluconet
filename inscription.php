@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style/sign.css">
     <title>Inscription</title>
     <link href='res/logo_site.png' rel='icon'>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -41,6 +42,10 @@
                     <span class="afficheMdp" onclick="afficheMdp('conf_mdp', this)">
                         <img src="res/oeil.png" alt="icone oeil">
                     </span>
+                </div>
+
+                <div class="captcha_container">
+                    <div class="g-recaptcha" data-sitekey="6LcHyVEsAAAAAGXCRudJiD1A8xh2d7VxMrVsdzqA"></div>
                 </div>
 
                 <input type="submit" value="S'inscrire" class="boutton_form">
