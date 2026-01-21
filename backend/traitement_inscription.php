@@ -37,6 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdp = $_POST['mdp'];
     $conf_mdp = $_POST['conf_mdp'];
 
+    function nomValide($chaine) {
+    return preg_match('/^[A-Za-zÀ-ÿ -]+$/', $chaine);
+    }
     // Validation des champs
     if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($mdp) && !empty($conf_mdp)) {
 

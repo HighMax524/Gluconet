@@ -22,13 +22,18 @@
             <?php endif; ?>
             <h1 class="titre_form">S'inscrire</h1>
             <form id="form_inscr" action="backend/traitement_inscription.php" method="post">
-                <input type="text" id="nom" name="nom" placeholder="Nom" required>
+                <input type="text" id="nom" name="nom" placeholder="Nom" required maxlength="50"
+                pattern="[A-Za-zÀ-ÿ -]+"
+                title="Lettres uniquement, espaces et tirets autorisés">
 
-                <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
+                <input type="text" id="prenom" name="prenom" placeholder="Prénom" required maxlength="50"
+                pattern="[A-Za-zÀ-ÿ -]+"
+                title="Lettres uniquement, espaces et tirets autorisés">
 
                 <input type="email" id="email" name="email" placeholder="Adresse de courriel" required>
 
-                <input type="tel" id="tel" name="tel" placeholder="Téléphone" required>
+                <input type="tel" id="tel" name="tel" placeholder="Téléphone" required maxlength="10"
+                pattern="[0-9]{10}" inputmode="numeric">
 
                 <div class="password-field">
                     <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
