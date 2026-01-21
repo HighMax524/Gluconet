@@ -41,3 +41,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+const ageInput = document.getElementById("age");
+const tailleInput = document.getElementById("taille");
+const poidsInput = document.getElementById("poids");
+
+ageInput.addEventListener("input", () => {
+    let val = parseInt(ageInput.value, 10);
+if (isNaN(val) || val < 0) ageInput.value = 0;
+        else if (val > 120) ageInput.value = 120;
+});
+
+tailleInput.addEventListener("input", () => {
+    let val = parseInt(tailleInput.value, 10);
+if (isNaN(val) || val < 50) tailleInput.value = 50;
+        else if (val > 250) tailleInput.value = 250;
+});
+
+poidsInput.addEventListener("input", () => {
+    let val = parseInt(poidsInput.value, 10);
+if (isNaN(val) || val < 10) poidsInput.value = 10;
+        else if (val > 300) poidsInput.value = 300;
+});
