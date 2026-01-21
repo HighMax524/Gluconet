@@ -91,6 +91,10 @@ session_start();
             <h3>Vous ne trouvez pas votre réponse ?</h3>
             <p>Notre équipe de support est là pour vous aider.</p>
             <a href="mailto:support@gluconet.fr" class="btn-contact">Contacter le support</a>
+            <br>
+            <br>
+            <h3>Vous pouvez également :</h3>
+            <a href="res/guide_utilisateur_gluconet.pdf" download class="download_guide">Télecharger notre guide d'utilisation</a>
         </div>
 
     </div>
