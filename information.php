@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
+<head><!-- config page 
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gluconet – Informations supplémentaires</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <!-- RESPONSIVE (pour afficher sur diff ecran (le code est dans css )) -->
+    <title>Gluconet – Informations supplémentaire</title>
 
     <!-- Police (facultatif) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
+    <!-- cherche les données dans api google en rapport avec le css  -->
+
+    <!-- CSS il va chercher le style dans main.css pour l'appliquer dans le html -->
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/info_patient.css">
-    <link href='res/logo_site.png' rel='icon'>
+    <link href='res/logo_site.png' rel='icon'>  
+    <!-- rel : attribu qui possède la nature de ce qui est importé (ce qui est dans href) -->
 </head>
 
 <body>
     <?php
+    
+    //session : garde la connexion entre 2 pages$
+    //check if user is connected yet or not 
     session_start();
     if (!isset($_SESSION['role'])) {
         header("Location: role.php");
